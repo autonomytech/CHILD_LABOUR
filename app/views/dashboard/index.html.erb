@@ -1,2 +1,25 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Raids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @raids.each do |raid| %>
+      <tr>
+        <td><%= raid.title %></td>
+        <td><%= raid.date.strftime('%d, %B %Y') %></td>
+        <td><%= raid.time.strftime('%I:%M %p') %></td>
+        <td><%= raid.location.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
