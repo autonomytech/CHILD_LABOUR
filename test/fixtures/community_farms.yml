@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  raid_id: 
+  department_id: 
+  involve_member: MyString
+  string: MyString
+
+two:
+  raid_id: 
+  department_id: 
+  involve_member: MyString
+  string: MyString

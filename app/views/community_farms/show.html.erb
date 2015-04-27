@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Raid:</strong>
+  <%= @community_farm.raid %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @community_farm.department %>
+</p>
+
+<p>
+  <strong>Involve member:</strong>
+  <%= @community_farm.involve_member %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @community_farm.string %>
+</p>
+
+<%= link_to 'Edit', edit_community_farm_path(@community_farm) %> |
+<%= link_to 'Back', community_farms_path %>

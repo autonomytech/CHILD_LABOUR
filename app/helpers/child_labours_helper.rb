@@ -1,0 +1,2 @@
+module ChildLaboursHelper
+end

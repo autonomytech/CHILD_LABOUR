@@ -1,0 +1,33 @@
+<%= form_for(@community_farm) do |f| %>
+  <% if @community_farm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@community_farm.errors.count, "error") %> prohibited this community_farm from being saved:</h2>
+
+      <ul>
+      <% @community_farm.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :raid_id %><br>
+    <%= f.text_field :raid_id %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br>
+    <%= f.text_field :department_id %>
+  </div>
+  <div class="field">
+    <%= f.label :involve_member %><br>
+    <%= f.text_field :involve_member %>
+  </div>
+  <div class="field">
+    <%= f.label :string %><br>
+    <%= f.text_field :string %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

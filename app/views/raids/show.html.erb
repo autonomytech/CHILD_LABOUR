@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @raid.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @raid.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @raid.time %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @raid.location %>
+</p>
+
+<%= link_to 'Edit', edit_raid_path(@raid) %> |
+<%= link_to 'Back', raids_path %>

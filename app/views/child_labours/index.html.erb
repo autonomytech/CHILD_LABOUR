@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Child Labours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Father name</th>
+      <th>Mother name</th>
+      <th>Address</th>
+      <th>Age</th>
+      <th>Employer</th>
+      <th>Raid</th>
+      <th>Description</th>
+      <th>Is deleted</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @child_labours.each do |child_labour| %>
+      <tr>
+        <td><%= child_labour.name %></td>
+        <td><%= child_labour.father_name %></td>
+        <td><%= child_labour.mother_name %></td>
+        <td><%= child_labour.address %></td>
+        <td><%= child_labour.age %></td>
+        <td><%= child_labour.employer %></td>
+        <td><%= child_labour.raid %></td>
+        <td><%= child_labour.description %></td>
+        <td><%= child_labour.is_deleted %></td>
+        <td><%= link_to 'Show', child_labour %></td>
+        <td><%= link_to 'Edit', edit_child_labour_path(child_labour) %></td>
+        <td><%= link_to 'Destroy', child_labour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Child labour', new_child_labour_path %>
