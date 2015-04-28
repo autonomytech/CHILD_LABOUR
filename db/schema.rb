@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150427174958) do
     t.string   "designation"
     t.boolean  "is_deleted",             default: false
     t.boolean  "is_primary",             default: false
+    t.integer  "community_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -144,6 +145,7 @@ ActiveRecord::Schema.define(version: 20150427174958) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["community_id"], name: "index_users_on_community_id", using: :btree
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["department_id"], name: "index_users_on_department_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -159,6 +161,7 @@ ActiveRecord::Schema.define(version: 20150427174958) do
   add_foreign_key "community_farms", "raids"
   add_foreign_key "departments", "locations"
   add_foreign_key "raids", "locations"
+  add_foreign_key "users", "communities"
   add_foreign_key "users", "departments"
   add_foreign_key "users", "roles"
 end

@@ -14,6 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :designation
       t.boolean :is_deleted, default: false
       t.boolean :is_primary, default: false
+      t.references :community, index: true
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -43,12 +44,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
     end
     add_foreign_key :users, :roles
     add_foreign_key :users, :departments
+    add_foreign_key :users, :communities
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     add_index :users, :unlock_token,         unique: true
     User.create(title: 'Mr.', first_name: 'Primary', last_name: 'Admin'\
       , email: 'primary_admin@icl.com', password: 'primary_admin123'\
-      , role_id: 1, department_id: 1, is_primary: true)
+      , role_id: 1, department_id: 1, is_primary: true, community_id: 1)
   end
 end
