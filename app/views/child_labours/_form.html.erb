@@ -1,4 +1,7 @@
-<%= form_for(@child_labour) do |f| %>
+
+
+
+<%= form_for @child_labour,url:{action: 'create',raid_id:@raid},method: :post do |f| %>
   <% if @child_labour.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@child_labour.errors.count, "error") %> prohibited this child_labour from being saved:</h2>
@@ -31,14 +34,7 @@
     <%= f.label :age %><br>
     <%= f.number_field :age %>
   </div>
-  <div class="field">
-    <%= f.label :employer_id %><br>
-    <%= f.text_field :employer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :raid_id %><br>
-    <%= f.text_field :raid_id %>
-  </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
@@ -47,6 +43,35 @@
     <%= f.label :is_deleted %><br>
     <%= f.check_box :is_deleted %>
   </div>
+
+  <h1>Employer Info</h1>
+   <%= f.fields_for :employer do |ff|%>
+  <div class="field">
+    <%= ff.label :first_name %><br>
+    <%= ff.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= ff.label :middle_name %><br>
+    <%= ff.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= ff.label :last_name %><br>
+    <%= ff.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= ff.label :address %><br>
+    <%= ff.text_field :address%>
+  </div>
+
+  <div class="field">
+    <%= ff.label :contact_no %><br>
+    <%= ff.text_field :contact_no%>
+  </div>
+  <%end%>
+
   <div class="actions">
     <%= f.submit %>
   </div>
