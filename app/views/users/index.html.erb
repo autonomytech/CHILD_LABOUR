@@ -1,2 +1,36 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Users List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Department</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.title %></td>
+        <td><%= user.full_name %></td>
+        <td><%= user.roles %></td>
+        <td><%= user.departments %></td>
+        <td><%= user.designation %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } unless (current_user.eql? user) || (user.is_primary) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New user', new_user_path %>

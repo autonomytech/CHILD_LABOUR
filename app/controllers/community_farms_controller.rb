@@ -1,4 +1,5 @@
 class CommunityFarmsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_community_farm, only: [:show, :edit, :update, :destroy]
 
   # GET /community_farms

@@ -1,4 +1,5 @@
 class ChildLaboursController < ApplicationController
+  load_and_authorize_resource
   before_action :set_child_labour, only: [:show, :edit, :update, :destroy]
 
   # GET /child_labours

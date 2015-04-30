@@ -3,4 +3,26 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable and :omniauthable
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable, :timeoutable
+  belongs_to :role
+  belongs_to :department
+
+  def admin?
+    true if role.role.eql? 'Admin'
+  end
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
+
+  def roles
+    role.role
+  end
+
+  def departments
+    department.name
+  end
+
+  def self.japu_users
+    where(is_deleted: false, community_id: 1)
+  end
 end

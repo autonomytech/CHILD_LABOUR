@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :community_farms
 
-  root 'dashboard#index'
-
   resources :dashboard
 
   resources :answers
@@ -24,4 +22,8 @@ Rails.application.routes.draw do
   resources :communities
 
   devise_for :users
+
+  resources :users
+
+  root 'dashboard#index'
 end
