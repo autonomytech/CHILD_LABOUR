@@ -14,7 +14,9 @@ class ChildLaboursController < ApplicationController
 
   # GET /child_labours/new
   def new
+    @raid = params[:format]
     @child_labour = ChildLabour.new
+    employer = @child_labour.build_employer 
   end
 
   # GET /child_labours/1/edit
@@ -25,9 +27,10 @@ class ChildLaboursController < ApplicationController
   # POST /child_labours.json
   def create
     @child_labour = ChildLabour.new(child_labour_params)
-
+    @raid = params[:raid_id]
     respond_to do |format|
       if @child_labour.save
+        @child_labour.update(raid_id:@raid)
         format.html { redirect_to @child_labour, notice: 'Child labour was successfully created.' }
         format.json { render :show, status: :created, location: @child_labour }
       else
@@ -69,6 +72,9 @@ class ChildLaboursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_labour_params
-      params.require(:child_labour).permit(:name, :father_name, :mother_name, :address, :age, :employer_id, :raid_id, :description, :is_deleted)
+      params.require(:child_labour).permit(:name, :father_name, :mother_name, :address, 
+                                           :age, :employer_id,:is_deleted,:raid_id, :description, 
+                                           employer_attributes:[:first_name,:middle_name,:last_name,
+                                            :address,:contact_no])
     end
 end

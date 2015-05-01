@@ -19,6 +19,7 @@
         <td><%= raid.date.strftime('%d, %B %Y') %></td>
         <td><%= raid.time.strftime('%I:%M %p') %></td>
         <td><%= raid.location.name %></td>
+        <td><%= link_to 'Child-Labour',new_child_labour_path(raid.id)%></td>
       </tr>
     <% end %>
   </tbody>
