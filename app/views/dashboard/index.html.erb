@@ -1,20 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Raids</h1>
-
-<table>
+<table id="datatable" class="table table-striped table-hover">
   <thead>
     <tr>
+      <th>Action</th>
       <th>Title</th>
       <th>Date</th>
       <th>Time</th>
       <th>Location</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @raids.each do |raid| %>
       <tr>
+        <td><i class="fa fa-caret-right fa-2x"></i></td>
         <td><%= raid.title %></td>
         <td><%= raid.date.strftime('%d, %B %Y') %></td>
         <td><%= raid.time.strftime('%I:%M %p') %></td>
@@ -24,5 +23,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'sign-out', destroy_user_session_path, method: :delete%>

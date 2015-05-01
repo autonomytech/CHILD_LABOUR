@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+gem 'font-awesome-rails', '4.3.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -45,3 +46,8 @@ end
 
 gem 'devise'
 gem 'cancan'
+gem 'bootstrap_form'
+gem 'html5_validators'
+gem 'jquery-datatables-rails', '~> 2.2.3'
+gem "breadcrumbs_on_rails"
+gem 'passenger'

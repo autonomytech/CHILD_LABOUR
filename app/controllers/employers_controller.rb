@@ -1,5 +1,7 @@
 class EmployersController < ApplicationController
   load_and_authorize_resource
+  add_breadcrumb 'Dashboard', :root_path
+  add_breadcrumb 'Employers', :employers_path
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
 
   # GET /employers

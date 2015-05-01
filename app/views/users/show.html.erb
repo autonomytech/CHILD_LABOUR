@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-1"></div>
+	<div class="col-md-4">
+		<%= bootstrap_form_for(@user) do |f| %>
+		<%= f.select :title, TITLE, {prompt:true}, { disabled: true }%>
+		<%= f.text_field :first_name, disabled: true %>
+		<%= f.text_field :middle_name, disabled: true %>
+		<%= f.text_field :last_name, disabled: true %>
+		<%= f.text_field :designation, disabled: true %>
+		<%= f.select :department_id, @departments, {prompt: true}, {disabled: true} %>
+		<%= f.select :role_id, @roles, {prompt: true}, {disabled: true} %>
+		<%= f.text_field :contact_no, disabled: true %>
+		<%= f.email_field :email, disabled: true%>
+		<% end %>
+	</div>
+</div>

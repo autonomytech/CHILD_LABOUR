@@ -1,44 +1,8 @@
-  <% if user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(user.errors.count, "error") %> prohibited this raid from being saved:</h2>
-
-    <ul>
-      <% user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.select :title, TITLE %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :designation %><br>
-    <%= f.text_field :designation %>
-  </div>
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.select :department_id, @departments, prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br>
-    <%= f.select :role_id, @roles, prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_no %><br>
-    <%= f.text_field :contact_no %>
-  </div>
+<%= f.select :title, TITLE %>
+<%= f.text_field :first_name, placeholder: 'First Name' %>
+<%= f.text_field :middle_name, placeholder: 'Middle Name' %>
+<%= f.text_field :last_name, placeholder: 'Last Name' %>
+<%= f.text_field :designation, placeholder: 'Designation' %>
+<%= f.select :department_id, @departments, prompt: true %>
+<%= f.select :role_id, @roles, prompt: true %>
+<%= f.text_field :contact_no, placeholder: 'Contact No' %>

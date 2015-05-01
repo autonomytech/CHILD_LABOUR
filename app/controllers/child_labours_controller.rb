@@ -1,5 +1,7 @@
 class ChildLaboursController < ApplicationController
   load_and_authorize_resource
+  add_breadcrumb 'Dashboard', :root_path
+  add_breadcrumb 'Child Labours', :child_labours_path
   before_action :set_child_labour, only: [:show, :edit, :update, :destroy]
 
   # GET /child_labours
