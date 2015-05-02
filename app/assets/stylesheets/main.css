@@ -374,6 +374,7 @@ input.search-form:hover {
 .navbar-inverse .navbar-form {
   border-top: 0;
   padding-bottom: 0;
+  margin-left: 160px;
 }
 
 
@@ -2621,6 +2622,6 @@ border: 1px solid #1D4C4D;
 
 .add-btn {
   position: absolute;
-  margin-left: 85%;
-  margin-top: -3%;
+  margin-left: 87%;
+  margin-top: -6%;
 }
