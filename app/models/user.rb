@@ -25,4 +25,12 @@ class User < ActiveRecord::Base
   def self.japu_users
     where(is_deleted: false, community_id: 1)
   end
+
+  def self.full_name(id)
+    find(id).full_name
+  end
+
+  def self.email(id)
+    find(id).email
+  end
 end

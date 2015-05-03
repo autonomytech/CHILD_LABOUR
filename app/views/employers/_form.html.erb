@@ -1,41 +1,8 @@
-<%= form_for(@employer) do |f| %>
-  <% if @employer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employer.errors.count, "error") %> prohibited this employer from being saved:</h2>
-
-      <ul>
-      <% @employer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_no %><br>
-    <%= f.text_field :contact_no %>
-  </div>
-  <div class="field">
-    <%= f.label :is_deleted %><br>
-    <%= f.check_box :is_deleted %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for(@employer) do |f| %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :middle_name %>
+  <%= f.text_field :last_name %>
+  <%= f.text_field :address %>
+  <%= f.text_field :contact_no %>
+  <%= f.submit 'Save', class: 'btn btn-primary'%>
 <% end %>

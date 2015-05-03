@@ -1,78 +1,46 @@
-
-
-
-<%= form_for @child_labour,url:{action: 'create',raid_id:@raid},method: :post do |f| %>
-  <% if @child_labour.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@child_labour.errors.count, "error") %> prohibited this child_labour from being saved:</h2>
-
-      <ul>
-      <% @child_labour.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
+<%= bootstrap_form_for ([@raid, @child_labour]), :html => {:multipart => true} do |f| %>
+  <div class="row">
+  <div class="col-md-2">
+  <%= label_tag :police_department %>
+  <%= text_field_tag :department, @department.name, class: 'form-control', disabled: true%><br/>
+  </div>
+  <div class="col-md-8"></div>
+  <div class="col-md-2">
+  <%= label_tag :date %>
+  <%= text_field_tag :date, @raid.date.strftime("%d, %B %Y"), class: 'form-control', disabled: true%><br/>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-12"><b>* Child Labour Details</b></div>
+  </div><br/>
+  <div class="row">
+  <div class="col-md-4">
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :father_name %><br>
+  <div class="col-md-4"></div>
+  <div class="col-md-2"><%= f.number_field :age %></div>
+  </div>
+  <div class="row">
+  <div class="col-md-4">
     <%= f.text_field :father_name %>
   </div>
-  <div class="field">
-    <%= f.label :mother_name %><br>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
     <%= f.text_field :mother_name %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
   </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+  <div class="row">
+  <div class="col-md-6">
+  <%= f.text_field :address %>
   </div>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="col-md-6"></div>
   </div>
-  <div class="field">
-    <%= f.label :is_deleted %><br>
-    <%= f.check_box :is_deleted %>
-  </div>
-
-  <h1>Employer Info</h1>
-   <%= f.fields_for :employer do |ff|%>
-  <div class="field">
-    <%= ff.label :first_name %><br>
-    <%= ff.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= ff.label :middle_name %><br>
-    <%= ff.text_field :middle_name %>
-  </div>
-
-  <div class="field">
-    <%= ff.label :last_name %><br>
-    <%= ff.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= ff.label :address %><br>
-    <%= ff.text_field :address%>
-  </div>
-
-  <div class="field">
-    <%= ff.label :contact_no %><br>
-    <%= ff.text_field :contact_no%>
-  </div>
+  <div class="row">
+  <div class="col-md-12"><b>* Employer Details</b></div>
+  </div><br/>
+  <%= f.fields_for :employer do |ff|%>
+    <%= render 'employer_form', f: ff, raid: @raid %>
   <%end%>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_area :description %>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

@@ -7,7 +7,12 @@ class EmployersController < ApplicationController
   # GET /employers
   # GET /employers.json
   def index
-    @employers = Employer.all
+    if params[:raid_id]
+      @raid = Raid.find(params[:raid_id])
+      @employers = @raid.employers
+    else
+      @employers = Employer.where(is_deleted: false)
+    end
   end
 
   # GET /employers/1
@@ -45,7 +50,7 @@ class EmployersController < ApplicationController
   def update
     respond_to do |format|
       if @employer.update(employer_params)
-        format.html { redirect_to @employer, notice: 'Employer was successfully updated.' }
+        format.html { redirect_to employers_path, notice: 'Employer was successfully updated.' }
         format.json { render :show, status: :ok, location: @employer }
       else
         format.html { render :edit }
@@ -57,7 +62,7 @@ class EmployersController < ApplicationController
   # DELETE /employers/1
   # DELETE /employers/1.json
   def destroy
-    @employer.destroy
+    @employer.update(is_deleted: true)
     respond_to do |format|
       format.html { redirect_to employers_url, notice: 'Employer was successfully destroyed.' }
       format.json { head :no_content }

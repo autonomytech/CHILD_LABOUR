@@ -1,43 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Child Labours</h1>
-
-<table>
+<% if @raid %>
+<div class="add-btn">
+<%= link_to 'Add Child', new_raid_child_labour_path(@raid), class: 'btn btn-primary btn-xs' %>
+</div>
+<%end%>
+<table id="datatable" class="table table-striped table-hover">
   <thead>
     <tr>
+      <th>Action</th>
+      <th>Id</th>
       <th>Name</th>
+      <th>Age</th>
       <th>Father name</th>
       <th>Mother name</th>
-      <th>Address</th>
-      <th>Age</th>
-      <th>Employer</th>
-      <th>Raid</th>
-      <th>Description</th>
-      <th>Is deleted</th>
-      <th colspan="3"></th>
+      <th>Raid Title</th>
     </tr>
   </thead>
 
   <tbody>
     <% @child_labours.each do |child_labour| %>
       <tr>
-        <td><%= child_labour.name %></td>
+        <td>
+          <div>
+          <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
+          <ul class="dropdown-menu dropdown-menu-action">
+            <li><%= link_to 'Edit', edit_raid_child_labour_path(child_labour.raid, child_labour) %></li>
+            <li><%= link_to 'Destroy', [child_labour.raid,child_labour], method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+          </div>
+        </td>
+        <td><%= child_labour.id %></td>
+        <td><%= link_to child_labour.name, edit_raid_child_labour_path(child_labour.raid, child_labour) %></td>
+        <td><%= child_labour.age %></td>
         <td><%= child_labour.father_name %></td>
         <td><%= child_labour.mother_name %></td>
-        <td><%= child_labour.address %></td>
-        <td><%= child_labour.age %></td>
-        <td><%= child_labour.employer %></td>
-        <td><%= child_labour.raid %></td>
-        <td><%= child_labour.description %></td>
-        <td><%= child_labour.is_deleted %></td>
-        <td><%= link_to 'Show', child_labour %></td>
-        <td><%= link_to 'Edit', edit_child_labour_path(child_labour) %></td>
-        <td><%= link_to 'Destroy', child_labour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= child_labour.raid.title %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Child labour', new_child_labour_path %>

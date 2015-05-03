@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :raids do
     resources :community_farms
+    resources :child_labours
   end
 
   resources :employers
