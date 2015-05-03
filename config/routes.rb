@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :community_farms
-
   resources :dashboard
 
   resources :answers
@@ -9,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :child_labours
 
-  resources :raids
+  resources :raids do
+    resources :community_farms
+  end
 
   resources :employers
 

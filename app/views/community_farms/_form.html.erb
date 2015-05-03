@@ -1,33 +1,13 @@
-<%= form_for(@community_farm) do |f| %>
-  <% if @community_farm.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@community_farm.errors.count, "error") %> prohibited this community_farm from being saved:</h2>
-
-      <ul>
-      <% @community_farm.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :raid_id %><br>
-    <%= f.text_field :raid_id %>
-  </div>
-  <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.text_field :department_id %>
-  </div>
-  <div class="field">
-    <%= f.label :involve_member %><br>
-    <%= f.text_field :involve_member %>
-  </div>
-  <div class="field">
-    <%= f.label :string %><br>
-    <%= f.text_field :string %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for([@raid, @community_farm]) do |f| %>
+    <%= label_tag :location %>
+    <%= text_field_tag :location, @location.name, class: 'form-control', disabled: true%><br/>
+    <%= f.select :department_id, @departments %>
+    <%= f.text_field :involve_member, id: 'involve_member', :"data-pre" => @community_farm.involve_members.to_json %>
+    <%= f.submit 'Save', class: 'btn btn-primary'%>
 <% end %>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("#involve_member").tokenInput("/users.json", 
+        {propertyToSearch: "full_name"});
+  });
+</script>
