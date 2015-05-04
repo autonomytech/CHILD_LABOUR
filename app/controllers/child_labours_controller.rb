@@ -25,6 +25,8 @@ class ChildLaboursController < ApplicationController
     @child_labour = @raid.child_labours.build
     @child_labour.build_employer
     @child_labour.employer = @raid.child_labours.first.employer
+    @questions = Question.all
+    @child_labour.answers.build
   end
 
   # GET /child_labours/1/edit
@@ -35,6 +37,7 @@ class ChildLaboursController < ApplicationController
   # POST /child_labours
   # POST /child_labours.json
   def create
+    @questions = Question.all
     if @raid.child_labours_blank?
       @child_labour = @raid.child_labours.new(child_labour2_params)
     else
@@ -57,14 +60,24 @@ class ChildLaboursController < ApplicationController
   # PATCH/PUT /child_labours/1.json
   def update
     @child_labour = @raid.child_labours.find(params[:id])
+    answers_attributes = params[:child_labour][:answers_attributes]
     respond_to do |format|
-      if @child_labour.update(child_labour_params)
+      if @child_labour.update(child_labour_update_params)
+        update_answers(answers_attributes)
         format.html { redirect_to raid_child_labours_path(@raid), notice: 'Child labour was successfully updated.' }
         format.json { render :show, status: :ok, location: @child_labour }
       else
         format.html { render :edit }
         format.json { render json: @child_labour.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def update_answers(answers_attributes)
+    answers_attributes.each_pair do |_k, v|
+      ans = Answer.find(v[:id])
+      next if ans.answer.eql? v[:answer]
+      ans.update(answer: v[:answer])
     end
   end
 
@@ -93,6 +106,12 @@ class ChildLaboursController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def child_labour_params
     params.require(:child_labour).permit(:name, :father_name, :mother_name\
+      , :address, :age, :description, :submited_by\
+      , answers_attributes: [:answer, :question_id])
+  end
+
+  def child_labour_update_params
+    params.require(:child_labour).permit(:name, :father_name, :mother_name\
       , :address, :age, :description, :submited_by)
   end
 
@@ -100,6 +119,6 @@ class ChildLaboursController < ApplicationController
     params.require(:child_labour).permit(:name, :father_name, :mother_name\
       , :address, :age, :description, :submited_by\
       , employer_attributes: [:first_name, :middle_name, :last_name\
-      , :contact_no, :address])
+      , :contact_no, :address], answers_attributes: [:answer, :question_id])
   end
 end

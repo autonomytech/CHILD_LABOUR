@@ -41,6 +41,48 @@
   <%= f.fields_for :employer do |ff|%>
     <%= render 'employer_form', f: ff, raid: @raid %>
   <%end%>
-  <%= f.text_area :description %>
+  <div class="row">
+  <div class="col-md-12"><b>* Write answer of questions</b></div>
+  </div><br/>
+  <% if @questions.present? %>
+    <% @questions.each_with_index do |q|%>
+      <%= f.fields_for :answers do |fa|%>
+      <div class="row">
+        <div class="col-md-4">
+          <%= label_tag :question %>
+          <%= text_field_tag :q, "#{q.question}", class: 'form-control', disabled: true %>
+        </div>
+        <div class="col-md-3">
+          <%= fa.hidden_field :question_id, value: q.id %>
+          <%= fa.text_field :answer %>
+        </div>
+      </div>
+      <%end%>
+    <%end%>
+  <% else %>
+    <%= f.fields_for :answers do |fa|%>
+      <div class="row">
+        <div class="col-md-4">
+          <%= fa.text_field :question_, disabled: true %>
+        </div>
+        <div class="col-md-3">
+          <%= fa.hidden_field :id %>
+          <%= fa.text_field :answer %>
+        </div>
+      </div>
+    <%end%>
+  <% end %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.text_area :description, rows: 10 %>
+    </div>
+  </div>
+  <% unless @child_labour.id.blank? %>
+  <div class="row">
+    <div class="col-md-4">
+    <%= f.text_field :submited_by_user, disabled: true%>
+    </div>
+  </div>
+  <% end %>
   <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

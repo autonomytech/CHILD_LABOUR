@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Action</th>
+      <th>Id</th>
       <th>First name</th>
       <th>Middle name</th>
       <th>Last name</th>
@@ -23,6 +24,7 @@
           </ul>
           </div>
         </td>
+        <td><%= employer.id %></td>
         <td><%= link_to employer.first_name, edit_employer_path(employer) %></td>
         <td><%= employer.middle_name %></td>
         <td><%= employer.last_name %></td>
