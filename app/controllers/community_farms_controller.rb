@@ -18,13 +18,13 @@ class CommunityFarmsController < ApplicationController
   def new
     @community_farm = @raid.community_farms.build
     @community_farm.department_id = @location.departments.first.id
-    add_breadcrumb 'Community Farm', :new_raid_community_farm_path
+    add_breadcrumb 'Community Farm'
   end
 
   # GET /community_farms/1/edit
   def edit
     @community_farm = @raid.community_farms.find(params[:id])
-    add_breadcrumb 'Community Farm', :edit_raid_community_farm_path
+    add_breadcrumb 'Community Farm'
   end
 
   # POST /community_farms

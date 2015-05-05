@@ -280,12 +280,9 @@ input.search-form:hover {
   padding: 2px;
 }
 
-.navbar-nav{
-  margin-top: 12px;
- }
-
 .navbar-nav > li {
-  padding: 5px 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .navbar-inverse {
@@ -2516,8 +2513,8 @@ shortcodes page css
 }
 
 #footer {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   color: #fff;
   background: rgb(46, 124, 128);
   border-top: 5px solid rgb(29, 76, 77);

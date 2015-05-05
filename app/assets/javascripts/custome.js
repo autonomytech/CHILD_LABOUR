@@ -21,3 +21,8 @@ function flash_msg(msg, type) {
 
     }, 1000);
 }
+
+function year_wise_report(){
+  var y = { year: $('#date_year').val()};
+  $.get('/reports/year_wise_report',y, function(){});
+}

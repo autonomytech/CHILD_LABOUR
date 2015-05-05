@@ -1,0 +1,35 @@
+<table id="datatable" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Father name</th>
+      <th>Mother name</th>
+      <th>Raid Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @child_labours.each do |child_labour| %>
+      <tr>
+        <td>
+          <div>
+          <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
+          <ul class="dropdown-menu dropdown-menu-action">
+            <li></li>
+            <li></li>
+          </ul>
+          </div>
+        </td>
+        <td><%= child_labour.id %></td>
+        <td><%= link_to child_labour.name, panchnama_report_path(child_labour) %></td>
+        <td><%= child_labour.age %></td>
+        <td><%= child_labour.father_name %></td>
+        <td><%= child_labour.mother_name %></td>
+        <td><%= child_labour.raid.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
