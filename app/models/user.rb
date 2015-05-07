@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def roles
-    role.role
+    role.role if role
   end
 
   def departments

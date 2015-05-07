@@ -1,0 +1,7 @@
+Congratulations <%= @user.full_name %>!
+
+You have successfully been registered as a ICL user. You are now able to access the ICL platform on your web browser by clicking here <%= ENV['APPLICATION_URL'] %>.
+
+Your Login credentials are
+      User name: <%= @user.email %>
+      Password: <%= @password %>

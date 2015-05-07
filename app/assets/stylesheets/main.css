@@ -2621,3 +2621,7 @@ border: 1px solid #1D4C4D;
   margin-left: 87%;
   margin-top: -6%;
 }
+
+.reports {
+  border: ridge;
+}

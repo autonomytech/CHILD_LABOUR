@@ -1,0 +1,23 @@
+<div style="font-family: robotoRegular;font-style: normal;
+  font-weight: 700;font-size: 16px;color: #50575f;">
+  Congratulations <%= @user.full_name %>!
+</div>
+<div>
+  <p style="font-family: robotoRegular;font-style: normal;
+  font-weight: 400;font-size: 15px;color: #50575f;">
+    You have successfully been registered as a ICL user.
+    You are now able to access the ICL platform on your
+    web browser by <a href="<%= ENV['APPLICATION_URL'] %>">clicking here</a>.
+  </p>
+  <p>
+    <div style="font-family: robotoRegular;font-style: normal;
+      font-weight: 400;font-size: 15px;color: #50575f;">
+      Your Login credentials are –</div>
+    <div style="font-family: robotoRegular;font-style: normal;
+      font-weight: 400;font-size: 15px;color: #50575f;">
+      User name: <%= @user.email %></div>
+    <div style="font-family: robotoRegular;font-style: normal;
+      font-weight: 400;font-size: 15px;color: #50575f;">
+      Password: <%= @password %></div>
+  </p>
+</div>

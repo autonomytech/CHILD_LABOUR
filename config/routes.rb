@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :years
       get :year_wise_report
       get :all_over_report
+      get :download_pdf
     end
     member do
       get :panchnama

@@ -1,0 +1,17 @@
+<p style="font-family: robotoRegular;font-style: normal;
+  font-weight: 700;font-size: 16px;color: #50575f;">
+  Dear <%= @user.full_name %>,
+</p>
+<p>
+  <div style="font-family: robotoRegular;font-style: normal;
+  font-weight: 400;font-size: 15px;color: #50575f;">
+     This mail regarding for raid details as per below
+  </div>
+  <div style="font-family: robotoRegular;font-style: normal;
+    font-weight: 400;font-size: 15px;color: #50575f;">
+    Raid id: <%= @raid.id %><br/>
+    Raid Title: <%= @raid.title %><br/>
+    Date: <%= @raid.date.strftime("%d, %B %Y") %><br/>
+    Time: <%= @raid.time.strftime("%I:%M %p") %><br/>
+  </div>
+</p>
