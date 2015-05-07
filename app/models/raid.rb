@@ -19,28 +19,28 @@ class Raid < ActiveRecord::Base
   end
 
   def child_labours_blank?
-    return true if child_labours.blank?
+    return true if childlabours.blank?
     false
   end
 
   def employer_name
-    return '-' if child_labours.first.blank?
-    child_labours.first.employer.full_name
+    return '-' if childlabours.first.blank?
+    childlabours.first.employer.full_name
   end
 
   def employer_address
-    return '-' if child_labours.first.blank?
-    child_labours.first.employer.address
+    return '-' if childlabours.first.blank?
+    childlabours.first.employer.address
   end
 
   def employers
-    id = child_labours.first.employer.id if child_labours.first
+    id = childlabours.first.employer.id if childlabours.first
     Employer.where(id: id, is_deleted: false)
   end
 
   def self.year_wise_report(year)
     all.select \
-    { |d| (d.date.strftime('%Y').eql? year) && (d.child_labours.present?) }
+    { |d| (d.date.strftime('%Y').eql? year) && (d.childlabours.present?) }
   end
 
   def self.years
@@ -50,5 +50,9 @@ class Raid < ActiveRecord::Base
   def department
     return unless location.departments.present?
     location.departments.first.name
+  end
+
+  def childlabours
+    child_labours.where(is_deleted: false)
   end
 end
