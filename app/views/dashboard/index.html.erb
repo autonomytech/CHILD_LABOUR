@@ -6,9 +6,11 @@
       <th>Title</th>
       <th>Date</th>
       <th>Time</th>
+      <th>Raid for</th>
       <th>Location</th>
       <th>Community Farm</th>
       <th>Child Labour</th>
+      <th>Child Begger</th>
       <th>Employer</th>
     </tr>
   </thead>
@@ -28,7 +30,11 @@
               <%end%>
             </li>
             <li>
-              <%= link_to 'Child Labours',raid_child_labours_path(raid)%>
+              <% if raid.child_begger? %>
+                <%= link_to 'Child Beggers', raid_child_beggers_path(raid) %>
+              <% else %>
+                <%= link_to 'Child Labours', raid_child_labours_path(raid) %>
+              <%end%>
             </li>
             <li>
               <%= link_to 'Employer',employers_path(raid_id: raid)%>
@@ -38,8 +44,9 @@
         </td>
         <td><%= raid.id %></td>
         <td><%= raid.title %></td>
-        <td><%= raid.date.strftime('%d, %B %Y') %></td>
-        <td><%= raid.time.strftime('%I:%M %p') %></td>
+        <td><%= raid.datetime.strftime('%d, %B %Y') %></td>
+        <td><%= raid.datetime.strftime('%I:%M %p') %></td>
+        <td><%= raid.raid_for %></td>
         <td><%= raid.location.name %></td>
         <td>
           <% if raid.community_farm_blank? %>
@@ -48,7 +55,12 @@
             <%= link_to raid.community_farm_status, edit_raid_community_farm_path(raid, raid.community_farms.first)%>
           <%end%>
         </td>
-        <td><%= link_to raid.child_labours_count,raid_child_labours_path(raid)%></td>
+        <td><% unless raid.child_begger? %>
+          <%= link_to raid.child_labours_count,raid_child_labours_path(raid)%>
+          <%else%>-<%end%></td>
+        <td><% if raid.child_begger? %>
+          <%= link_to raid.child_beggers_count,raid_child_beggers_path(raid)%>
+          <%else%>-<%end%></td>
         <td><%= link_to raid.employer_name, employers_path(raid_id: raid) %></td>
       </tr>
     <% end %>

@@ -1,6 +1,8 @@
 var datatable;
 datatable = function(){
-  $('#datatable').dataTable();
+  $('#datatable').dataTable({
+    "order": [[1, 'desc']]
+  });
 }
 $(document).ready(datatable);
 $(document).on('page:load',datatable);

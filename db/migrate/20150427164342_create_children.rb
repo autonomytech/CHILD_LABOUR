@@ -1,11 +1,13 @@
-class CreateChildLabours < ActiveRecord::Migration
+class CreateChildren < ActiveRecord::Migration
   def change
-    create_table :child_labours do |t|
-      t.string :name
+    create_table :children do |t|
+      t.string :first_name
+      t.string :last_name
       t.string :father_name
       t.string :mother_name
-      t.text :address
+      t.string :gender
       t.integer :age
+      t.boolean :is_child_begger, default: false
       t.references :employer, index: true
       t.references :raid, index: true
       t.text :description
@@ -14,7 +16,7 @@ class CreateChildLabours < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :child_labours, :employers
-    add_foreign_key :child_labours, :raids
+    add_foreign_key :children, :employers
+    add_foreign_key :children, :raids
   end
 end

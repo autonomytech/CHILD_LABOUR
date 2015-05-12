@@ -1,5 +1,4 @@
 class EmployersController < ApplicationController
-  load_and_authorize_resource
   add_breadcrumb 'Dashboard', :root_path
   add_breadcrumb 'Employers', :employers_path
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
@@ -9,7 +8,7 @@ class EmployersController < ApplicationController
   def index
     if params[:raid_id]
       @raid = Raid.find(params[:raid_id])
-      @employers = @raid.employers
+      @employers = @raid.employers.where(is_deleted: false)
     else
       @employers = Employer.where(is_deleted: false)
     end
@@ -49,6 +48,7 @@ class EmployersController < ApplicationController
   # PATCH/PUT /employers/1.json
   def update
     respond_to do |format|
+      @employer.addresses.destroy_all
       if @employer.update(employer_params)
         format.html { redirect_to employers_path, notice: 'Employer was successfully updated.' }
         format.json { render :show, status: :ok, location: @employer }
@@ -77,6 +77,8 @@ class EmployersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employer_params
-      params.require(:employer).permit(:first_name, :middle_name, :last_name, :address, :contact_no, :is_deleted)
+      params.require(:employer).permit(:first_name, :middle_name, :last_name\
+        , :contact_no, :is_deleted, addresses_attributes: [:address_line_1\
+        , :address_line_2, :city, :state, :pincode])
     end
 end

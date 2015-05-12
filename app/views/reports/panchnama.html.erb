@@ -9,12 +9,12 @@
       <p>Police station, mumbai  <b><%= @raid.department%></b></p>
       </div>
       <div class="col-md-3">
-      <p>Date: <b><%= @raid.date.strftime("%d, %B %Y")%></b></p>
+      <p>Date: <b><%= @raid.datetime.strftime("%d, %B %Y")%></b></p>
       </div>
     </div>
     <div class="row reports">
       <div class="col-md-12">
-      <p>Child name: <b><%= @child_labour.name.upcase %></b> father name <b><%= @child_labour.father_name.upcase %></b> mother name <b><%= @child_labour.mother_name.upcase %></b> age <b><%= @child_labour.age %></b> Address: <b><%= @child_labour.address.upcase %></b></p>
+      <p>Child name: <b><%= @child_labour.full_name.upcase %></b> father name <b><%= @child_labour.father_name.upcase %></b> mother name <b><%= @child_labour.mother_name.upcase %></b> age <b><%= @child_labour.age %></b> gender <b><%= @child_labour.gender %></b> Address: <b><%= @child_labour.address.upcase %></b></p>
       <p>Employer name: <b><%= @raid.employer_name.upcase %></b> address <b><%= @raid.employer_address.upcase %></b></p>
       </div>
     </div>

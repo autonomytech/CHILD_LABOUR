@@ -11,39 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427174958) do
+ActiveRecord::Schema.define(version: 20150510163045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "pincode"
+    t.integer  "employer_id"
+    t.integer  "raid_id"
+    t.integer  "child_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "addresses", ["child_id"], name: "index_addresses_on_child_id", using: :btree
+  add_index "addresses", ["employer_id"], name: "index_addresses_on_employer_id", using: :btree
+  add_index "addresses", ["raid_id"], name: "index_addresses_on_raid_id", using: :btree
+
   create_table "answers", force: :cascade do |t|
     t.string   "answer"
     t.integer  "question_id"
-    t.integer  "child_labour_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "child_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "answers", ["child_labour_id"], name: "index_answers_on_child_labour_id", using: :btree
+  add_index "answers", ["child_id"], name: "index_answers_on_child_id", using: :btree
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
-  create_table "child_labours", force: :cascade do |t|
-    t.string   "name"
+  create_table "children", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "father_name"
     t.string   "mother_name"
-    t.text     "address"
+    t.string   "gender"
     t.integer  "age"
+    t.boolean  "is_child_begger", default: false
     t.integer  "employer_id"
     t.integer  "raid_id"
     t.text     "description"
-    t.boolean  "is_deleted",  default: false
+    t.boolean  "is_deleted",      default: false
     t.string   "submited_by"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
-  add_index "child_labours", ["employer_id"], name: "index_child_labours_on_employer_id", using: :btree
-  add_index "child_labours", ["raid_id"], name: "index_child_labours_on_raid_id", using: :btree
+  add_index "children", ["employer_id"], name: "index_children_on_employer_id", using: :btree
+  add_index "children", ["raid_id"], name: "index_children_on_raid_id", using: :btree
 
   create_table "communities", force: :cascade do |t|
     t.string   "name"
@@ -76,12 +95,14 @@ ActiveRecord::Schema.define(version: 20150427174958) do
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
-    t.text     "address"
     t.string   "contact_no"
+    t.integer  "raid_id"
     t.boolean  "is_deleted",  default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "employers", ["raid_id"], name: "index_employers_on_raid_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -91,14 +112,16 @@ ActiveRecord::Schema.define(version: 20150427174958) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "question"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "is_yes_no_answer"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "raids", force: :cascade do |t|
     t.string   "title"
-    t.date     "date"
-    t.time     "time"
+    t.datetime "datetime"
+    t.string   "description"
+    t.string   "raid_for"
     t.integer  "location_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -153,13 +176,17 @@ ActiveRecord::Schema.define(version: 20150427174958) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  add_foreign_key "answers", "child_labours"
+  add_foreign_key "addresses", "children"
+  add_foreign_key "addresses", "employers"
+  add_foreign_key "addresses", "raids"
+  add_foreign_key "answers", "children"
   add_foreign_key "answers", "questions"
-  add_foreign_key "child_labours", "employers"
-  add_foreign_key "child_labours", "raids"
+  add_foreign_key "children", "employers"
+  add_foreign_key "children", "raids"
   add_foreign_key "community_farms", "departments"
   add_foreign_key "community_farms", "raids"
   add_foreign_key "departments", "locations"
+  add_foreign_key "employers", "raids"
   add_foreign_key "raids", "locations"
   add_foreign_key "users", "communities"
   add_foreign_key "users", "departments"

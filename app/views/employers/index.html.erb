@@ -3,12 +3,11 @@
     <tr>
       <th>Action</th>
       <th>Id</th>
-      <th>First name</th>
-      <th>Middle name</th>
-      <th>Last name</th>
+      <th>Name</th>
       <th>Address</th>
       <th>Contact no</th>
       <th>Raid Title</th>
+      <th>Raid Date</th>
     </tr>
   </thead>
 
@@ -25,12 +24,11 @@
           </div>
         </td>
         <td><%= employer.id %></td>
-        <td><%= link_to employer.first_name, edit_employer_path(employer) %></td>
-        <td><%= employer.middle_name %></td>
-        <td><%= employer.last_name %></td>
+        <td><%= link_to employer.full_name, edit_employer_path(employer) %></td>
         <td><%= employer.address %></td>
         <td><%= employer.contact_no %></td>
-        <td><%= employer.raid_title %></td>
+        <td><%= employer.raid.title %></td>
+        <td><%= employer.raid.datetime.strftime('%d, %B %Y') %></td>
       </tr>
     <% end %>
   </tbody>

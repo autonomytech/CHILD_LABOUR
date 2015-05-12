@@ -13,6 +13,7 @@
       <th>Father name</th>
       <th>Mother name</th>
       <th>Raid Title</th>
+      <th>Raid Date</th>
     </tr>
   </thead>
 
@@ -29,11 +30,12 @@
           </div>
         </td>
         <td><%= child_labour.id %></td>
-        <td><%= link_to child_labour.name, edit_raid_child_labour_path(child_labour.raid, child_labour) %></td>
+        <td><%= link_to child_labour.full_name, edit_raid_child_labour_path(child_labour.raid, child_labour) %></td>
         <td><%= child_labour.age %></td>
         <td><%= child_labour.father_name %></td>
         <td><%= child_labour.mother_name %></td>
         <td><%= child_labour.raid.title %></td>
+        <td><%= child_labour.raid.datetime.strftime('%d, %B %Y')%></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,18 +4,18 @@ module ApplicationHelper
   end
 
   def total_fir(year)
-    @raids.select { |d| d.date.strftime('%Y').eql? year }.count
+    @raids.select { |d| d.datetime.strftime('%Y').eql? year }.count
   end
 
   def victam_in_jail(year)
     @raids.select \
-   { |d| (d.date.strftime('%Y').eql? year) && (d.childlabours.present?) }.count
+   { |d| (d.datetime.strftime('%Y').eql? year) && (d.childlabours.present?) }.count
   end
 
   def free_child_labour(year)
     count = 0
     @raids.each \
-    { |d| (count += d.childlabours.count if d.date.strftime('%Y').eql? year) }
+    { |d| (count += d.childlabours.count if d.datetime.strftime('%Y').eql? year) }
     count
   end
 
@@ -23,7 +23,7 @@ module ApplicationHelper
     name = ''
     age = ''
     raid.childlabours.each_with_index do |c, i|
-      name += "#{i + 1}. #{c.name}<br/>"
+      name += "#{i + 1}. #{c.full_name}<br/>"
       age += "#{c.age}<br/>"
     end
     [name, age]

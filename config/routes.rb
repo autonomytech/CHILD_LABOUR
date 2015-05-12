@@ -20,9 +20,13 @@ Rails.application.routes.draw do
 
   resources :child_labours
 
+  resources :child_beggers
+
   resources :raids do
     resources :community_farms
     resources :child_labours
+    resources :children
+    resources :child_beggers
   end
 
   resources :employers

@@ -1,26 +1,26 @@
-class ChildLaboursController < ApplicationController
+class ChildBeggersController < ApplicationController
   add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Child Labours', :child_labours_path
+  add_breadcrumb 'Child Beggers', :child_beggers_path
   before_action :set_raid, only: [:new, :edit]
   before_action :set_child, only: [:show, :edit]
 
-  # GET /child_labours
-  # GET /child_labours.json
+  # GET /child_beggers
+  # GET /child_beggers.json
   def index
     if params[:raid_id]
       @raid = Raid.find(params[:raid_id])
-      @child_labours = @raid.childlabours
+      @child_beggers = @raid.childbeggers
     else
-      @child_labours = Child.child_labour
+      @child_beggers = Child.child_begger
     end
   end
 
-  # GET /child_labours/1
-  # GET /child_labours/1.json
+  # GET /child_beggers/1
+  # GET /child_beggers/1.json
   def show
   end
 
-  # GET /child_labours/new
+  # GET /child_beggers/new
   def new
     @child = @raid.children.build
     @questions = Question.all
@@ -28,19 +28,20 @@ class ChildLaboursController < ApplicationController
     @child.addresses.build
   end
 
-  # GET /child_labours/1/edit
+  # GET /child_beggers/1/edit
   def edit
     @child = @raid.children.find(params[:id])
   end
 
-  # POST /child_labours
-  # POST /child_labours.json
+  # POST /child_beggers
+  # POST /child_beggers.json
+  
 
-  # PATCH/PUT /child_labours/1
-  # PATCH/PUT /child_labours/1.json
+  # PATCH/PUT /child_beggers/1
+  # PATCH/PUT /child_beggers/1.json
 
-  # DELETE /child_labours/1
-  # DELETE /child_labours/1.json
+  # DELETE /child_beggers/1
+  # DELETE /child_beggers/1.json
 
   private
 

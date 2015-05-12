@@ -3,12 +3,12 @@ class ReportsController < ApplicationController
   add_breadcrumb 'Reports', :reports_path
 
   def child_labours
-    @child_labours = ChildLabour.where(is_deleted: false)
+    @child_labours = Child.child_labour
     add_breadcrumb 'Child Labours'
   end
 
   def panchnama
-    @child_labour = ChildLabour.find(params[:id])
+    @child_labour = Child.find(params[:id])
     @raid = @child_labour.raid
     add_breadcrumb 'Child Labours', :child_labours_reports_path
     add_breadcrumb 'Panchnama'
@@ -50,7 +50,7 @@ class ReportsController < ApplicationController
   end
 
   def panchnama_pdf(child_id)
-    @child_labour = ChildLabour.find(child_id)
+    @child_labour = Child.find(child_id)
     @raid = @child_labour.raid
     render pdf: "#{@child_labour.id}_child_labour_panchnama"\
     , template: '/reports/panchnama.pdf.erb'

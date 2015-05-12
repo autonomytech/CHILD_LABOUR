@@ -1,7 +1,8 @@
 class Raid < ActiveRecord::Base
   belongs_to :location
-  has_many :child_labours
+  has_many :children
   has_many :community_farms
+  has_many :employers
 
   def community_farm_status
     return 'Pending' if community_farms.blank?
@@ -15,7 +16,11 @@ class Raid < ActiveRecord::Base
   end
 
   def child_labours_count
-    child_labours.where(is_deleted: false).count
+    children.where(is_deleted: false, is_child_begger: false).count
+  end
+
+  def child_beggers_count
+    children.where(is_deleted: false, is_child_begger: true).count
   end
 
   def child_labours_blank?
@@ -24,27 +29,22 @@ class Raid < ActiveRecord::Base
   end
 
   def employer_name
-    return '-' if childlabours.first.blank?
-    childlabours.first.employer.full_name
+    return '-' if employers.where(is_deleted: false).first.blank?
+    employers.where(is_deleted: false).first.full_name
   end
 
   def employer_address
-    return '-' if childlabours.first.blank?
-    childlabours.first.employer.address
-  end
-
-  def employers
-    id = childlabours.first.employer.id if childlabours.first
-    Employer.where(id: id, is_deleted: false)
+    return '-' if employers.first.blank?
+    employers.first.address
   end
 
   def self.year_wise_report(year)
     all.select \
-    { |d| (d.date.strftime('%Y').eql? year) && (d.childlabours.present?) }
+    { |d| (d.datetime.strftime('%Y').eql? year) && (d.childlabours.present?) }
   end
 
   def self.years
-    all.collect { |d| d.date.strftime('%Y') }.uniq.sort
+    all.collect { |d| d.datetime.strftime('%Y') }.uniq.sort
   end
 
   def department
@@ -53,6 +53,15 @@ class Raid < ActiveRecord::Base
   end
 
   def childlabours
-    child_labours.where(is_deleted: false)
+    children.where(is_deleted: false, is_child_begger: false)
+  end
+
+  def childbeggers
+    children.where(is_deleted: false, is_child_begger: true)
+  end
+
+  def child_begger?
+    return true if raid_for.eql? CHILD_BEGGER
+    false
   end
 end
