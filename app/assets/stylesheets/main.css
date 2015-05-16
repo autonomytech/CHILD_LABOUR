@@ -2640,4 +2640,10 @@ border: 1px solid #1D4C4D;
   .logo {
     width: 150px;
   }
+
+  .page-break {
+    display: block;
+    clear: both;
+    page-break-after: always;
+  }
 }

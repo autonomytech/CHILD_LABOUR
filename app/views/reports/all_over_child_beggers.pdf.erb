@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag 'application' -%>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-12">
+        <%= wicked_pdf_image_tag 'Logo.jpg'%>
+      </div>
+    </div><br/>
+  <div class="container inter-body">
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+  <table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Year</th>
+      <th>Total FIR</th>
+      <th>Victam in jail</th>
+      <th>Free child labour </th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @years.each_with_index do |year, i|%>
+    <tr>
+    	<td><%= i+1 %></td>
+    	<td><%= year %></td>
+    	<td><%= total_fir(year) %></td>
+    	<td><%= victam_in_jail_cb(year) %></td>
+    	<td><%= free_child_begger(year) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  </div>
+</div>
+</div>
+</body>
+</html>

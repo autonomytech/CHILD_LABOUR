@@ -1,16 +1,6 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset='utf-8' />
-    <%= wicked_pdf_stylesheet_link_tag 'application' -%>
-  </head>
-  <body>
-    <div class="container">
-      <div class="col-md-12">
-        <%= wicked_pdf_image_tag 'Logo.jpg'%>
-      </div>
-    </div><br/>
-  <div class="container inter-body">
+<div class="add-btn">
+<%= link_to 'Download Pdf', download_pdf_reports_path(type: 'all_over_child_labours'), class: 'btn btn-primary btn-xs', target: "_blank" %>
+</div>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
@@ -30,7 +20,7 @@
     	<td><%= i+1 %></td>
     	<td><%= year %></td>
     	<td><%= total_fir(year) %></td>
-    	<td><%= victam_in_jail(year) %></td>
+    	<td><%= victam_in_jail_cl(year) %></td>
     	<td><%= free_child_labour(year) %></td>
     </tr>
     <% end %>
@@ -38,6 +28,3 @@
   </table>
   </div>
 </div>
-</div>
-</body>
-</html>

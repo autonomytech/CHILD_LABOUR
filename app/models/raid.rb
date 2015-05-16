@@ -39,13 +39,22 @@ class Raid < ActiveRecord::Base
     employers.first.address
   end
 
-  def self.year_wise_report(year)
-    all.select \
+  def self.cl_year_wise_report(year)
+    where(raid_for: CHILD_LABOUR).select \
     { |d| (d.datetime.strftime('%Y').eql? year) && (d.childlabours.present?) }
   end
 
-  def self.years
-    all.collect { |d| d.datetime.strftime('%Y') }.uniq.sort
+  def self.cb_year_wise_report(year)
+    where(raid_for: CHILD_BEGGER).select \
+    { |d| (d.datetime.strftime('%Y').eql? year) && (d.childbeggers.present?) }
+  end
+
+  def self.child_labours_years
+    where(raid_for: CHILD_LABOUR).collect { |d| d.datetime.strftime('%Y') }.uniq.sort
+  end
+
+  def self.child_beggers_years
+    where(raid_for: CHILD_BEGGER).collect { |d| d.datetime.strftime('%Y') }.uniq.sort
   end
 
   def department
