@@ -1,5 +1,7 @@
 class RaidsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
+  add_breadcrumb 'Dashboard', :root_path
+  add_breadcrumb 'Raid Schedule', :edit_raid_path
   before_action :set_raid, only: [:show, :edit, :update, :destroy]
 
   # GET /raids
@@ -43,7 +45,7 @@ class RaidsController < ApplicationController
   def update
     respond_to do |format|
       if @raid.update(raid_params)
-        format.html { redirect_to @raid, notice: 'Raid was successfully updated.' }
+        format.html { redirect_to community_farm_raid_community_farms_path(@raid), notice: 'Raid was successfully Scheduled.' }
         format.json { render :show, status: :ok, location: @raid }
       else
         format.html { render :edit }
@@ -70,6 +72,6 @@ class RaidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raid_params
-      params.require(:raid).permit(:title, :date, :time, :location_id)
+      params.require(:raid).permit(:title, :datetime, :location_id, :raid_for, :description)
     end
 end

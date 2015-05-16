@@ -1,6 +1,6 @@
 class CommunityFarmsController < ApplicationController
   add_breadcrumb 'Dashboard', :root_path
-  before_action :set_raid_location, only: [:new, :edit, :create, :update]
+  before_action :set_raid_location, only: [:new, :edit, :create, :update, :community_farm, :create_community_farm]
   before_action :set_community_farm, only: [:show, :edit, :update, :destroy]
 
   # GET /community_farms
@@ -17,7 +17,15 @@ class CommunityFarmsController < ApplicationController
   # GET /community_farms/new
   def new
     @community_farm = @raid.community_farms.build
-    @community_farm.department_id = @location.departments.first.id
+    @community_farm.department_id = @location.departments.first.id \
+    if @location.departments.present?
+    add_breadcrumb 'Community Farm'
+  end
+
+  def community_farm
+    @community_farm = @raid.community_farms.build
+    @community_farm.department_id = @location.departments.first.id \
+    if @location.departments.present?
     add_breadcrumb 'Community Farm'
   end
 
@@ -46,6 +54,22 @@ class CommunityFarmsController < ApplicationController
     end
   end
 
+  def create_community_farm
+    @community_farm = @raid.community_farms.new(community_farm_params)
+    @community_farm.submited_by = current_user.id
+    respond_to do |format|
+      if @community_farm.save
+        # @community_farm.involve_member.split(',').each do |i|
+        #   UserMailer.raid_alert_email(@raid.id, i).deliver_later
+        # end
+        format.html { redirect_to new_raid_child_path(@raid), notice: 'Community farm was successfully assigned.' }
+        format.json { render :show, status: :created, location: @community_farm }
+      else
+        format.html { render :new }
+        format.json { render json: @community_farm.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   # PATCH/PUT /community_farms/1
   # PATCH/PUT /community_farms/1.json
   def update

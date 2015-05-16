@@ -3,6 +3,7 @@ class Raid < ActiveRecord::Base
   has_many :children
   has_many :community_farms
   has_many :employers
+  belongs_to :complaint
 
   def community_farm_status
     return 'Pending' if community_farms.blank?
@@ -63,5 +64,19 @@ class Raid < ActiveRecord::Base
   def child_begger?
     return true if raid_for.eql? CHILD_BEGGER
     false
+  end
+
+  def location_name
+    location.name if location
+  end
+
+  def self.user_raid_attained(user_id)
+    raid_ids = []
+    community_farms = CommunityFarm.all
+    community_farms.each do |cf|
+      next unless cf.involve_member.include? user_id.to_s
+      raid_ids << cf.raid.id
+    end
+    where(id: raid_ids)
   end
 end

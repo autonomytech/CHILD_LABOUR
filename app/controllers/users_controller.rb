@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @raids = Raid.user_raid_attained(@user.id)
   end
 
   # GET /users/new

@@ -1,6 +1,13 @@
 class ChildrenController < ApplicationController
-  before_action :set_raid, only: [:create, :update, :destroy]
+  before_action :set_raid, only: [:new, :create, :update, :destroy]
   before_action :set_child, only: [:update, :destroy]
+
+  def new
+    @child = @raid.children.build
+    @questions = Question.all
+    @child.answers.build
+    @child.addresses.build
+  end
 
   def create
     @questions = Question.all
@@ -9,6 +16,10 @@ class ChildrenController < ApplicationController
     @child.submited_by = current_user.id
     if @child.save
       flash[:notice] = 'Child was successfully created.'
+      return redirect_to new_raid_child_path(@raid) \
+      if params[:commit].eql? SAVE_NEXT
+      return redirect_to dashboard_index_path \
+      if params[:commit].eql? FINISH
       redirect_to_child(@child)
     else
       render :new
@@ -54,7 +65,7 @@ class ChildrenController < ApplicationController
 
   def set_raid
     @raid = Raid.find(params[:raid_id])
-    @department = @raid.location.departments.first
+    @department = @raid.community_farms.first.department
   end
 
   # Use callbacks to share common setup or constraints between actions.

@@ -1,16 +1,35 @@
-<div class="row">
-    <div class="col-md-1"></div>
-	<div class="col-md-4">
-		<%= bootstrap_form_for(@user) do |f| %>
-		<%= f.select :title, TITLE, {prompt:true}, { disabled: true }%>
-		<%= f.text_field :first_name, disabled: true %>
-		<%= f.text_field :middle_name, disabled: true %>
-		<%= f.text_field :last_name, disabled: true %>
-		<%= f.text_field :designation, disabled: true %>
-		<%= f.select :department_id, @departments, {prompt: true}, {disabled: true} %>
-		<%= f.select :role_id, @roles, {prompt: true}, {disabled: true} %>
-		<%= f.text_field :contact_no, disabled: true %>
-		<%= f.email_field :email, disabled: true%>
-		<% end %>
-	</div>
-</div>
+<table id="datatable" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Raid for</th>
+      <th>Location</th>
+      <th>Child Labour</th>
+      <th>Child Begger</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @raids.each do |raid| %>
+      <tr>
+        <td></td>
+        <td><%= raid.id %></td>
+        <td><%= raid.title %></td>
+        <td><%= raid.datetime.strftime('%d, %B %Y') %></td>
+        <td><%= raid.datetime.strftime('%I:%M %p') %></td>
+        <td><%= raid.raid_for %></td>
+        <td><%= raid.location.name %></td>
+        <td><% unless raid.child_begger? %>
+          <%= raid.child_labours_count %>
+          <%else%>-<%end%></td>
+        <td><% if raid.child_begger? %>
+          <%= raid.child_beggers_count %>
+          <%else%>-<%end%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

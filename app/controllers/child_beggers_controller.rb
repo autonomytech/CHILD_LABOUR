@@ -47,7 +47,7 @@ class ChildBeggersController < ApplicationController
 
   def set_raid
     @raid = Raid.find(params[:raid_id])
-    @department = @raid.location.departments.first
+    @department = @raid.community_farms.first.department
   end
 
   # Use callbacks to share common setup or constraints between actions.

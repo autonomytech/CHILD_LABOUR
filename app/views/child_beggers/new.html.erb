@@ -3,6 +3,7 @@
 		<%= bootstrap_form_for [@raid, @child], :html => {:multipart => true} do |f| %>
 			<%= render '/children/form', f:f %>
 			<%= f.hidden_field :is_child_begger, true %>
+			<%= f.submit 'Save', class: 'btn btn-primary' %>
 		<%end%>
 	</div>
 </div>

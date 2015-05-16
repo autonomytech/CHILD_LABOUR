@@ -2625,3 +2625,7 @@ border: 1px solid #1D4C4D;
 .reports {
   border: ridge;
 }
+
+.logo {
+  width: 120px;
+}

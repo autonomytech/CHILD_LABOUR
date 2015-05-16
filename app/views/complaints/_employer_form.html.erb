@@ -1,0 +1,29 @@
+<br/>
+<div class="row">
+  <div class="col-md-4">
+    <%= label_tag "Employer's details"%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+	<%= f.text_field :first_name %>
+  </div>
+  <div class="col-md-3">
+	<%= f.text_field :middle_name %>
+  </div>
+  <div class="col-md-3">
+	<%= f.text_field :last_name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+	<%= f.text_field :contact_no, label: 'Contact Number' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+	<%= f.fields_for :addresses do |ff|%>
+  		<%= render '/employers/addresses_form', f: ff %>
+	<%end%>
+  </div>
+</div>

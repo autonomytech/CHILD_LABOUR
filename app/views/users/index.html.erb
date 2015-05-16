@@ -5,12 +5,14 @@
   <thead>
     <tr>
       <th>Action</th>
+      <th>Id</th>
       <th>Title</th>
       <th>Name</th>
       <th>Role</th>
       <th>Department</th>
       <th>Designation</th>
       <th>Email</th>
+      <th>Attained Raids</th>
     </tr>
   </thead>
 
@@ -26,12 +28,14 @@
           </ul>
         </div>
       </td>
+      <td><%= user.id %></td>
       <td><%= user.title %></td>
       <td><%= link_to user.full_name, edit_user_path(user) %></td>
       <td><%= user.roles %></td>
       <td><%= user.departments %></td>
       <td><%= user.designation %></td>
       <td><%= user.email %></td>
+      <td><%= link_to 'Status',user_path(user)%></td>
     </tr>
     <% end %>
   </tbody>
