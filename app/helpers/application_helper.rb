@@ -28,4 +28,14 @@ module ApplicationHelper
     end
     [name, age]
   end
+
+  def child_beggers(raid)
+    name = ''
+    age = ''
+    raid.childbeggers.each_with_index do |c, i|
+      name += "#{i + 1}. #{c.full_name}<br/>"
+      age += "#{c.age}<br/>"
+    end
+    [name, age]
+  end
 end

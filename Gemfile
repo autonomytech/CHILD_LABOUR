@@ -50,4 +50,4 @@ gem 'bootstrap_form'
 gem 'html5_validators'
 gem 'jquery-datatables-rails', '~> 2.2.3'
 gem "breadcrumbs_on_rails"
-gem 'passenger'
+gem 'passenger', '4.0.58'

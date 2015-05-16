@@ -55,12 +55,14 @@
             <%= link_to raid.community_farm_status, edit_raid_community_farm_path(raid, raid.community_farms.first)%>
           <%end%>
         </td>
-        <td><% unless raid.child_begger? %>
-          <%= link_to raid.child_labours_count,raid_child_labours_path(raid)%>
-          <%else%>-<%end%></td>
-        <td><% if raid.child_begger? %>
-          <%= link_to raid.child_beggers_count,raid_child_beggers_path(raid)%>
-          <%else%>-<%end%></td>
+        <% unless raid.community_farm_blank? %>
+          <td><% unless raid.child_begger? %>
+            <%= link_to raid.child_labours_count,raid_child_labours_path(raid)%>
+            <%else%>-<%end%></td>
+          <td><% if raid.child_begger? %>
+            <%= link_to raid.child_beggers_count,raid_child_beggers_path(raid)%>
+            <%else%>-<%end%></td>
+        <%else%><td>-</td><td>-</td><%end%>
         <td><%= link_to raid.employer_name, employers_path(raid_id: raid) %></td>
       </tr>
     <% end %>

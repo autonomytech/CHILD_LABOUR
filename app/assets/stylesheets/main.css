@@ -2635,3 +2635,9 @@ border: 1px solid #1D4C4D;
 .logo {
   width: 120px;
 }
+
+@media print{
+  .logo {
+    width: 150px;
+  }
+}

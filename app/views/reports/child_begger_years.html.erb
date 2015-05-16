@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+  	<div class="col-md-3"></div>
+  	<div class="col-md-1">
+  		<%= label_tag :year %>
+  	</div>
+  	<div class="col-md-4">
+  		<%= select :date, :year, @years, {prompt: true}, {class: 'form-control', onchange:"child_begger_year_wise_report();"}%>
+  	</div>
+  </div>
+</div><br/><br/>
+<div class="row">
+	<div class="col-md-12">
+		<div id="year-report"></div>
+	</div>
+</div>

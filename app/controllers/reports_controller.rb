@@ -17,16 +17,25 @@ class ReportsController < ApplicationController
   def panchnama
     @child_labour = Child.find(params[:id])
     @raid = @child_labour.raid
-    #add_breadcrumb 'Child Labours', :child_labours_reports_path
     add_breadcrumb 'Panchnama'
   end
 
-  def years
+  def child_labour_years
     @years = Raid.years
     add_breadcrumb 'Year Wise Reports'
   end
 
-  def year_wise_report
+  def child_labour_year_wise_report
+    @year = params[:year]
+    @raids = Raid.year_wise_report(@year)
+  end
+
+  def child_begger_years
+    @years = Raid.years
+    add_breadcrumb 'Year Wise Reports'
+  end
+
+  def child_begger_year_wise_report
     @year = params[:year]
     @raids = Raid.year_wise_report(@year)
   end
