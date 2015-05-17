@@ -1,6 +1,13 @@
+
+<div class="add-btn">
+<%= link_to 'Download Pdf','#',onclick:'getval()', class: 'btn btn-primary btn-xs'%>
+</div>
+
 <table id="datatable" class="table table-striped table-hover">
   <thead>
     <tr>
+      <th>Select: <%=link_to 'All', '#', onclick: "selectAll();" %>
+       <%=link_to 'None', '#', onclick: "unselectAll();" %></th>
       <th>Id</th>
       <th>Name</th>
       <th>Age</th>
@@ -13,6 +20,7 @@
   <tbody>
     <% @child_labours.each do |child_labour| %>
       <tr>
+        <td><%= check_box_tag :child, child_labour.id, false, class: 'check_box' %></td>
         <td><%= child_labour.id %></td>
         <td><%= link_to child_labour.full_name, panchnama_report_path(child_labour) %></td>
         <td><%= child_labour.age %></td>
@@ -24,3 +32,26 @@
     <% end %>
   </tbody>
 </table>
+
+<script type="text/javascript">
+  function selectAll(){
+   $('.check_box').prop('checked', true);
+  }
+  function unselectAll(){
+   $('.check_box').prop('checked', false);
+  }
+
+  function getval(){
+     var checkboxes = document.getElementsByName('child');    
+     var checkboxesChecked = [];
+  // loop over them all
+  for (var i=0; i<checkboxes.length; i++) {
+     // And stick the checked ones onto an array...
+     if (checkboxes[i].checked) {
+        checkboxesChecked.push(checkboxes[i].value);
+     }
+   }
+     window.open('/reports/get_child_labour?childs='+checkboxesChecked);
+  }
+  
+</script>

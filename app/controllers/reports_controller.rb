@@ -3,14 +3,21 @@ class ReportsController < ApplicationController
   add_breadcrumb 'Reports', :reports_path
 
   def child_labours
-    @child_labours = Child.child_labour
+    @raid = Raid.find(params[:id])
+    @child_labours = @raid.childlabours
     add_breadcrumb 'Child Labours'
+  end
+
+  def child_beggers
+    @raid = Raid.find(params[:id])
+    @child_beggers = @raid.childbeggers
+    add_breadcrumb 'Child Begger'
   end
 
   def panchnama
     @child_labour = Child.find(params[:id])
     @raid = @child_labour.raid
-    add_breadcrumb 'Child Labours', :child_labours_reports_path
+    #add_breadcrumb 'Child Labours', :child_labours_reports_path
     add_breadcrumb 'Panchnama'
   end
 
@@ -54,5 +61,22 @@ class ReportsController < ApplicationController
     @raid = @child_labour.raid
     render pdf: "#{@child_labour.id}_child_labour_panchnama"\
     , template: '/reports/panchnama.pdf.erb'
+  end
+
+  def panchnama_child_labour
+    @raids = Raid.where(raid_for: CHILD_LABOUR)
+  end
+
+  def panchnama_child_begger
+    @raids = Raid.where(raid_for: CHILD_BEGGER)
+  end
+
+  def get_child_labour
+    childs = []
+    params[:childs].each_char { |c| childs << c.to_i }
+    @childs = Child.where(id: childs)
+    raid = @childs.first.raid unless @childs
+    render pdf: "#{raid ? raid.id : '1'}_raid_child_labour_panchnama"\
+    , template: '/reports/get_child_labour.pdf.erb'
   end
 end

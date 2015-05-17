@@ -2625,3 +2625,9 @@ border: 1px solid #1D4C4D;
 .reports {
   border: ridge;
 }
+
+.page-break {
+  display: block;
+  clear: both;
+  page-break-after: always;
+}

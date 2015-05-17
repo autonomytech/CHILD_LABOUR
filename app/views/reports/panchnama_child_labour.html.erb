@@ -1,0 +1,28 @@
+<table id="datatable" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Raid for</th>
+      <th>Location</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @raids.each do |raid| %>
+      <tr>
+        <td></td>
+        <td><%= raid.id %></td>
+        <td><%= link_to raid.title ,child_labours_report_path(raid.id)%></td>
+        <td><%= raid.datetime.strftime('%d, %B %Y') %></td>
+        <td><%= raid.datetime.strftime('%I:%M %p') %></td>
+        <td><%= raid.raid_for %></td>
+        <td><%= raid.location.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

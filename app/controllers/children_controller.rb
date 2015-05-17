@@ -65,7 +65,7 @@ class ChildrenController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def child_params
     params.require(:child).permit(:first_name, :last_name, :father_name, :mother_name\
-      , :gender, :age, :description, :submited_by, :employer_id\
+      , :gender, :age, :description, :submited_by, :employer_id, :is_child_begger\
       , answers_attributes: [:answer, :question_id]\
       , addresses_attributes: [:address_line_1, :address_line_2\
       , :city, :state, :pincode])
@@ -73,8 +73,9 @@ class ChildrenController < ApplicationController
 
   def child_update_params
     params.require(:child).permit(:first_name, :last_name, :father_name, :mother_name\
-      , :gender, :age, :description, :submited_by, :employer_id\
+      , :gender, :age, :description, :submited_by, :employer_id, :is_child_begger\
       , addresses_attributes: [:address_line_1, :address_line_2\
       , :city, :state, :pincode])
+
   end
 end

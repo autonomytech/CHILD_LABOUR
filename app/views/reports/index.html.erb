@@ -3,20 +3,29 @@
     <tr>
       <th>Sr. No.</th>
       <th>Report Type</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1</td>
-      <td><%= link_to 'Panchnama', child_labours_reports_path %></td>
+      <td>Panchnama</td>
+      <td><%= link_to 'Child Labour', panchnama_child_labour_reports_path %></td>
+      <td><%= link_to 'Child Begger', panchnama_child_begger_reports_path %></td>
+
     </tr>
     <tr>
       <td>2</td>
       <td><%= link_to 'Year wise Report', years_reports_path %></td>
+      <td><%= link_to 'Child Labour', ''%></td>
+      <td><%= link_to 'Child Begger', '' %></td>
     </tr>
     <tr>
       <td>3</td>
       <td><%= link_to 'All over Report', all_over_report_reports_path %></td>
+      <td><%= link_to 'Child Labour', '' %></td>
+      <td><%= link_to 'Child Begger', ''%></td>
     </tr>
   </tbody>
 </table>

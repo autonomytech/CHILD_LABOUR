@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<%= bootstrap_form_for [@raid, @child], :html => {:multipart => true} do |f| %>
 			<%= render '/children/form', f:f %>
-			<%= f.hidden_field :is_child_begger, true %>
+			<%= f.hidden_field :is_child_begger, value: true %>
 		<%end%>
 	</div>
 </div>
