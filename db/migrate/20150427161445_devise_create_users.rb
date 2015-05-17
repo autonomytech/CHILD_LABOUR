@@ -51,6 +51,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :unlock_token,         unique: true
     User.create(title: 'Mr.', first_name: 'Primary', last_name: 'Admin'\
       , email: 'primary_admin@icl.com', password: 'primary_admin123'\
+      , designation: 'Admin', contact_no: '8888888888'\
       , role_id: 1, department_id: 1, is_primary: true, community_id: 1)
   end
 end

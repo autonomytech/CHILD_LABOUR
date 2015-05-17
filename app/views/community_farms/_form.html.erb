@@ -1,7 +1,7 @@
 <%= bootstrap_form_for([@raid, @community_farm]) do |f| %>
     <%= label_tag :location %>
     <%= text_field_tag :location, @location.name, class: 'form-control', disabled: true%><br/>
-    <%= f.select :department_id, @departments %>
+    <%= f.select :department_id, @departments, required: true %>
     <%= f.text_field :involve_member, id: 'involve_member', :"data-pre" => @community_farm.involve_members.to_json %>
     <% unless @community_farm.id.blank? %>
     <%= f.text_field :submited_by_user, disabled: true%><br/>

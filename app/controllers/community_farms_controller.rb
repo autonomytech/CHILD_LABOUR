@@ -65,7 +65,7 @@ class CommunityFarmsController < ApplicationController
         format.html { redirect_to new_raid_child_path(@raid), notice: 'Community farm was successfully assigned.' }
         format.json { render :show, status: :created, location: @community_farm }
       else
-        format.html { render :new }
+        format.html { render :community_farm }
         format.json { render json: @community_farm.errors, status: :unprocessable_entity }
       end
     end
