@@ -31,9 +31,15 @@ class ReportsController < ApplicationController
     @raids = Raid.year_wise_report(@year)
   end
 
-  def all_over_report
-    @raids = Raid.all
-    @years = Raid.years
+  def all_over_child_labours
+    @raids = Raid.where(raid_for: CHILD_LABOUR)
+    @years = Raid.child_labours_years
+    add_breadcrumb 'All over report'
+  end
+
+  def all_over_child_beggers
+    @raids = Raid.where(raid_for: CHILD_BEGGER)
+    @years = Raid.child_beggers_years
     add_breadcrumb 'All over report'
   end
 
@@ -41,13 +47,20 @@ class ReportsController < ApplicationController
     panchnama_pdf(params[:child_id]) if params[:type].eql? 'panchnama'
     year_wise_report_pdf(params[:year]) \
     if params[:type].eql? 'year_wise_report'
-    all_over_report_pdf if params[:type].eql? 'all_over_report'
+    all_over_child_labours_pdf if params[:type].eql? 'all_over_child_labours'
+    all_over_child_beggers_pdf if params[:type].eql? 'all_over_child_beggers'
   end
 
-  def all_over_report_pdf
-    @raids = Raid.all
-    @years = Raid.years
-    render pdf: 'all_over_report', template: 'reports/all_over_report.pdf.erb'
+  def all_over_child_labours_pdf
+    @raids = Raid.where(raid_for: CHILD_LABOUR)
+    @years = Raid.child_labours_years
+    render pdf: 'all_over_child_labours', template: 'reports/all_over_child_labours.pdf.erb'
+  end
+
+   def all_over_child_beggers_pdf
+    @raids = Raid.where(raid_for: CHILD_BEGGER)
+    @years = Raid.child_beggers_years
+    render pdf: 'all_over_child_beggers', template: 'reports/all_over_child_beggers.pdf.erb'
   end
 
   def year_wise_report_pdf(year)
@@ -78,5 +91,14 @@ class ReportsController < ApplicationController
     raid = @childs.first.raid unless @childs
     render pdf: "#{raid ? raid.id : '1'}_raid_child_labour_panchnama"\
     , template: '/reports/get_child_labour.pdf.erb'
+  end
+
+  def get_child_begger
+    childs = []
+    params[:childs].each_char { |c| childs << c.to_i }
+    @childs = Child.where(id: childs)
+    raid = @childs.first.raid unless @childs
+    render pdf: "#{raid ? raid.id : '1'}_raid_child_labour_panchnama"\
+    , template: '/reports/get_child_begger.pdf.erb'
   end
 end

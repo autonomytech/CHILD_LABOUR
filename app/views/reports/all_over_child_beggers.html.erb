@@ -1,5 +1,5 @@
 <div class="add-btn">
-<%= link_to 'Download Pdf', download_pdf_reports_path(type: 'all_over_report'), class: 'btn btn-primary btn-xs', target: "_blank" %>
+<%= link_to 'Download Pdf', download_pdf_reports_path(type: 'all_over_child_beggers'), class: 'btn btn-primary btn-xs', target: "_blank" %>
 </div>
 <div class="row">
   <div class="col-md-1"></div>
@@ -20,8 +20,8 @@
     	<td><%= i+1 %></td>
     	<td><%= year %></td>
     	<td><%= total_fir(year) %></td>
-    	<td><%= victam_in_jail(year) %></td>
-    	<td><%= free_child_labour(year) %></td>
+    	<td><%= victam_in_jail_cb(year) %></td>
+    	<td><%= free_child_begger(year) %></td>
     </tr>
     <% end %>
   </tbody>

@@ -7,7 +7,7 @@ module ApplicationHelper
     @raids.select { |d| d.datetime.strftime('%Y').eql? year }.count
   end
 
-  def victam_in_jail(year)
+  def victam_in_jail_cl(year)
     @raids.select \
    { |d| (d.datetime.strftime('%Y').eql? year) && (d.childlabours.present?) }.count
   end
@@ -16,6 +16,18 @@ module ApplicationHelper
     count = 0
     @raids.each \
     { |d| (count += d.childlabours.count if d.datetime.strftime('%Y').eql? year) }
+    count
+  end
+
+  def victam_in_jail_cb(year)
+    @raids.select \
+   { |d| (d.datetime.strftime('%Y').eql? year) && (d.childbeggers.present?) }.count
+  end
+
+  def free_child_begger(year)
+    count = 0
+    @raids.each \
+    { |d| (count += d.childbeggers.count if d.datetime.strftime('%Y').eql? year) }
     count
   end
 

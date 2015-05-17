@@ -44,8 +44,12 @@ class Raid < ActiveRecord::Base
     { |d| (d.datetime.strftime('%Y').eql? year) && (d.childlabours.present?) }
   end
 
-  def self.years
-    all.collect { |d| d.datetime.strftime('%Y') }.uniq.sort
+  def self.child_labours_years
+    where(raid_for: CHILD_LABOUR).collect { |d| d.datetime.strftime('%Y') }.uniq.sort
+  end
+
+  def self.child_beggers_years
+    where(raid_for: CHILD_BEGGER).collect { |d| d.datetime.strftime('%Y') }.uniq.sort
   end
 
   def department

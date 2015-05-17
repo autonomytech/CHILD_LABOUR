@@ -5,11 +5,14 @@ Rails.application.routes.draw do
     collection do
       get :years
       get :year_wise_report
-      get :all_over_report
+      get :all_over_child_labours
+      get :all_over_child_beggers
       get :download_pdf
       get :panchnama_child_labour
       get :panchnama_child_begger
       get :get_child_labour
+
+      get :get_child_begger
     end
     member do
       get :panchnama
