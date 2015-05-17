@@ -2,6 +2,7 @@ class Employer < ActiveRecord::Base
   has_many :children
   has_many :addresses
   belongs_to :raid
+  has_many :complaints
   accepts_nested_attributes_for :addresses
 
   def full_name

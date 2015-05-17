@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510163045) do
+ActiveRecord::Schema.define(version: 20150514160410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,23 @@ ActiveRecord::Schema.define(version: 20150510163045) do
   add_index "community_farms", ["department_id"], name: "index_community_farms_on_department_id", using: :btree
   add_index "community_farms", ["raid_id"], name: "index_community_farms_on_raid_id", using: :btree
 
+  create_table "complaints", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "contact_no"
+    t.string   "email"
+    t.string   "area"
+    t.string   "subject"
+    t.datetime "last_seen_date"
+    t.string   "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "employer_id"
+  end
+
+  add_index "complaints", ["employer_id"], name: "index_complaints_on_employer_id", using: :btree
+
   create_table "departments", force: :cascade do |t|
     t.string   "name"
     t.integer  "location_id"
@@ -123,10 +140,12 @@ ActiveRecord::Schema.define(version: 20150510163045) do
     t.string   "description"
     t.string   "raid_for"
     t.integer  "location_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "complaint_id"
   end
 
+  add_index "raids", ["complaint_id"], name: "index_raids_on_complaint_id", using: :btree
   add_index "raids", ["location_id"], name: "index_raids_on_location_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
@@ -185,8 +204,10 @@ ActiveRecord::Schema.define(version: 20150510163045) do
   add_foreign_key "children", "raids"
   add_foreign_key "community_farms", "departments"
   add_foreign_key "community_farms", "raids"
+  add_foreign_key "complaints", "employers"
   add_foreign_key "departments", "locations"
   add_foreign_key "employers", "raids"
+  add_foreign_key "raids", "complaints"
   add_foreign_key "raids", "locations"
   add_foreign_key "users", "communities"
   add_foreign_key "users", "departments"

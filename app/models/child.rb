@@ -3,7 +3,6 @@ class Child < ActiveRecord::Base
   belongs_to :raid
   has_many :answers
   has_many :addresses
-  accepts_nested_attributes_for :employer
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses
 

@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-4">
+		<%= bootstrap_form_for([@raid, @community_farm], url:{action: 'create_community_farm'}) do |f| %>
+		    <%= label_tag :location %>
+		    <%= text_field_tag :location, @location.name, class: 'form-control', disabled: true%><br/>
+		    <%= f.select :department_id, @departments %>
+		    <%= f.text_field :involve_member, id: 'involve_member', :"data-pre" => @community_farm.involve_members.to_json %>
+		    <% unless @community_farm.id.blank? %>
+		    <%= f.text_field :submited_by_user, disabled: true%><br/>
+		    <% end %>
+		    <%= f.submit 'Save', class: 'btn btn-primary'%>
+		<% end %>
+		<script type="text/javascript">
+		  $(document).ready(function() {
+		      $("#involve_member").tokenInput("/users.json", 
+		        {propertyToSearch: "full_name"});
+		  });
+		</script>
+	</div>
+</div>

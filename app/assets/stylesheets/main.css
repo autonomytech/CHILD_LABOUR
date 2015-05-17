@@ -2631,3 +2631,7 @@ border: 1px solid #1D4C4D;
   clear: both;
   page-break-after: always;
 }
+
+.logo {
+  width: 120px;
+}

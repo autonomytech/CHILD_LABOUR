@@ -1,33 +1,20 @@
-<%= form_for(@raid) do |f| %>
-  <% if @raid.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@raid.errors.count, "error") %> prohibited this raid from being saved:</h2>
-
-      <ul>
-      <% @raid.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+<%= bootstrap_form_for(@raid) do |f| %>
+<div class="row">
+  <div class="col-md-5">
+    <%= f.text_field :title, disabled: true %>
+    <%= f.text_field :raid_for, disabled: true %>
+    <%= f.text_field :location_name, disabled: true %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.text_field :date %>
+</div>
+<div class="row form-inline">
+  <div class="col-md-6">
+    <%= f.datetime_select :datetime %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
+</div><br/>
+<div class="row">
+  <div class="col-md-8">
+    <%= f.text_area :description, rows: 10 %>
   </div>
-  <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.text_field :location_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

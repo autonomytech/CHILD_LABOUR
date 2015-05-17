@@ -1,0 +1,52 @@
+<%= bootstrap_form_for(@complaint) do |f| %>
+<div class="row">
+  <div class="col-md-4">
+    <%= label_tag "complainer's details"%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :middle_name %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :last_name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.text_field :contact_no, label: 'Contact Number' %>
+    <%= f.text_field :email, label: "Complainer's Email" %>
+    <%= f.text_field :area, label: 'Complaint Area' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= label_tag "Complaint Subject" %>
+  </div>
+</div>
+<div class="row form-inline">
+  <div class="col-md-2">
+    <%= f.radio_button :subject, "Child Labour", checked: true%> <%= label_tag :child_labour %>
+  </div>
+  <div class="col-md-2">
+    <%= f.radio_button :subject, "Child Begger"%> <%= label_tag :child_begger %>
+  </div>
+</div><br/>
+<div class="row">
+  <div class="col-md-3">
+    <%= f.date_field :last_seen_date %>
+  </div>
+</div>
+  <%= f.fields_for :employer do |ff| %>
+    <%= render 'employer_form', f: ff %>
+  <%end%>
+<div class="row">
+  <div class="col-md-8">
+    <%= f.text_area :description, rows: 10 %>
+  </div>
+</div>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+<% end %>

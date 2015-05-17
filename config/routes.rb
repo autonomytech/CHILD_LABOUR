@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :complaints
+
   resources :reports do
     collection do
       get :years
@@ -27,7 +29,12 @@ Rails.application.routes.draw do
   resources :child_beggers
 
   resources :raids do
-    resources :community_farms
+    resources :community_farms do
+      collection do
+        get :community_farm
+        post :create_community_farm
+      end
+    end
     resources :child_labours
     resources :children
     resources :child_beggers
