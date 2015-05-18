@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :timeoutable
   belongs_to :role
   belongs_to :department
-
+  validates_presence_of :first_name, :last_name, :designation\
+    , :contact_no
+  validates :contact_no, numericality: true, length: { is: 10 }
   def admin?
     true if role.role.eql? 'Admin'
   end

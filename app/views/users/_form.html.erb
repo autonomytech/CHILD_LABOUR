@@ -3,6 +3,6 @@
 <%= f.text_field :middle_name, placeholder: 'Middle Name' %>
 <%= f.text_field :last_name, placeholder: 'Last Name' %>
 <%= f.text_field :designation, placeholder: 'Designation' %>
-<%= f.select :department_id, @departments, prompt: true %>
-<%= f.select :role_id, @roles, prompt: true %>
+<%= f.select :department_id, @departments, {prompt: true}, {required: true} %>
+<%= f.select :role_id, @roles, {prompt: true}, {required: true} %>
 <%= f.text_field :contact_no, placeholder: 'Contact No' %>

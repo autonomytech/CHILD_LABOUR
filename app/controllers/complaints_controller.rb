@@ -59,6 +59,8 @@ class ComplaintsController < ApplicationController
     location = Location.where(name: area.capitalize).take
     return location.id if location
     location = Location.create(name: area.capitalize)
+    Department.create(name: "#{area.capitalize} Police Station"\
+      , location_id: location.id)
     location.id
   end
 

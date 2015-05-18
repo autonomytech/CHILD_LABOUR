@@ -5,6 +5,8 @@ class Child < ActiveRecord::Base
   has_many :addresses
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses
+  validates_presence_of :first_name, :last_name, :age, :father_name\
+    , :mother_name
 
   def submited_by_user
     User.full_name(submited_by)
