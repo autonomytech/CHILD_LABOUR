@@ -4,8 +4,21 @@ class Employer < ActiveRecord::Base
   belongs_to :raid
   has_many :complaints
   accepts_nested_attributes_for :addresses
+
+  validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
+  { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }
+
+  validates :middle_name,length: { minimum: 1, maximum: 20 }, format: \
+  { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }, allow_blank: true
+
+  validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
+  { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }
+
   validates_presence_of :first_name, :last_name, :contact_no
-  validates :contact_no, numericality: true, length: { is: 10 }
+
+  validates :contact_no, presence: true, numericality: true, length: { is: 10 }
+
+
   def full_name
     [first_name, last_name].join(' ')
   end
