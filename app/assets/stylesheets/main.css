@@ -1,4 +1,7 @@
-
+@font-face {
+  font-family: marathi;
+  src: url("../assets/k010.ttf");
+}
 body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -2646,4 +2649,9 @@ border: 1px solid #1D4C4D;
     clear: both;
     page-break-after: always;
   }
+}
+
+.marathi-font {
+  font-family: marathi;
+  font-size: 18px;
 }
