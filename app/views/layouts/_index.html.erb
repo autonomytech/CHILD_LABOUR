@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse navbar-right logout">
       <ul class="nav navbar-nav">
         <li><%= link_to new_complaint_path do %>
-          <i class="fa fa-edit"></i> Complaint<%end%>
+          <i class="fa fa-edit"></i><%=t('complaint')%><%end%>
         </li>
         <li>
         <a href="#", class="dropdown-toggle", data-toggle= "dropdown"><i class="fa fa-user icon-white"> <%= current_user.email %></i> <i class="fa fa-angle-down"></i></a>
@@ -17,7 +17,7 @@
           </ul>
         </li>
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i> Log out<%end%>
+          <i class="fa fa-sign-out"></i><%=t('लॉग आउट')%><%end%>
         </li>
       </ul>
     </div>
@@ -34,12 +34,12 @@
       </div>
       <div class="collapse navbar-collapse navbar-left">
         <ul class="nav navbar-nav">
-          <li class="<%= is_active_controller('dashboard') %>"><%= link_to dashboard_index_path do %><i class="fa fa-dashboard"></i> Dashboard<%end%></li>
-          <li class="<%= is_active_controller('users') %>"><%= link_to users_path do %><i class="fa fa-users"></i> Users<%end%></li>
-          <li class="<%= is_active_controller('child_labours') %>"><%= link_to child_labours_path do %><i class="fa fa-child"></i> Child Labours<%end%></li>
-          <li class="<%= is_active_controller('child_beggers') %>"><%= link_to child_beggers_path do %><i class="fa fa-child"></i> Child Beggers<%end%></li>
-          <li class="<%= is_active_controller('employers') %>"><%= link_to employers_path do %><i class="fa fa-slideshare"></i> Employers<%end%></li>
-          <li class="<%= is_active_controller('reports') %>"><%= link_to reports_path do %><i class="fa fa-file-text"></i> Reports<%end%></li>
+          <li class="<%= is_active_controller('dashboard') %>"><%= link_to dashboard_index_path do %><i class="fa fa-dashboard"></i> <%=t('dashboard')%><%end%></li>
+          <li class="<%= is_active_controller('users') %>"><%= link_to users_path do %><i class="fa fa-users"></i> <%=t('users')%><%end%></li>
+          <li class="<%= is_active_controller('child_labours') %>"><%= link_to child_labours_path do %><i class="fa fa-child"></i> <%=t('child_labour')%><%end%></li>
+          <li class="<%= is_active_controller('child_beggers') %>"><%= link_to child_beggers_path do %><i class="fa fa-child"></i> <%=t('child_begger')%><%end%></li>
+          <li class="<%= is_active_controller('employers') %>"><%= link_to employers_path do %><i class="fa fa-slideshare"></i> <%=t('employers')%><%end%></li>
+          <li class="<%= is_active_controller('reports') %>"><%= link_to reports_path do %><i class="fa fa-file-text"></i> <%=t('reports')%><%end%></li>
         </ul>
       </div>
     </div><!--/.container-->

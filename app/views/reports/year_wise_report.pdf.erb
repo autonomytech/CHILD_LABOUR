@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag 'application' -%>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-12">
+        <%= wicked_pdf_image_tag 'Logo.jpg',class: 'logo'%>
+      </div>
+    </div><br/>
+  <div class="container inter-body">
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Raid Id</th>
+      <th>Raid Title</th>
+      <th>Employer Name / Address</th>
+      <th colspan="2">Child Labours (Name / Age)</th>
+      <th>Police station</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @raids.each_with_index do |raid, i|%>
+    <tr>
+    	<td><%= i+1 %></td>
+    	<td><%= raid.id %></td>
+    	<td><%= raid.title %></td>
+    	<td><%= raid.employer_name %><br/>
+          <%= raid.employer_address %></td>
+    	<td><%= (child_labours(raid)[0]).html_safe %></td>
+      <td><%= (child_labours(raid)[1]).html_safe %></td>
+      <td><%= raid.department %></td>
+      <td><%= raid.location.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</body>
+</html>
