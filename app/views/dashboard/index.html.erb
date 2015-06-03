@@ -1,17 +1,18 @@
+ 
 <table id="datatable" class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Action</th>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Raid for</th>
-      <th>Location</th>
-      <th>Community Farm</th>
-      <th>Child Labour</th>
-      <th>Child Begger</th>
-      <th>Employer</th>
+      <th><%=t('action')%></th>
+      <th><%=t('id')%></th>
+      <th><%=t('title')%></th>
+      <th><%=t('date')%></th>
+      <th><%=t('time')%></th>
+      <th><%=t('raid_for')%></th>
+      <th><%=t('location')%></th>
+      <th><%=t('committee')%></th>
+      <th><%=t('child_labour')%></th>
+      <th><%=t('child_begger')%></th>
+      <th><%=t('employers')%></th>
     </tr>
   </thead>
 
@@ -24,20 +25,20 @@
           <ul class="dropdown-menu dropdown-menu-action">
             <li>
               <% if raid.community_farm_blank? %>
-                <%= link_to 'Community Farm', new_raid_community_farm_path(raid)%>
+                <%= link_to t('committee'), new_raid_community_farm_path(raid)%>
               <% else %>
-                <%= link_to 'Community Farm', edit_raid_community_farm_path(raid, raid.community_farms.first)%>
+                <%= link_to t('committee'), edit_raid_community_farm_path(raid, raid.community_farms.first)%>
               <%end%>
             </li>
             <li>
               <% if raid.child_begger? %>
-                <%= link_to 'Child Beggers', raid_child_beggers_path(raid) %>
+                <%= link_to t('child_begger'), raid_child_beggers_path(raid) %>
               <% else %>
-                <%= link_to 'Child Labours', raid_child_labours_path(raid) %>
+                <%= link_to t('child_labour'), raid_child_labours_path(raid) %>
               <%end%>
             </li>
             <li>
-              <%= link_to 'Employer',employers_path(raid_id: raid)%>
+              <%= link_to t('employers'),employers_path(raid_id: raid)%>
             </li>
           </ul>
           </div>
