@@ -1,15 +1,15 @@
-<%= f.text_field :address_line_1 %>
-<%= f.text_field :address_line_2 %>
+<%= f.text_field :address_line_1 , label:"#{t('address_line_1')}"%>
+<%= f.text_field :address_line_2, label:"#{t('address_line_2')}" %>
 <div class="row">
 <div class="col-md-6">
-	<%= f.text_field :city, placeholder: 'City' %>
+	<%= f.text_field :city, label:"#{t('city')}",placeholder:"#{t('city')}"%>
 </div>
 <div class="col-md-6">
-<%= f.text_field :state, placeholder: 'State' %>
+<%= f.text_field :state,label:"#{t('state')}" ,placeholder:"#{t('state')}"%>
 </div>
 </div>
 <div class="row">
 <div class="col-md-4">
-<%= f.number_field :pincode, placeholder: 'Pincode' %>
+<%= f.number_field :pincode,label:"#{t('pin_code')}" ,placeholder: "#{t('pin_code')}"%>
 </div>
 </div>

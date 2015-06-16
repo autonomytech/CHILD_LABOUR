@@ -1,8 +1,9 @@
 <%= f.select :title, TITLE %>
-<%= f.text_field :first_name, placeholder: 'First Name', class: 'marathi-font' %>
-<%= f.text_field :middle_name, placeholder: 'Middle Name' %>
-<%= f.text_field :last_name, placeholder: 'Last Name' %>
-<%= f.text_field :designation, placeholder: 'Designation' %>
+<%= f.text_field :first_name,label: "#{t('first_name')}", placeholder: "#{t('first_name')}", class: 'marathi-font' %>
+<%= f.text_field :middle_name, label: "#{t('middle_name')}", placeholder: "#{t('middle_name')}"%>
+<%= f.text_field :last_name, label: "#{t('last_name')}", placeholder: "#{t('last_name')}" %>
+<%= f.text_field :designation, label: "#{t('designation')}", placeholder: "#{t('designation')}" %>
 <%= f.select :department_id, @departments, {prompt: true}, {required: true} %>
 <%= f.select :role_id, @roles, {prompt: true}, {required: true} %>
-<%= f.text_field :contact_no, placeholder: 'Contact No' %>
+<%= f.text_field :contact_no, label: "#{t('contact_no')}", placeholder: "#{t('contact_no')}" %>
+
