@@ -1,40 +1,40 @@
   <div class="row">
   <div class="col-md-2">
-  <%= label_tag :police_department %>
+  <%= label_tag "#{t('police_department')}" %>
   <%= text_field_tag :department, @department.name, class: 'form-control', disabled: true%><br/>
   </div>
   <div class="col-md-8"></div>
   <div class="col-md-2">
-  <%= label_tag :date %>
+  <%= label_tag "#{t('date')}"%>
   <%= text_field_tag :date, @raid.datetime.strftime("%d, %B %Y"), class: 'form-control', disabled: true%><br/>
   </div>
   </div>
   <div class="row">
-  <div class="col-md-12"><b>* Child Labour Details</b></div>
+  <div class="col-md-12"><b>* <%=t('child_labour_details')%></b></div>
   </div><br/>
   <div class="row">
   <div class="col-md-4">
-    <%= f.text_field :first_name%>
+    <%= f.text_field :first_name,label:"#{t('first_name')}"%>
   </div>
   <div class="col-md-4">
-    <%= f.text_field :last_name%>
+    <%= f.text_field :last_name,label:"#{t('last_name')}"%>
   </div>
-  <div class="col-md-2"><%= f.number_field :age %></div>
+  <div class="col-md-2"><%= f.number_field :age,label:"#{t('age')}" %></div>
   </div>
   <div class="row">
   <div class="col-md-4">
-    <%= f.text_field :father_name %>
+    <%= f.text_field :father_name,label:"#{t('father_name')}" %>
   </div>
   <div class="col-md-4">
-    <%= f.text_field :mother_name %>
+    <%= f.text_field :mother_name ,label:"#{t('mother_name')}"%>
   </div>
   </div>
   <div class="row">
   <div class="col-md-6">
-  <%= label_tag :gender %>
+  <%= label_tag "#{t('gender')}" %>
   <div class="row form-inline">
-  <div class="col-md-2"><%= f.radio_button :gender, "Male", checked: true%> <%= label_tag :male %></div>
-  <div class="col-md-2"><%= f.radio_button :gender, "Female"%> <%= label_tag :female %></div></div>
+  <div class="col-md-2"><%= f.radio_button :gender, "Male", checked: true%> <%= label_tag "#{t('male')}" %></div>
+  <div class="col-md-2"><%= f.radio_button :gender, "Female"%> <%= label_tag "#{t('female')}" %></div></div>
   </div>
   </div><br/>
   <div class="row">
@@ -53,20 +53,20 @@
   </div>
   </div>
   <div class="row">
-  <div class="col-md-12"><b>* Write answer of questions</b></div>
+  <div class="col-md-12"><b>* <%=t('write_answer_of_questions')%></b></div>
   </div><br/>
   <% if @questions.present? %>
     <% @questions.each_with_index do |q|%>
       <%= f.fields_for :answers do |fa|%>
       <div class="row">
         <div class="col-md-4">
-          <%= label_tag :question %>
+          <%= label_tag "#{t('question')}" %>
           <%= text_field_tag :q, "#{q.question}", class: 'form-control', disabled: true %>
         </div>
         <div class="col-md-3">
           <%= fa.hidden_field :question_id, value: q.id %>
           <% if q.is_yes_no_answer %>
-          <%= label_tag :answer %>
+          <%= label_tag "#{t('answer')}"%>
           <div class="row form-inline">
             <div class="col-md-4">
               <%= fa.radio_button :answer, 'Yes', checked: true %> Yes
@@ -86,24 +86,24 @@
     <%= f.fields_for :answers do |fa|%>
       <div class="row">
         <div class="col-md-4">
-          <%= fa.text_field :question_, disabled: true %>
+          <%= fa.text_field :question_, disabled: true ,label:"#{t('question')}"%>
         </div>
         <div class="col-md-3">
           <%= fa.hidden_field :id %>
-          <%= fa.text_field :answer %>
+          <%= fa.text_field :answer,label:"#{t('answer')}" %>
         </div>
       </div>
     <%end%>
   <% end %>
   <div class="row">
     <div class="col-md-8">
-      <%= f.text_area :description, rows: 10 %>
+      <%= f.text_area :description, rows: 10,label:"#{t('description')}"%>
     </div>
   </div>
   <% unless @child.id.blank? %>
   <div class="row">
     <div class="col-md-4">
-    <%= f.text_field :submited_by_user, disabled: true%>
+    <%= f.text_field :submited_by_user,label: "#{t('submited_by_user')}", disabled: true%>
     </div>
   </div>
   <% end %>

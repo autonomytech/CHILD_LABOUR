@@ -2,10 +2,10 @@
   <div class="col-md-12">
   	<div class="col-md-3"></div>
   	<div class="col-md-1">
-  		<%= label_tag :year %>
+  		<%= label_tag "#{t('year')}" %>
   	</div>
   	<div class="col-md-4">
-  		<%= select :date, :year, @years, {prompt: true}, {class: 'form-control', onchange:"child_labour_year_wise_report();"}%>
+  		<%= select :date, :year, @years, {prompt: "#{t('please_select_year')}"}, {class: 'form-control', onchange:"child_labour_year_wise_report();"}%>
   	</div>
   </div>
 </div><br/><br/>

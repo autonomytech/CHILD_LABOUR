@@ -6,14 +6,14 @@
 <table id="datatable" class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Action</th>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Father name</th>
-      <th>Mother name</th>
-      <th>Raid Title</th>
-      <th>Raid Date</th>
+      <th><%=t('action')%></th>
+      <th><%=t('id')%></th>
+      <th><%=t('name')%></th>
+      <th><%=t('age')%></th>
+      <th><%=t('father_name')%></th>
+      <th><%=t('mother_name')%></th>
+      <th><%=t('raid_title')%></th>
+      <th><%=t('raid_date')%></th>
     </tr>
   </thead>
 
@@ -24,8 +24,8 @@
           <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
-            <li><%= link_to 'Edit', edit_raid_child_labour_path(child_labour.raid, child_labour) %></li>
-            <li><%= link_to 'Destroy', [child_labour.raid,child_labour], method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to "#{t('edit')}", edit_raid_child_labour_path(child_labour.raid, child_labour) %></li>
+            <li><%= link_to "#{t('destroy')}", [child_labour.raid,child_labour], method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
           </div>
         </td>
