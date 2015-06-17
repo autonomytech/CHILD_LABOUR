@@ -4,7 +4,7 @@
 }
 body {
   background: #fff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: marathi, sans-serif;
   color:#4e4e4e;
   line-height: 22px;
 }
@@ -21,7 +21,7 @@ h4,
 h5,
 h6 {
   font-weight: 600; 
-  font-family: 'Open Sans', sans-serif;
+  font-family: marathi, sans-serif;
   color:#4e4e4e;
 }
 
@@ -2649,4 +2649,8 @@ border: 1px solid #1D4C4D;
     clear: both;
     page-break-after: always;
   }
+}
+
+.english_font {
+  font-family: 'Open Sans', sans-serif;
 }
