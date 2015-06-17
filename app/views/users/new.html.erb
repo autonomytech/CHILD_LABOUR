@@ -3,8 +3,8 @@
 	<div class="col-md-4">
 		<%= bootstrap_form_for(@user) do |f| %>
 		<%= render 'form', f: f, user: @user%>
-		<%= f.email_field :email, placeholder: 'Email' %>
-		<%= f.password_field :password, placeholder: 'Password' %>
+		<%= f.email_field :email,label:"#{t('email')}" ,placeholder:"#{t('email')}" %>
+		<%= f.password_field :password, label:"#{t('password')}" ,placeholder:"#{t('password')}"%>
 		<%= f.submit 'Save', class: 'btn btn-primary' %>
 		<% end %>
 	</div>

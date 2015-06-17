@@ -1,9 +1,10 @@
-<%= f.select :title, TITLE %>
+<%= f.select :title, TITLE,label:"#{t('title')}" %>
 <%= f.text_field :first_name,label: "#{t('first_name')}", placeholder: "#{t('first_name')}", class: 'marathi-font' %>
 <%= f.text_field :middle_name, label: "#{t('middle_name')}", placeholder: "#{t('middle_name')}"%>
 <%= f.text_field :last_name, label: "#{t('last_name')}", placeholder: "#{t('last_name')}" %>
 <%= f.text_field :designation, label: "#{t('designation')}", placeholder: "#{t('designation')}" %>
-<%= f.select :department_id, @departments, {prompt: true}, {required: true} %>
-<%= f.select :role_id, @roles, {prompt: true}, {required: true} %>
+
+<%= f.select :department_id,@departments,{label:"#{t('department')}",prompt:true},{required: true} %>
+<%= f.select :role_id, @roles, {label:"#{t('role')}",prompt: true}, {required: true} %>
 <%= f.text_field :contact_no, label: "#{t('contact_no')}", placeholder: "#{t('contact_no')}" %>
 

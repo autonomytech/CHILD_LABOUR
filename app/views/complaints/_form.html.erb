@@ -1,43 +1,43 @@
 <%= bootstrap_form_for(@complaint) do |f| %>
 <div class="row">
   <div class="col-md-4">
-    <%= label_tag "complainer's details"%>
+    <%= label_tag "#{t('complainer_details')}"%>
   </div>
 </div>
 <div class="row">
   <div class="col-md-3">
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name ,label:"#{t('first_name')}",placeholder:"#{t('first_name')}"%>
   </div>
   <div class="col-md-3">
-    <%= f.text_field :middle_name %>
+    <%= f.text_field :middle_name,label:"#{t('middle_name')}",placeholder:"#{t('middle_name')}" %>
   </div>
   <div class="col-md-3">
-    <%= f.text_field :last_name %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <%= f.text_field :contact_no, label: 'Contact Number' %>
-    <%= f.email_field :email, label: "Complainer's Email" %>
-    <%= f.text_field :area, label: 'Complaint Area' %>
+    <%= f.text_field :last_name,label:"#{t('last_name')}",placeholder:"#{t('last_name')}"%>
   </div>
 </div>
 <div class="row">
   <div class="col-md-4">
-    <%= label_tag "Complaint Subject" %>
+    <%= f.text_field :contact_no,label:"#{t('contact_no')}",placeholder:"#{t('contact_no')}" %>
+    <%= f.email_field :email, label: "#{t('email')}",placeholder:"#{t('email')}"%>
+    <%= f.text_field :area, label: "#{t('area')}",placeholder:"#{t('area')}" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= label_tag "#{t('complaint_subject')}"%>
   </div>
 </div>
 <div class="row form-inline">
   <div class="col-md-2">
-    <%= f.radio_button :subject, "Child Labour", checked: true%> <%= label_tag :child_labour %>
+    <%= f.radio_button :subject, "Child Labour", checked: true%> <%= label_tag "#{t('child_labour')}"%>
   </div>
   <div class="col-md-2">
-    <%= f.radio_button :subject, "Child Begger"%> <%= label_tag :child_begger %>
+    <%= f.radio_button :subject, "Child Begger"%> <%= label_tag "#{t('child_begger')}"%>
   </div>
 </div><br/>
 <div class="row">
   <div class="col-md-3">
-    <%= f.date_field :last_seen_date %>
+    <%= f.date_field :last_seen_date ,label: "#{t('last_seen_date')}"%>
   </div>
 </div>
   <%= f.fields_for :employer do |ff| %>
@@ -45,8 +45,8 @@
   <%end%>
 <div class="row">
   <div class="col-md-8">
-    <%= f.text_area :description, rows: 10 %>
+    <%= f.text_area :description,rows: 10, label:"#{t('description')}" %>
   </div>
 </div>
-  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= submit_tag "#{t('save')}", class: 'btn btn-primary' %>
 <% end %>

@@ -23,8 +23,8 @@
         <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
-            <li><%= link_to 'Edit', edit_user_path(user) %></li>
-            <li><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } unless (current_user.eql? user) || (user.is_primary) %></li>
+            <li><%= link_to "#{t('edit')}", edit_user_path(user) %></li>
+            <li><%= link_to "#{t('destroy')}", user, method: :delete, data: { confirm: 'Are you sure?' } unless (current_user.eql? user) || (user.is_primary) %></li>
           </ul>
         </div>
       </td>

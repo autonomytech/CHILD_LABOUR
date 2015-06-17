@@ -1,18 +1,17 @@
 <table id="datatable" class="table table-striped table-hover">
   <thead>
     <tr>
-      <th></th>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Raid for</th>
-      <th>Location</th>
-      <th>Child Labour</th>
-      <th>Child Begger</th>
+      <th><%=t('action')%></th>
+      <th><%=t('id')%></th>
+      <th><%=t('title')%></th>
+      <th><%=t('name')%></th>
+      <th><%=t('role')%></th>
+      <th><%=t('department')%></th>
+      <th><%=t('designation')%></th>
+     <th><%=t('email')%></th>
+      <th><%=t('attained_raid')%></th>
     </tr>
   </thead>
-
   <tbody>
     <% @raids.each do |raid| %>
       <tr>
