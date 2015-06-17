@@ -16,13 +16,11 @@
   <div class="col-md-10">
   <table class="table table-striped table-hover table-bordered">
   <thead>
-    <tr>
-      <th>Sr. No.</th>
-      <th>Year</th>
-      <th>Total FIR</th>
-      <th>Victam in jail</th>
-      <th>Free child labour </th>
-    </tr>
+      <th><%=t('sr_no')%></th>
+      <th><%=t('year')%></th>
+      <th><%=t('total_fir')%></th>
+      <th><%=t('victam_in_jail')%></th>
+      <th><%=t('free_child_labour')%> </th>
   </thead>
   <tbody>
   	<% @years.each_with_index do |year, i|%>

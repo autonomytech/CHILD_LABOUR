@@ -1,10 +1,10 @@
 <%= bootstrap_form_for(@employer) do |f| %>
-  <%= f.text_field :first_name %>
-  <%= f.text_field :middle_name %>
-  <%= f.text_field :last_name %>
-  <%= f.text_field :contact_no %>
+  <%= f.text_field :first_name ,label:"#{t('first_name')}",placeholder:"#{t('first_name')}"%>
+  <%= f.text_field :middle_name ,label:"#{t('middle_name')}",placeholder:"#{t('middle_name')}"%>
+  <%= f.text_field :last_name ,label:"#{t('last_name')}",placeholder:"#{t('last_name')}"%>
+  <%= f.text_field :contact_no ,label:"#{t('contact_no')}",placeholder:"#{t('contact_no')}"%>
   <%= f.fields_for :addresses do |ff|%>
     <%= render 'addresses_form', f: ff %>
   <%end%>
-  <%= f.submit 'Save', class: 'btn btn-primary'%>
+  <%= submit_tag "#{t('save')}", class: 'btn btn-primary'%>
 <% end %>

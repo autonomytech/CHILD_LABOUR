@@ -33,3 +33,24 @@ function child_begger_year_wise_report(){
   var y = { year: $('#date_year').val()};
   $.get('/reports/child_begger_year_wise_report',y, function(){});
 }
+
+function selectAll(){
+   $('.check_box').prop('checked', true);
+  }
+  function unselectAll(){
+   $('.check_box').prop('checked', false);
+  }
+
+  function getval(){
+     var checkboxes = document.getElementsByName('child');    
+     var checkboxesChecked = [];
+  // loop over them all
+  for (var i=0; i<checkboxes.length; i++) {
+     // And stick the checked ones onto an array...
+     if (checkboxes[i].checked) {
+        checkboxesChecked.push(checkboxes[i].value);
+     }
+   }
+     window.open('/reports/get_child_labour?childs='+checkboxesChecked);
+  }
+  

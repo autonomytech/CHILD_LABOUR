@@ -17,16 +17,16 @@
   <% @childs.each do |child| %>
     <div class="row reports">
       <div class="col-md-9">
-      <p>Police station, mumbai  <b><%= child.raid.department%></b></p>
+      <p><%=t('police_station')%> :  <b><%= child.raid.department%></b></p>
       </div>
       <div class="col-md-3">
-      <p>Date: <b><%= child.raid.datetime.strftime("%d, %B %Y")%></b></p>
+      <p><%=t('date')%> :  <b><%= child.raid.datetime.strftime("%d, %B %Y")%></b></p>
       </div>
     </div>
     <div class="row reports">
       <div class="col-md-12">
-      <p>Child name: <b><%= child.full_name.upcase %></b> father name <b><%= child.father_name.upcase %></b> mother name <b><%= child.mother_name.upcase %></b> age <b><%= child.age %></b> gender <b><%= child.gender %></b> Address: <b><%= child.address.upcase %></b></p>
-      <p>Employer name: <b><%= child.raid.employer_name.upcase %></b> address <b><%= child.raid.employer_address.upcase %></b></p>
+      <p><%=t('child_labour_name')%> : <b><%= child.full_name.upcase %><br>  </b><%=t('father_name')%> :  <b>  <%= child.father_name.upcase %> <br> </b><%=t('mother_name')%> :  <b>  <%= child.mother_name.upcase %>  , </b> <%=t('age')%> :  <b><%= child.age %>  ,  </b>  <%=t('gender')%> :  <b>  <%= child.gender %>  <br> </b><%=t('address')%> : <b><%= child.address.upcase %> </b></p>  
+      <p><%=t('employer_name')%> :  <b>  <%= child.raid.employer_name.upcase %> <br> </b> <%=t('address')%> : <b>  <%= child.raid.employer_address.upcase %></b></p>
       </div>
     </div>
     <div class="row reports">
@@ -34,9 +34,9 @@
         <table class="table table-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th>Sr. No.</th>
-            <th>Question</th>
-            <th>Answer</th>
+            <th><%=t('sr_no')%></th>
+            <th><%=t('question')%></th>
+            <th><%=t('answer')%></th>
           </tr>
         </thead>
         <tbody>

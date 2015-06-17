@@ -24,8 +24,8 @@
           <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
-            <li><%= link_to 'Edit', edit_raid_child_begger_path(child_begger.raid, child_begger) %></li>
-            <li><%= link_to 'Destroy', [child_begger.raid,child_begger], method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to "#{t('edit')}", edit_raid_child_begger_path(child_begger.raid, child_begger) %></li>
+            <li><%= link_to "#{t('destroy')}", [child_begger.raid,child_begger], method: :delete, data: { confirm: 'Are you sure?' } %></li>
           </ul>
           </div>
         </td>
