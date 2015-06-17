@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514160410) do
+ActiveRecord::Schema.define(version: 20150616165548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "law_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "acts", ["law_id"], name: "index_acts_on_law_id", using: :btree
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address_line_1"
@@ -44,6 +53,22 @@ ActiveRecord::Schema.define(version: 20150514160410) do
   add_index "answers", ["child_id"], name: "index_answers_on_child_id", using: :btree
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
+  create_table "attachments", force: :cascade do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "raid_id"
+    t.integer  "child_id"
+    t.integer  "employer_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "attachments", ["child_id"], name: "index_attachments_on_child_id", using: :btree
+  add_index "attachments", ["employer_id"], name: "index_attachments_on_employer_id", using: :btree
+  add_index "attachments", ["raid_id"], name: "index_attachments_on_raid_id", using: :btree
+
   create_table "children", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -59,6 +84,8 @@ ActiveRecord::Schema.define(version: 20150514160410) do
     t.string   "submited_by"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "pet_name"
+    t.string   "mother_tongue"
   end
 
   add_index "children", ["employer_id"], name: "index_children_on_employer_id", using: :btree
@@ -108,6 +135,17 @@ ActiveRecord::Schema.define(version: 20150514160410) do
 
   add_index "departments", ["location_id"], name: "index_departments_on_location_id", using: :btree
 
+  create_table "employer_sections", force: :cascade do |t|
+    t.string   "laws"
+    t.string   "acts"
+    t.string   "sections"
+    t.integer  "employer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "employer_sections", ["employer_id"], name: "index_employer_sections_on_employer_id", using: :btree
+
   create_table "employers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "middle_name"
@@ -120,6 +158,12 @@ ActiveRecord::Schema.define(version: 20150514160410) do
   end
 
   add_index "employers", ["raid_id"], name: "index_employers_on_raid_id", using: :btree
+
+  create_table "laws", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -153,6 +197,15 @@ ActiveRecord::Schema.define(version: 20150514160410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "act_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sections", ["act_id"], name: "index_sections_on_act_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "title"
@@ -195,20 +248,26 @@ ActiveRecord::Schema.define(version: 20150514160410) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "acts", "laws"
   add_foreign_key "addresses", "children"
   add_foreign_key "addresses", "employers"
   add_foreign_key "addresses", "raids"
   add_foreign_key "answers", "children"
   add_foreign_key "answers", "questions"
+  add_foreign_key "attachments", "children"
+  add_foreign_key "attachments", "employers"
+  add_foreign_key "attachments", "raids"
   add_foreign_key "children", "employers"
   add_foreign_key "children", "raids"
   add_foreign_key "community_farms", "departments"
   add_foreign_key "community_farms", "raids"
   add_foreign_key "complaints", "employers"
   add_foreign_key "departments", "locations"
+  add_foreign_key "employer_sections", "employers"
   add_foreign_key "employers", "raids"
   add_foreign_key "raids", "complaints"
   add_foreign_key "raids", "locations"
+  add_foreign_key "sections", "acts"
   add_foreign_key "users", "communities"
   add_foreign_key "users", "departments"
   add_foreign_key "users", "roles"

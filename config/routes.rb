@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :dashboard
+  resources :dashboard do
+    collection do
+      get :attachments
+    end
+  end
 
   resources :answers
 

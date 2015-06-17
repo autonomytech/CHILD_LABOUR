@@ -3,6 +3,8 @@ class Employer < ActiveRecord::Base
   has_many :addresses
   belongs_to :raid
   has_many :complaints
+  has_many :attachments
+  has_many :employer_sections
   accepts_nested_attributes_for :addresses
 
   validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \

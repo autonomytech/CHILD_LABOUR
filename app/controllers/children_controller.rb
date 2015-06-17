@@ -15,6 +15,7 @@ class ChildrenController < ApplicationController
     @child.employer_id = @raid.employers.first.id if @raid.employers.first
     @child.submited_by = current_user.id
     if @child.save
+      create_files(params[:files])
       flash[:notice] = 'Child was successfully created.'
       return redirect_to new_raid_child_path(@raid) \
       if params[:commit].eql? SAVE_NEXT
@@ -32,6 +33,7 @@ class ChildrenController < ApplicationController
     @child.addresses.destroy_all
     if @child.update(child_update_params)
       update_answers(answers_attributes)
+      create_files(params[:files])
       flash[:notice] = 'Child was successfully updated.'
       redirect_to_child(@child)
     else
@@ -45,6 +47,11 @@ class ChildrenController < ApplicationController
       next if ans.answer.eql? v[:answer]
       ans.update(answer: v[:answer])
     end
+  end
+
+  def create_files(files)
+    return unless files
+    files.each { |file| @child.attachments.create(file: file) }
   end
 
   def redirect_to_child(child)
@@ -76,7 +83,7 @@ class ChildrenController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def child_params
     params.require(:child).permit(:first_name, :last_name, :father_name, :mother_name\
-      , :gender, :age, :description, :submited_by, :employer_id, :is_child_begger\
+      , :gender, :age, :pet_name, :mother_tongue, :description, :submited_by, :employer_id, :is_child_begger\
       , answers_attributes: [:answer, :question_id]\
       , addresses_attributes: [:address_line_1, :address_line_2\
       , :city, :state, :pincode])
@@ -84,9 +91,8 @@ class ChildrenController < ApplicationController
 
   def child_update_params
     params.require(:child).permit(:first_name, :last_name, :father_name, :mother_name\
-      , :gender, :age, :description, :submited_by, :employer_id, :is_child_begger\
+      , :gender, :age, :pet_name, :mother_tongue, :description, :submited_by, :employer_id, :is_child_begger\
       , addresses_attributes: [:address_line_1, :address_line_2\
       , :city, :state, :pincode])
-
   end
 end

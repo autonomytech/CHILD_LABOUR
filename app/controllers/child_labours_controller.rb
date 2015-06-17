@@ -26,6 +26,7 @@ class ChildLaboursController < ApplicationController
     @questions = Question.all
     @child.answers.build
     @child.addresses.build
+    @child.attachments.build
   end
 
   # GET /child_labours/1/edit

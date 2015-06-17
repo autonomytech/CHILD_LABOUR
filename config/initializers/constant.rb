@@ -4,3 +4,4 @@ CHILD_BEGGER = 'Child Begger'
 CHILD_LABOUR = 'Child Labour'
 SAVE_NEXT = 'Save and Next'
 FINISH = 'Finish'
+IMAGE_CONTENT_TYPE = %w(image/jpeg)

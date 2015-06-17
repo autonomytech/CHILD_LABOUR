@@ -1,4 +1,5 @@
-<%= bootstrap_form_for(@employer) do |f| %>
+<%= bootstrap_form_for(@employer, :html => {:multipart => true}) do |f| %>
+  <div class="col-md-5">
   <%= f.text_field :first_name ,label:"#{t('first_name')}",placeholder:"#{t('first_name')}"%>
   <%= f.text_field :middle_name ,label:"#{t('middle_name')}",placeholder:"#{t('middle_name')}"%>
   <%= f.text_field :last_name ,label:"#{t('last_name')}",placeholder:"#{t('last_name')}"%>
@@ -6,5 +7,55 @@
   <%= f.fields_for :addresses do |ff|%>
     <%= render 'addresses_form', f: ff %>
   <%end%>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.label :laws %><br/>
+      <% @laws.each do |law| %>
+        <% is_checked = law_checked(law.id) %>
+        <%= check_box_tag "laws[]", law.id, is_checked, {class: "law_#{law.id} #{is_checked ? 'checked' : ''}", onchange: "show_hidden_data(#{law.id}, #{law.act_ids}, 'law', #{law.section_ids})"} %> <%= law.name %><br/>
+        <div class="law_data_<%= law.id %> <%= is_checked ? '' : 'hidden'%> ">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <%= f.label :acts %><br/>
+          <% law.acts.each do |act| %>
+            <% is_checked = act_checked(act.id) %>
+            <%= check_box_tag "acts[]", act.id, is_checked, {class: "act_#{act.id} #{is_checked ? 'checked' : ''}", onchange: "show_hidden_data(#{act.id}, #{act.section_ids})"} %> <%= act.name %><br/>
+            <div class="act_data_<%= act.id %> <%= is_checked ? '' : 'hidden'%>">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+              <%= f.label :sections %><br/>
+              <% act.sections.each do |section| %>
+                <% is_checked = section_checked(section.id) %>
+                <%= check_box_tag "sections[]", section.id, is_checked, {class: "section_#{section.id} #{is_checked ? 'checked' : ''}"} %> <%= section.name %><br/>
+              <%end%>
+            </div>
+            </div>
+          <%end%>
+        </div>
+        </div>
+      <%end%>
+    </div>
+  </div><br/>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.label :attachments %>
+    </div>
+    <div class="col-md-9">
+      <%= link_to 'Add files', attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
+    </div>
+    <div class="col-md-12">
+      <div class="attachment">
+        <% unless @employer.new_record? %>
+          <% @employer.attachments.each do |attachment|%>
+            <% if IMAGE_CONTENT_TYPE.include? attachment.file_content_type %>
+              <%= image_tag "#{attachment.file.url}", width: 200, height:200 %><br/>
+            <%end%>
+            <%= link_to attachment.file_file_name, attachment.file.url, target: '_blank' %><br/>
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <%= submit_tag "#{t('save')}", class: 'btn btn-primary'%>
 <% end %>
