@@ -50,4 +50,22 @@ module ApplicationHelper
     end
     [name, age]
   end
+
+  def law_checked(id)
+    emp_sec = @employer.employer_sections.first
+    return false unless emp_sec
+    emp_sec.laws.split(', ').include? id.to_s
+  end
+
+  def act_checked(id)
+    emp_sec = @employer.employer_sections.first
+    return false unless emp_sec
+    emp_sec.acts.split(', ').include? id.to_s
+  end
+
+  def section_checked(id)
+    emp_sec = @employer.employer_sections.first
+    return false unless emp_sec
+    emp_sec.sections.split(', ').include? id.to_s
+  end
 end

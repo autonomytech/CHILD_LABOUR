@@ -30,12 +30,19 @@
   </div>
   </div>
   <div class="row">
-  <div class="col-md-1"></div>
   <div class="col-md-6">
   <%= label_tag :gender %>
   <div class="row form-inline">
   <div class="col-md-2"><%= f.radio_button :gender, "Male", checked: true%> <%= label_tag :male %></div>
   <div class="col-md-2"><%= f.radio_button :gender, "Female"%> <%= label_tag :female %></div></div>
+  </div>
+  </div><br/>
+  <div class="row">
+  <div class="col-md-3">
+    <%= f.text_field :pet_name%>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :mother_tongue%>
   </div>
   </div>
   <div class="row">
@@ -100,3 +107,23 @@
     </div>
   </div>
   <% end %>
+  <div class="row">
+    <div class="col-md-1">
+      <%= f.label :attachments, :class => 'control-label' %>
+    </div>
+    <div class="col-md-11">
+      <%= link_to 'Add files', attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
+    </div>
+    <div class="col-md-12">
+      <div class="attachment">
+        <% unless @child.new_record? %>
+          <% @child.attachments.each do |attachment|%>
+            <% if IMAGE_CONTENT_TYPE.include? attachment.file_content_type %>
+              <%= image_tag "#{attachment.file.url}", width: 200, height: 200 %><br/>
+            <%end%>
+            <%= link_to attachment.file_file_name, attachment.file.url, target: '_blank' %><br/>
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+  </div>

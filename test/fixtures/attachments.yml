@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file: 
+  raid_id: 
+  child_id: 
+  employer_id: 
+
+two:
+  file: 
+  raid_id: 
+  child_id: 
+  employer_id: 

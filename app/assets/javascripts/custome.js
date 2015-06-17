@@ -33,3 +33,34 @@ function child_begger_year_wise_report(){
   var y = { year: $('#date_year').val()};
   $.get('/reports/child_begger_year_wise_report',y, function(){});
 }
+
+function show_hidden_data(id, array, type, arrays){
+  if(type == 'law'){
+    if($('.law_' + id).hasClass('checked')){
+      $('.law_' + id).removeClass('checked');
+      $('.law_data_' + id).addClass('hidden');
+      array.forEach(function(i) {
+        $('.act_' + i).prop('checked', false);
+        $('.act_' + i).removeClass('checked');
+        $('.act_data_' + i).addClass('hidden');
+      });
+      arrays.forEach(function(j) {
+        $('.section_' + j).prop('checked', false);
+      });
+    }else{
+      $('.law_' + id).addClass('checked')
+      $('.law_data_' + id).removeClass('hidden');
+    }
+  }else{
+    if($('.act_' + id).hasClass('checked')){
+      $('.act_' + id).removeClass('checked');
+      $('.act_data_' + id).addClass('hidden');
+      array.forEach(function(i) {
+        $('.section_' + i).prop('checked', false);
+      });
+    }else{
+      $('.act_' + id).addClass('checked')
+      $('.act_data_' + id).removeClass('hidden');
+    }
+  }
+}

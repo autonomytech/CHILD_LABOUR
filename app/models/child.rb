@@ -3,6 +3,7 @@ class Child < ActiveRecord::Base
   belongs_to :raid
   has_many :answers
   has_many :addresses
+  has_many :attachments
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses
   validates_presence_of :first_name, :last_name, :age, :father_name\
