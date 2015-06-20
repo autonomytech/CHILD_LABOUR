@@ -44,7 +44,7 @@ class ComplaintsController < ApplicationController
 
   def create_raid(complaint)
     raid = Raid.new
-    raid.title = "Raid-#{complaint.id}"
+    raid.title = "छापा & #{complaint.id}"
     raid.description = complaint.description
     raid.raid_for = complaint.subject
     raid.datetime = Date.today.to_date
@@ -56,10 +56,10 @@ class ComplaintsController < ApplicationController
   end
 
   def location_for_raid(area)
-    location = Location.where(name: area.capitalize).take
+    location = Location.where(name: area).take
     return location.id if location
-    location = Location.create(name: area.capitalize)
-    Department.create(name: "#{area.capitalize} Police Station"\
+    location = Location.create(name: area)
+    Department.create(name: "#{area} पोलिस स्टेशन"\
       , location_id: location.id)
     location.id
   end

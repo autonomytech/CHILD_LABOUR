@@ -1,20 +1,20 @@
 <%= bootstrap_form_for(@raid) do |f| %>
 <div class="row">
   <div class="col-md-5">
-    <%= f.text_field :title, disabled: true %>
-    <%= f.text_field :raid_for, disabled: true %>
-    <%= f.text_field :location_name, disabled: true %>
+    <%= f.text_field :title, disabled: true, label: "#{t('title')}" %>
+    <%= f.text_field :raid_for, disabled: true, label: "#{t('raid_for')}"%>
+    <%= f.text_field :location_name, disabled: true, label: "#{t('location')}" %>
   </div>
 </div>
-<div class="row form-inline">
+<div class="row form-inline en">
   <div class="col-md-6">
-    <%= f.datetime_select :datetime, class: 'en' %>
+    <%= f.datetime_select :datetime, label: "#{t('datetime')}" %>
   </div>
 </div><br/>
 <div class="row">
   <div class="col-md-8">
-    <%= f.text_area :description, rows: 10 %>
+    <%= f.text_area :description, label: "#{t('description')}", placeholder: "#{t('description')}", rows: 10 %>
   </div>
 </div>
-  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= f.submit "#{t('save')}", class: 'btn btn-primary' %>
 <% end %>

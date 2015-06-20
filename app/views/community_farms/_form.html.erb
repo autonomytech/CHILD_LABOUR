@@ -11,6 +11,9 @@
 <script type="text/javascript">
   $(document).ready(function() {
       $("#involve_member").tokenInput("/users.json", 
-        {propertyToSearch: "full_name"});
+        {propertyToSearch: "full_name",
+         hintText: "शोधण्यासाठी टाइप करा",
+         noResultsText: "कोणतेही रेकॉर्ड आढळले नाही",
+         searchingText: "शोधत आहे..."});
   });
 </script>

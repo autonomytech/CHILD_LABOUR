@@ -61,7 +61,7 @@ mr:
   write_answer_of_questions: 'मुला संबंधित प्रश्न आणि उत्तरे'
   question: 'प्रश्न'
   answer: 'उत्तर'
-  description: 'वर्णन'
+  description: 'तपशील'
   edit: 'संपादित करा'
   destroy: 'नष्ट करा'
   sr_no: 'सिरीयल क्रमांक'
@@ -106,6 +106,13 @@ mr:
   log_out: 'लॉग आउट'
   mail_info: 'तुम्ही आयसीएल प्लॅटफॉर्म संबंधित माहिती सदस्यता घेतली आहेत कारण आपण या ईमेल प्राप्त होत आहे.'
   warning: 'कृपया या ईमेल प्रत्युत्तर देऊ नका'
+  datetime: 'तारीख आणि वेळ'
+
+  date:
+    order:
+      - :day
+      - :month
+      - :year
 
   activerecord:
     errors:
