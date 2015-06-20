@@ -4,19 +4,18 @@ class Complaint < ActiveRecord::Base
   accepts_nested_attributes_for :employer
   
   validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z
+  { with: /\A[a-zA-Z_" "-]+\Z/ }
     
    validates :middle_name, length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/}, allow_blank: true
+  { with: /\A[a-zA-Z_" "-]+\Z/}
 
    validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
   { with: /\A[a-zA-Z_" "-]+\Z/}
 
   validates :contact_no, presence: true, numericality: { only_integer: true }, length: \
-  { minimum: 10, maximum: 10 }
+  { is: 10}
 
+  validates :email, presence: true,uniqueness: true, format: \
+  { with: /\A[a-zA-Z0-9._-]+@([a-zA-Z0-9]+\.)+[a-zA-Z]{2,4}+\z/ }
 
-
-  
-  validates :contact_no, numericality: true, length: { is: 10 }
 end
