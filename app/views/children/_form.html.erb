@@ -14,19 +14,19 @@
   </div><br/>
   <div class="row">
   <div class="col-md-4">
-    <%= f.text_field :first_name,label:"#{t('first_name')}"%>
+    <%= f.text_field :first_name,label:"#{t('first_name')}",placeholder:"#{t('first_name')}"%>
   </div>
   <div class="col-md-4">
-    <%= f.text_field :last_name,label:"#{t('last_name')}"%>
+    <%= f.text_field :last_name,label:"#{t('last_name')}",placeholder:"#{t('last_name')}"%>
   </div>
-  <div class="col-md-2"><%= f.number_field :age,label:"#{t('age')}" %></div>
+  <div class="col-md-2"><%= f.number_field :age,label:"#{t('age')}",placeholder:"#{t('age')}"%></div>
   </div>
   <div class="row">
   <div class="col-md-4">
-    <%= f.text_field :father_name,label:"#{t('father_name')}" %>
+    <%= f.text_field :father_name,label:"#{t('father_name')}" ,placeholder:"#{t('father_name')}"%>
   </div>
   <div class="col-md-4">
-    <%= f.text_field :mother_name ,label:"#{t('mother_name')}"%>
+    <%= f.text_field :mother_name ,label:"#{t('mother_name')}",placeholder:"#{t('mother_name')}"%>
   </div>
   </div>
   <div class="row">
@@ -39,10 +39,10 @@
   </div><br/>
   <div class="row">
   <div class="col-md-3">
-    <%= f.text_field :pet_name,label:"#{t('pet_name')}"%>
+    <%= f.text_field :pet_name,label:"#{t('pet_name')}",placeholder:"#{t('pet_name')}"%>
   </div>
   <div class="col-md-3">
-    <%= f.text_field :mother_tongue,label:"#{t('mother_tongue')}"%>
+    <%= f.text_field :mother_tongue,label:"#{t('mother_tongue')}",placeholder:"#{t('mother_tongue')}"%>
   </div>
   </div>
   <div class="row">
@@ -76,7 +76,7 @@
             </div>
           </div>
           <% else %>
-            <%= fa.text_field :answer %>
+            <%= fa.text_field :answer ,label:"#{t('answer')}",placeholder:"#{t('answer')}"%>
           <%end%>
         </div>
       </div>
@@ -90,14 +90,14 @@
         </div>
         <div class="col-md-3">
           <%= fa.hidden_field :id %>
-          <%= fa.text_field :answer,label:"#{t('answer')}" %>
+          <%= fa.text_field :answer,label:"#{t('answer')}",placeholder:"#{t('answer')}" %>
         </div>
       </div>
     <%end%>
   <% end %>
   <div class="row">
     <div class="col-md-8">
-      <%= f.text_area :description, rows: 10,label:"#{t('description')}"%>
+      <%= f.text_area :description, rows: 10,label:"#{t('description')}",placeholder:"#{t('description')}"%>
     </div>
   </div>
   <% unless @child.id.blank? %>
