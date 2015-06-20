@@ -4,13 +4,13 @@ class Complaint < ActiveRecord::Base
   accepts_nested_attributes_for :employer
   
   validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }
-
+  { with: /\A[a-zA-Z_" "-]+\Z
+    
    validates :middle_name, length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }, allow_blank: true
+  { with: /\A[a-zA-Z_" "-]+\Z/}, allow_blank: true
 
    validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }
+  { with: /\A[a-zA-Z_" "-]+\Z/}
 
   validates :contact_no, presence: true, numericality: { only_integer: true }, length: \
   { minimum: 10, maximum: 10 }

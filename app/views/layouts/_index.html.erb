@@ -11,13 +11,13 @@
         <li>
         <a href="#", class="dropdown-toggle", data-toggle= "dropdown"><i class="fa fa-user icon-white"> <%= current_user.email %></i> <i class="fa fa-angle-down"></i></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Profile", user_path(current_user)%></li>
+            <li><%= link_to "#{t('profile')}", user_path(current_user)%></li>
             <li class="divider"></li>
-            <li><%= link_to "Change Info", edit_user_path(current_user)%></li>
+            <li><%= link_to "#{t('change_info')}", edit_user_path(current_user)%></li>
           </ul>
         </li>
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i><%=t('लॉग आउट')%><%end%>
+          <i class="fa fa-sign-out"></i><%=t('log_out')%><%end%>
         </li>
       </ul>
     </div>
@@ -57,8 +57,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        &copy; 2015 <%= link_to 'Humanity. ','#'%>
-        <%= link_to 'All Rights Reserved.', '#'%>
+         2015 <%= link_to"#{t('pilmted')}",'#'%>  A 
+        <%= link_to "#{t('all_right_reserved')}",'#'%>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <%= f.label :laws %><br/>
+      <%= f.label "#{t('laws')}" %><br/>
       <% @laws.each do |law| %>
         <% is_checked = law_checked(law.id) %>
         <%= check_box_tag "laws[]", law.id, is_checked, {class: "law_#{law.id} #{is_checked ? 'checked' : ''}", onchange: "show_hidden_data(#{law.id}, #{law.act_ids}, 'law', #{law.section_ids})"} %> <%= law.name %><br/>
@@ -39,10 +39,10 @@
   </div><br/>
   <div class="row">
     <div class="col-md-3">
-      <%= f.label :attachments %>
+      <%= f.label "#{t('attachment')}" %>
     </div>
     <div class="col-md-9">
-      <%= link_to 'Add files', attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
+      <%= link_to "#{t('add_file')}", attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
     </div>
     <div class="col-md-12">
       <div class="attachment">

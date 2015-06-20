@@ -5,8 +5,8 @@
 			<% if @raid.child_begger? %>
 			<%= f.hidden_field :is_child_begger, value: true%>
 			<%end%>
-			<%= f.submit 'Save and Next', class: 'btn btn-primary' %>
-			<%= f.submit 'Finish', class: 'btn btn-primary' %>
+			<%= submit_tag "#{t('save_and_next')}", class: 'btn btn-primary' %>
+			<%= submit_tag "#{t('finish')}", class: 'btn btn-primary' %>
 		<%end%>
 	</div>
 </div>

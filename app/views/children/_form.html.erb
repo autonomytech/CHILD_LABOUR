@@ -39,10 +39,10 @@
   </div><br/>
   <div class="row">
   <div class="col-md-3">
-    <%= f.text_field :pet_name%>
+    <%= f.text_field :pet_name,label:"#{t('pet_name')}"%>
   </div>
   <div class="col-md-3">
-    <%= f.text_field :mother_tongue%>
+    <%= f.text_field :mother_tongue,label:"#{t('mother_tongue')}"%>
   </div>
   </div>
   <div class="row">
@@ -109,10 +109,10 @@
   <% end %>
   <div class="row">
     <div class="col-md-1">
-      <%= f.label :attachments, :class => 'control-label' %>
+      <%= f.label :attachments,label:"#{t('attachment')}",:class => 'control-label' %>
     </div>
     <div class="col-md-11">
-      <%= link_to 'Add files', attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
+      <%= link_to "#{t('add_file')}", attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
     </div>
     <div class="col-md-12">
       <div class="attachment">
