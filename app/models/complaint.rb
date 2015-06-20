@@ -3,14 +3,11 @@ class Complaint < ActiveRecord::Base
   has_many :raids
   accepts_nested_attributes_for :employer
   
-  validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/ }
+  validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }
     
-   validates :middle_name, length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/}
+   validates :middle_name, length: { minimum: 1, maximum: 20 }
 
-   validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/}
+   validates :last_name,presence: true,length: { minimum: 1, maximum: 20}
 
   validates :contact_no, presence: true, numericality: { only_integer: true }, length: \
   { is: 10}

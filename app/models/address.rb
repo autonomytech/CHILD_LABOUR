@@ -8,13 +8,11 @@ class Address < ActiveRecord::Base
 
   validates :address_line_2,length: { minimum: 1, maximum: 150 }
 
-  validates :city, presence: true,length: { minimum: 1, maximum: 30 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/ }
+  validates :city, presence: true,length: { minimum: 1, maximum: 30 }
 
-  validates :state, presence: true,length: { minimum: 1, maximum: 30 }, format: \
-  { with: /\A[a-zA-Z_" "-]+\Z/ }
+  validates :state, presence: true,length: { minimum: 1, maximum: 30 }
 
-   validates :pincode, presence: true, numericality: { only_integer: true }, length: \
-  { is: 6 }
+  validates :pincode, presence: true, numericality: { only_integer: true }, length: \
+  { minimum: 6, maximum: 6}
 
 end
