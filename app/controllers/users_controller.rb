@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         # UserMailer.welcome_email(@user.id, params[:user][:password]).deliver_later
-        format.html { redirect_to users_path, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: USER_CREATE }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: USER_UPDATE }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   def destroy
     @user.update(email: "_deleted_#{@user.email}", is_deleted: true)
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: USER_DELETE }
       format.json { head :no_content }
     end
   end

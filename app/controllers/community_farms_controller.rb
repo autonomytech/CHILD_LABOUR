@@ -45,7 +45,7 @@ class CommunityFarmsController < ApplicationController
         # @community_farm.involve_member.split(',').each do |i|
         #   UserMailer.raid_alert_email(@raid.id, i).deliver_later
         # end
-        format.html { redirect_to dashboard_index_path, notice: 'Community farm was successfully assigned.' }
+        format.html { redirect_to dashboard_index_path, notice: COMMUNITY_ASSIGN }
         format.json { render :show, status: :created, location: @community_farm }
       else
         format.html { render :new }
@@ -62,7 +62,7 @@ class CommunityFarmsController < ApplicationController
         # @community_farm.involve_member.split(',').each do |i|
         #   UserMailer.raid_alert_email(@raid.id, i).deliver_later
         # end
-        format.html { redirect_to new_raid_child_path(@raid), notice: 'Community farm was successfully assigned.' }
+        format.html { redirect_to new_raid_child_path(@raid), notice: COMMUNITY_ASSIGN }
         format.json { render :show, status: :created, location: @community_farm }
       else
         format.html { render :community_farm }
@@ -76,10 +76,7 @@ class CommunityFarmsController < ApplicationController
     @community_farm = @raid.community_farms.find(params[:id])
     respond_to do |format|
       if @community_farm.update(community_farm_params)
-        # @community_farm.involve_member.split(',').each do |i|
-        #   UserMailer.raid_alert_email(@raid.id, i).deliver_later
-        # end
-        format.html { redirect_to dashboard_index_path, notice: 'Community farm was successfully assigned.' }
+        format.html { redirect_to dashboard_index_path, notice: COMMUNITY_ASSIGN }
         format.json { render :show, status: :ok, location: @community_farm }
       else
         format.html { render :edit }
