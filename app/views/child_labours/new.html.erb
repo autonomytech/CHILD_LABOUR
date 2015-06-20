@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<%= bootstrap_form_for [@raid, @child], :html => {:multipart => true} do |f| %>
 		<%= render '/children/form', f:f %>
-		<%= f.submit 'Save', class: 'btn btn-primary' %>
+		<%= submit_tag "#{t('save')}" , class: 'btn btn-primary' %>
 	<%end%>
 	</div>
 </div>

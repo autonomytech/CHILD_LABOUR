@@ -85,3 +85,18 @@ function getval(){
   }
   window.open('/reports/get_child_labour?childs='+checkboxesChecked);
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                e.target.setCustomValidity("हे फील्ड रिक्त सोडले जाऊ शकत नाही");
+            }
+        };
+        elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+    }
+});
