@@ -16,9 +16,13 @@ class Employer < ActiveRecord::Base
   validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }, format: \
   { with: /\A[a-zA-Z_" "-]+\Z/, message: 'allows only letters' }
 
+ 
+
   validates_presence_of :first_name, :last_name, :contact_no
 
   validates :contact_no, presence: true, numericality: true, length: { is: 10 }
+
+
 
 
   def full_name

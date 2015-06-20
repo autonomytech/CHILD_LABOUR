@@ -102,3 +102,43 @@ mr:
   log_out: 'लॉग आउट'
   mail_info: 'तुम्ही आयसीएल प्लॅटफॉर्म संबंधित माहिती सदस्यता घेतली आहेत कारण आपण या ईमेल प्राप्त होत आहे.'
   warning: 'कृपया या ईमेल प्रत्युत्तर देऊ नका'
+
+  activerecord:
+    errors:
+      models:
+        complaint:
+          attributes:
+            first_name:
+              invalid: 'प्रथम नाव अवैध आहे'
+            middle_name:
+              invalid: 'मधले नाव अवैध आहे' 
+            last_name:
+              invalid: 'आडनाव अवैध आहे' 
+            contact_no:
+              not_a_number: 'संपर्क क्रमांक केवळ संख्या परवानगी देताे' 
+              too_short: 'संपर्क क्रमांक  खूप लहान आहे' 
+              wrong_length: 'संपर्क क्रमांक चुकीचि लांबी'
+            email:
+              invalid: 'ईमेल अवैध आहे'
+        employer:
+          attributes:
+            contact_no:
+              not_a_number: 'संपर्क क्रमांक केवळ संख्या परवानगी देताे' 
+              too_short: 'संपर्क क्रमांक  खूप लहान आहे' 
+              wrong_length: 'संपर्क क्रमांक चुकीचि लांबी'   
+            first_name:
+              invalid: 'प्रथम नाव अवैध आहे'
+            middle_name:
+              invalid: 'मधले नाव अवैध आहे' 
+            last_name:
+              invalid: 'आडनाव अवैध आहे' 
+        address:
+          attributes:
+            city:
+              invalid: 'शहर अवैध आहे' 
+            state:
+              invalid: 'राज्य अवैध आहे'
+            pincode:
+              wrong_length: 'पिन कोड अवैध आहे'
+              not_a_number: 'पिन कोड केवळ संख्या परवानगी आहे'    
+
