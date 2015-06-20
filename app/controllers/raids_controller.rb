@@ -1,7 +1,7 @@
 class RaidsController < ApplicationController
   # load_and_authorize_resource
-  add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Raid Schedule', :edit_raid_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
+  add_breadcrumb 'छाप्याचे वेळापत्रक', :edit_raid_path
   before_action :set_raid, only: [:show, :edit, :update, :destroy]
 
   # GET /raids

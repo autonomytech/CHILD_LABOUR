@@ -1,28 +1,28 @@
 class ReportsController < ApplicationController
-  add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Reports', :reports_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
+  add_breadcrumb 'अहवाल', :reports_path
 
   def child_labours
     @raid = Raid.find(params[:id])
     @child_labours = @raid.childlabours
-    add_breadcrumb 'Child Labours'
+    add_breadcrumb 'बाल कामगार'
   end
 
   def child_beggers
     @raid = Raid.find(params[:id])
     @child_beggers = @raid.childbeggers
-    add_breadcrumb 'Child Begger'
+    add_breadcrumb 'बाल भिकारी'
   end
 
   def panchnama
     @child_labour = Child.find(params[:id])
     @raid = @child_labour.raid
-    add_breadcrumb 'Panchnama'
+    add_breadcrumb 'पंचनामा'
   end
 
   def child_labour_years
     @years = Raid.child_labours_years
-    add_breadcrumb 'Year Wise Reports'
+    add_breadcrumb 'वर्ष नुसार अहवाल'
   end
 
   def child_labour_year_wise_report
@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
 
   def child_begger_years
     @years = Raid.child_beggers_years
-    add_breadcrumb 'Year Wise Reports'
+    add_breadcrumb 'वर्ष नुसार अहवाल'
   end
 
   def child_begger_year_wise_report
@@ -43,13 +43,13 @@ class ReportsController < ApplicationController
   def all_over_child_labours
     @raids = Raid.where(raid_for: CHILD_LABOUR)
     @years = Raid.child_labours_years
-    add_breadcrumb 'All over report'
+    add_breadcrumb 'एकूण सर्व अहवाल'
   end
 
   def all_over_child_beggers
     @raids = Raid.where(raid_for: CHILD_BEGGER)
     @years = Raid.child_beggers_years
-    add_breadcrumb 'All over report'
+    add_breadcrumb 'एकूण सर्व अहवाल'
   end
 
   def download_pdf

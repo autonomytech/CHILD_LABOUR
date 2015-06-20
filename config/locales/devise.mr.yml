@@ -1,0 +1,58 @@
+mr:
+  devise:
+    confirmations:
+      confirmed: "आपला ईमेल पत्ता यशस्वीरित्या पुष्टी केली गेली आहे-"
+      send_instructions: "आपण काही मिनिटांनी आपल्या ईमेल पत्त्याची पुष्टी कशी सूचनांसह ईमेल प्राप्त होईल-"
+      send_paranoid_instructions: "आपला ई-मेल पत्ता आमच्या डेटाबेस अस्तित्वात असेल] तर आपण काही मिनिटांनी आपल्या ईमेल पत्त्याची पुष्टी कशी सूचनांसह ईमेल प्राप्त होईल-"
+    failure:
+      already_authenticated: "आपण आधीपासून साइन इन केलेले आहे-"
+      inactive: "आपले खाते अद्याप सक्रिय नाही-"
+      invalid: "अवैध वापरकर्ता नाव किंवा संकेतशब्द-"
+      locked: "आपले खाते लॉक केले आहे-"
+      last_attempt: "आपले खाते लॉक केले आहे करण्यापूर्वी आपल्याला एक आणखी एक प्रयत्न आहे-"
+      not_found_in_database: "अवैध वापरकर्ता नाव किंवा संकेतशब्द-"
+      timeout: "आपले सत्र कालबाह्य झाले- सुरू ठेवण्यासाठी पुन्हा साइन इन करा-"
+      unauthenticated: "साइन इन करता किंवा साइन अप करणे आवश्यक आहे-"
+      unconfirmed: "आपण सुरू ठेवण्यापूर्वी आपला ईमेल पत्ता निश्चित करणे आवश्यक आहे-"
+    mailer:
+      confirmation_instructions:
+        subject: "पुष्टीकरण सूचना"
+      reset_password_instructions:
+        subject: "पासवर्ड रीसेट करा सूचना"
+      unlock_instructions:
+        subject: "सूचना अनलॉक"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "आपण पासवर्ड रिसेट ई-मेल येत न करता हे पृष्ठ प्रवेश करू शकत नाही . आपण संकेतशब्द रीसेट ई-मेल येतात तर , खात्री आहे की आपण पूर्ण URL प्रदान वापरली करा-"
+      send_instructions: "आपण काही मिनिटांत आपला संकेतशब्द कसा रीसेट करायचा यावर सूचना ईमेल प्राप्त होईल-"
+      send_paranoid_instructions: "आपला ई-मेल पत्ता आमच्या डेटाबेस अस्तित्वात असेल, तर आपण काही मिनिटातच आपला ई-मेल पत्ता येथे एक संकेतशब्द पुनर्प्राप्ती दुवा प्राप्त होईल-"
+      updated: "आपला संकेतशब्द यशस्वीपणे बदलले आहे . आपण आता मध्ये साइन इन केले आहे-"
+      updated_not_active: "आपला संकेतशब्द यशस्वीपणे बदलले आहे-"
+    registrations:
+      destroyed: "-बाय ! आपले खाते यशस्वीरित्या रद्द केली गेली आहे . आम्ही लवकरच पुन्हा भेटण्याची मला आशा आहे."
+      signed_up: "आपले स्वागत आहे! आपण यशस्वीरित्या साइन अप केले आहे-"
+      signed_up_but_inactive: "आपण यशस्वीरित्या साइन अप केले. आपले खाते अद्याप सक्रिय नाही कारण तथापि, आपण साइन इन करू शकत नाही-"
+      signed_up_but_locked: "आपण यशस्वीरित्या साइन अप केले. आपले खाते लॉक केले आहे कारण तथापि, आपण साइन इन करू शकत नाही-"
+      signed_up_but_unconfirmed: "एक पुष्टीकरण दुवा एक संदेश आपला ईमेल पत्त्यावर पाठविण्यात आला आहे . आपले खाते सक्रिय करण्यासाठी दुवा अनुसरण करा-"
+      update_needs_confirmation: "आपण यशस्वीरित्या आपले खाते सुधारित केले आहे, परंतु आम्ही आपल्या नवीन ई-मेल पत्ता सत्यापित करणे आवश्यक आहे . आपले ईमेल तपासा आणि आपल्या नवीन ईमेल पत्त्याची पुष्टी करा दुवा अनुसरण करा-"
+      updated: "आपले खाते यशस्वीरित्या अद्यतनित केले गेले आहे-"
+    sessions:
+      signed_in: "यशस्वीरित्या मध्ये साइन इन केले-"
+      signed_out: "यशस्वी साइन आऊट-"
+      already_signed_out: "यशस्वी साइन आऊट."
+    unlocks:
+      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+  errors:
+    messages:
+      already_confirmed: "आधीच निश्चिती होते , साइन इन करण्याचा प्रयत्न करा"
+      confirmation_period_expired: "%{period} आत निश्चिती करणे आवश्यक आहे, एक नवीन विनंती करा"
+      expired: "कालबाह्य झाली आहे, एक नवीन विनंती करा"
+      not_found: "आढळले नाही"
+      not_locked: "लॉक झालेला नाही"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"

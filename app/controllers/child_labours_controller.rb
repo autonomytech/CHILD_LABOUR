@@ -1,6 +1,6 @@
 class ChildLaboursController < ApplicationController
-  add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Child Labours', :child_labours_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
+  add_breadcrumb 'बाल कामगार', :child_labours_path
   before_action :set_raid, only: [:new, :edit]
   before_action :set_child, only: [:show, :edit]
 

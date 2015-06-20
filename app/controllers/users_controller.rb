@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Users', :users_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
+  add_breadcrumb 'वापरकर्ते', :users_path
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_role_and_department, only: [:new, :create, :edit, :update, :show]
   # GET /users

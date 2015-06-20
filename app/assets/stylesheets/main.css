@@ -2651,6 +2651,30 @@ border: 1px solid #1D4C4D;
   }
 }
 
-.english_font {
+.en {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dataTables_length {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dataTables_info{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dataTables_filter{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dataTables_filter>label>input{
+  font-family: marathi;
+}
+
+.dataTables_empty {
+  font-family: 'Open Sans', sans-serif; 
+}
+
+#datatable_paginate {
   font-family: 'Open Sans', sans-serif;
 }

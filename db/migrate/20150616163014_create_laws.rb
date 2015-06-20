@@ -5,7 +5,7 @@ class CreateLaws < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    Law.create([{ name: 'Child Labour' }, { name: 'POSCO' }\
-    , { name: 'MAHA begging' }, { name: "Mumbai shop's & establishment" }])
+    Law.create([{ name: "बाल कामगार" }, { name: "पॉस्को" }\
+    , { name: "महा भीक मागत" }, { name: "मुंबई शॉपचे व आस्थापना" }])
   end
 end

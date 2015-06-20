@@ -49,9 +49,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     add_index :users, :unlock_token,         unique: true
-    User.create(title: 'Mr.', first_name: 'Primary', last_name: 'Admin'\
+    User.create(title: "श्री-", first_name: "प्राथमिक", last_name: "प्रशासक"\
       , email: 'primary_admin@icl.com', password: 'primary_admin123'\
-      , designation: 'Admin', contact_no: '8888888888'\
+      , designation: "प्रशासक", contact_no: '8888888888'\
       , role_id: 1, department_id: 1, is_primary: true, community_id: 1)
   end
 end

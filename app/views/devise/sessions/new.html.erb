@@ -6,12 +6,12 @@
     <h3><%=t('login')%></h3>
     <div style="text-align:left">
     <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email,label:"#{t('email')}", autofocus: true, placeholder: "#{t('email')}" %>
-      <%= f.password_field :password,label:"#{t('password')}", autocomplete: "off", placeholder:"#{t('password')}" %>
+      <%= f.email_field :email,label:"#{t('email')}", autofocus: true, placeholder: "#{t('email')}", class: 'en' %>
+      <%= f.password_field :password,label:"#{t('password')}", autocomplete: "off", placeholder:"#{t('password')}", class: 'en' %>
       <%= f.check_box :remember_me,label:"#{t('remember_me')}" ,class: "checkbox" %>
       <%= f.submit "#{t('login')}",class: "btn btn-primary block full-width m-b" %>
     <% end %>
-    </div>
+    </div><br/>
     <%= render "devise/shared/links" %>
   </div>
 </div>
