@@ -11,7 +11,7 @@
       <th><%=t('role')%></th>
       <th><%=t('department')%></th>
       <th><%=t('designation')%></th>
-     <th><%=t('email')%></th>
+      <th><%=t('email')%></th>
       <th><%=t('attained_raid')%></th>
     </tr>
   </thead>
@@ -34,8 +34,8 @@
       <td><%= user.roles %></td>
       <td><%= user.departments %></td>
       <td><%= user.designation %></td>
-      <td><%= user.email %></td>
-      <td><%= link_to 'Status',user_path(user)%></td>
+      <td class="en"><%= user.email %></td>
+      <td><%= link_to "#{t('details')}",user_path(user)%></td>
     </tr>
     <% end %>
   </tbody>

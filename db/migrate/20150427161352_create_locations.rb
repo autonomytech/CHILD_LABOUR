@@ -5,7 +5,7 @@ class CreateLocations < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    Location.create([{ name: 'Navi Mumbai' }, { name: 'Dadar' }\
-    , { name: 'Bandra' }, { name: 'Goregaon' }, { name: 'Andheri' }])
+    Location.create([{ name: "नवी मुंबई" }, { name: "दादर" }\
+    , { name: "वांद्रे" }, { name: "गोरेगाव" }, { name: "अंधेरी" }])
   end
 end

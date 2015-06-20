@@ -5,6 +5,6 @@ class CreateCommunities < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    Community.create(name: 'JAPU')
+    Community.create(name: "जापु")
   end
 end

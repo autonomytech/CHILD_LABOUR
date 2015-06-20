@@ -7,11 +7,10 @@ class CreateDepartments < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_foreign_key :departments, :locations
-    Department.create([{ name: 'JAPU' }\
-    , { name: 'Navi Mumbai Police Station', location_id: 1 }\
-    , { name: 'Dadar Police Station', location_id: 2 }\
-    , { name: 'Bandra Police Station', location_id: 3 }\
-    , { name: 'Goregaon Police Station', location_id: 4 }\
-    , { name: 'Andheri Police Station', location_id: 5 }])
+    Department.create([{ name: "नवी मुंबई पोलिस स्टेशन", location_id: 1 }\
+    , { name: "दादर पोलिस स्टेशन", location_id: 2 }\
+    , { name: "वांद्रे पोलिस स्टेशन", location_id: 3 }\
+    , { name: "गोरेगाव पोलिस स्टेशन", location_id: 4 }\
+    , { name: "अंधेरी पोलिस स्टेशन", location_id: 5 }])
   end
 end

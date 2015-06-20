@@ -1,6 +1,6 @@
 class ComplaintsController < ApplicationController
-  add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Complaint', :new_complaint_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
+  add_breadcrumb 'तक्रार', :new_complaint_path
   before_action :set_complaint, only: [:show, :edit, :update, :destroy]
 
   # GET /complaints

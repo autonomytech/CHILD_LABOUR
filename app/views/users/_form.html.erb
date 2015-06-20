@@ -4,7 +4,7 @@
 <%= f.text_field :last_name, label: "#{t('last_name')}", placeholder: "#{t('last_name')}" %>
 <%= f.text_field :designation, label: "#{t('designation')}", placeholder: "#{t('designation')}" %>
 
-<%= f.select :department_id,@departments,{label:"#{t('department')}",prompt:true},{required: true} %>
-<%= f.select :role_id, @roles, {label:"#{t('role')}",prompt: true}, {required: true} %>
+<%= f.select :department_id,@departments,{label:"#{t('department')}",prompt: "#{t('please_select')}"},{required: true} %>
+<%= f.select :role_id, @roles, {label:"#{t('role')}",prompt: "#{t('please_select')}"}, {required: true} %>
 <%= f.text_field :contact_no, label: "#{t('contact_no')}", placeholder: "#{t('contact_no')}" %>
 

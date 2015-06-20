@@ -1,6 +1,6 @@
 class EmployersController < ApplicationController
-  add_breadcrumb 'Dashboard', :root_path
-  add_breadcrumb 'Employers', :employers_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
+  add_breadcrumb 'अाराेपी', :employers_path
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
 
   # GET /employers

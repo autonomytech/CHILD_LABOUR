@@ -1,5 +1,5 @@
 class CommunityFarmsController < ApplicationController
-  add_breadcrumb 'Dashboard', :root_path
+  add_breadcrumb 'डॅशबोर्ड', :root_path
   before_action :set_raid_location, only: [:new, :edit, :create, :update, :community_farm, :create_community_farm]
   before_action :set_community_farm, only: [:show, :edit, :update, :destroy]
 
@@ -19,20 +19,20 @@ class CommunityFarmsController < ApplicationController
     @community_farm = @raid.community_farms.build
     @community_farm.department_id = @location.departments.first.id \
     if @location.departments.present?
-    add_breadcrumb 'Community Farm'
+    add_breadcrumb 'समिती दल'
   end
 
   def community_farm
     @community_farm = @raid.community_farms.build
     @community_farm.department_id = @location.departments.first.id \
     if @location.departments.present?
-    add_breadcrumb 'Community Farm'
+    add_breadcrumb 'समिती दल'
   end
 
   # GET /community_farms/1/edit
   def edit
     @community_farm = @raid.community_farms.find(params[:id])
-    add_breadcrumb 'Community Farm'
+    add_breadcrumb 'समिती दल'
   end
 
   # POST /community_farms

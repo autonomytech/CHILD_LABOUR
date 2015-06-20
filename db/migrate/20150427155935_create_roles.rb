@@ -5,6 +5,6 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    Role.create([{ role: 'Admin' }, { role: 'Member' }])
+    Role.create([{ role: "प्रशासक" }, { role: "सदस्य" }])
   end
 end
