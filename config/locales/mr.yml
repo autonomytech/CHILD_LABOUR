@@ -8,7 +8,7 @@ mr:
   action: 'क्रिया'
   id: 'अायडी'
   title: 'शीर्षक'
-  date: 'तारीख'
+  date_: 'तारीख'
   time: 'वेळ'
   raid_for: 'साठी छापा'
   location: 'स्थान'

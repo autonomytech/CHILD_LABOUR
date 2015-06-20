@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   
   def admin?
-    true if role.role.eql? 'Admin'
+    true if role.role.eql? 'प्रशासक'
   end
 
   def full_name

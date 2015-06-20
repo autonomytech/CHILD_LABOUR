@@ -5,7 +5,7 @@
       <th><%=t('action')%></th>
       <th><%=t('id')%></th>
       <th><%=t('title')%></th>
-      <th><%=t('date')%></th>
+      <th><%=t('date_')%></th>
       <th><%=t('time')%></th>
       <th><%=t('raid_for')%></th>
       <th><%=t('location')%></th>
@@ -45,8 +45,8 @@
         </td>
         <td><%= raid.id %></td>
         <td><%= raid.title %></td>
-        <td><%= raid.datetime.strftime('%d, %B %Y') %></td>
-        <td><%= raid.datetime.strftime('%I:%M %p') %></td>
+        <td class="en"><%= raid.datetime.strftime('%d, %B %Y') %></td>
+        <td class="en"><%= raid.datetime.strftime('%I:%M %p') %></td>
         <td><%= raid.raid_for %></td>
         <td><%= raid.location.name %></td>
         <td>

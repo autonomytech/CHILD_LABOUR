@@ -6,9 +6,9 @@ class Raid < ActiveRecord::Base
   belongs_to :complaint
 
   def community_farm_status
-    return 'Pending' if community_farms.blank?
-    return 'Pending' if community_farms.first.involve_member.blank?
-    'Completed'
+    return 'प्रलंबित' if community_farms.blank?
+    return 'प्रलंबित' if community_farms.first.involve_member.blank?
+    'पूर्ण'
   end
 
   def community_farm_blank?
