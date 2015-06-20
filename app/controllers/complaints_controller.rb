@@ -33,7 +33,7 @@ class ComplaintsController < ApplicationController
     respond_to do |format|
       if @complaint.save
         raid = create_raid(@complaint)
-        format.html { redirect_to edit_raid_path(raid.id), notice: 'Complaint was successfully created.' }
+        format.html { redirect_to edit_raid_path(raid.id), notice: COMPLAINT_CREATE }
         format.json { render :show, status: :created, location: @complaint }
       else
         format.html { render :new }

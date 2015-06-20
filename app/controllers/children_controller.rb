@@ -16,7 +16,7 @@ class ChildrenController < ApplicationController
     @child.submited_by = current_user.id
     if @child.save
       create_files(params[:files])
-      flash[:notice] = 'Child was successfully created.'
+      flash[:notice] = CHILD_CREATE
       return redirect_to new_raid_child_path(@raid) \
       if params[:commit].eql? SAVE_NEXT
       return redirect_to dashboard_index_path \
@@ -34,7 +34,7 @@ class ChildrenController < ApplicationController
     if @child.update(child_update_params)
       update_answers(answers_attributes)
       create_files(params[:files])
-      flash[:notice] = 'Child was successfully updated.'
+      flash[:notice] = CHILD_UPDATE
       redirect_to_child(@child)
     else
       render :edit
@@ -64,7 +64,7 @@ class ChildrenController < ApplicationController
 
   def destroy
     @child.update(is_deleted: true)
-    flash[:notice] = 'Child was successfully deleted.'
+    flash[:notice] = CHILD_DELETE
     redirect_to_child(@child)
   end
 

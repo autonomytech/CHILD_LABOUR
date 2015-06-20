@@ -37,7 +37,7 @@ class EmployersController < ApplicationController
     if @employer.save
       create_files(params[:files])
       employer_section(params[:laws], params[:acts], params[:sections])
-      redirect_to @employer, notice: 'Employer was successfully created.'
+      redirect_to @employer, notice: EMPLOYER_CREATE
     else
       render :new
     end
@@ -50,7 +50,7 @@ class EmployersController < ApplicationController
     if @employer.update(employer_params)
       create_files(params[:files])
       employer_section(params[:laws], params[:acts], params[:sections])
-      redirect_to employers_path, notice: 'Employer was successfully updated.'
+      redirect_to employers_path, notice: EMPLOYER_UPDATE
     else
       render :edit
     end
@@ -61,7 +61,7 @@ class EmployersController < ApplicationController
   def destroy
     @employer.update(is_deleted: true)
     respond_to do |format|
-      format.html { redirect_to employers_url, notice: 'Employer was successfully destroyed.' }
+      format.html { redirect_to employers_url, notice: EMPLOYER_DELETE }
       format.json { head :no_content }
     end
   end

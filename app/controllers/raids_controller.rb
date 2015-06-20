@@ -45,7 +45,7 @@ class RaidsController < ApplicationController
   def update
     respond_to do |format|
       if @raid.update(raid_params)
-        format.html { redirect_to community_farm_raid_community_farms_path(@raid), notice: 'Raid was successfully Scheduled.' }
+        format.html { redirect_to community_farm_raid_community_farms_path(@raid), notice: RAID_SCHEDULE }
         format.json { render :show, status: :ok, location: @raid }
       else
         format.html { render :edit }
