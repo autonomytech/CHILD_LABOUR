@@ -4,7 +4,7 @@
     <%= f.select :department_id,@departments,label:"#{t('department')}",required: true %>
     <%= f.text_field :involve_member,label: "#{t('involve_members')}", id: 'involve_member', :"data-pre" => @community_farm.involve_members.to_json%>
     <% unless @community_farm.id.blank? %>
-    <%= f.text_field :submited_by_user,label: "#{t('submitted_by_user')}", disabled: true%><br/>
+    <%= f.text_field :submited_by_user,label: "#{t('submited_by_user')}", disabled: true%><br/>
     <% end %>
     <%= submit_tag "#{t('save')}", class: 'btn btn-primary'%>
 <% end %>
