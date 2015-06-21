@@ -17,10 +17,10 @@
       <tr>
         <td></td>
         <td><%= raid.id%></td>
-        <td><%= link_to raid.title ,child_beggers_report_path(raid.id)%></td>
+        <td class="md"><%= link_to raid.title ,child_beggers_report_path(raid.id)%></td>
         <td><%= raid.datetime.strftime('%d, %B %Y') %></td>
         <td><%= raid.datetime.strftime('%I:%M %p') %></td>
-        <td><%= raid.raid_for %></td>
+        <td class="md"><%= raid.raid_for %></td>
         <td><%= raid.location.name %></td>
       </tr>
     <% end %>
