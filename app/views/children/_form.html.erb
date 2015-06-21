@@ -6,7 +6,7 @@
   <div class="col-md-8"></div>
   <div class="col-md-2">
   <%= label_tag "#{t('date_')}"%>
-  <%= text_field_tag :date, @raid.datetime.strftime("%d, %B %Y"), class: 'form-control en', disabled: true%><br/>
+  <%= text_field_tag :date, @raid.datetime.strftime('%d/%m/%Y'), class: 'form-control en', disabled: true%><br/>
   </div>
   </div>
   <div class="row">
