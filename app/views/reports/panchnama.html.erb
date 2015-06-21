@@ -6,10 +6,10 @@
   <div class="col-md-7">
     <div class="row reports">
       <div class="col-md-9">
-      <p><%=t('police_station')%> %   <b><%= @raid.department%></b></p>
+      <p><%=t('police_station')%> % <b class="md"><%= @raid.department%></b></p>
       </div>
-      <div class="col-md-3">
-      <p><%=t('date_')%> %  <b><%= @raid.datetime.strftime("%d, %B %Y")%></b></p>
+      <div class="col-md-3 en">
+      <p><%=t('date_')%> :  <b class="md"><%= @raid.datetime.strftime("%d, %B %Y")%></b></p>
       </div>
     </div>
    <div class="row reports">
@@ -24,16 +24,16 @@
         <table class="table table-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th>Sr. No.</th>
-            <th>Question</th>
-            <th>Answer</th>
+            <th><%= t('sr_no') %></th>
+            <th><%= t('question') %></th>
+            <th><%= t('answer') %></th>
           </tr>
         </thead>
         <tbody>
           <% @child_labour.answers.each_with_index do |ans, i|%>
           <tr>
             <td><%= i+1 %></td>
-            <td><%= ans.question.question %></td>
+            <td class="md"><%= ans.question.question %></td>
             <td><%= ans.answer %></td>
           </tr>
           <% end %>
@@ -43,8 +43,8 @@
     </div>
     <div class="row reports">
       <div class="col-md-12">
-      <p>Description: <b><%= @child_labour.description %></b></p>
-      <p>Submited by user: <b><%= @child_labour.submited_by_user %></b></p>
+      <p><%= t('description')%> % <b><%= @child_labour.description %></b></p>
+      <p><%= t('submited_by_user') %> % <b><%= @child_labour.submited_by_user %></b></p>
       </div>
     </div>
   </div>

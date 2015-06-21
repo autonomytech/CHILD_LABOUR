@@ -28,12 +28,12 @@
     <tr>
     	<td><%= i+1 %></td>
     	<td><%= raid.id %></td>
-    	<td><%= raid.title %></td>
+    	<td class="md"><%= raid.title %></td>
     	<td><%= raid.employer_name %><br/>
           <%= raid.employer_address %></td>
     	<td><%= (child_beggers(raid)[0]).html_safe %></td>
       <td><%= (child_beggers(raid)[1]).html_safe %></td>
-      <td><%= raid.department %></td>
+      <td class="md"><%= raid.department %></td>
       <td><%= raid.location.name %></td>
     </tr>
     <% end %>

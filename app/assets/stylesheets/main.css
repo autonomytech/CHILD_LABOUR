@@ -2704,3 +2704,15 @@ input.form-control {
 input.form-control.en {
   font-size: 14px;
 }
+
+.dataTables_wrapper .dataTables_filter input{
+  font-size: 17px;
+}
+
+b {
+  font-size: 17px;
+}
+
+.md {
+  font-size: 14px;
+}
