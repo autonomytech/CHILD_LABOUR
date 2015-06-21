@@ -110,6 +110,8 @@ mr:
   warning: 'कृपया या ईमेल प्रत्युत्तर देऊ नका'
   datetime: 'तारीख आणि वेळ'
   add_child: 'मुलाचा तपशील भरा'
+  acts: 'कलम'
+  scetions: 'विभाग'
 
   date:
     order:
