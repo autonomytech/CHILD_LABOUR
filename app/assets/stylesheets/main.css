@@ -2640,6 +2640,7 @@ border: 1px solid #1D4C4D;
 }
 
 @media print{
+
   .logo {
     width: 150px;
   }

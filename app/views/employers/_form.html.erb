@@ -51,7 +51,7 @@
             <% if IMAGE_CONTENT_TYPE.include? attachment.file_content_type %>
               <%= image_tag "#{attachment.file.url}", width: 200, height:200 %><br/>
             <%end%>
-            <%= link_to attachment.file_file_name, attachment.file.url, target: '_blank' %><br/>
+            <%= link_to attachment.file_file_name, attachment.file.url, target: '_blank', class: 'en'%><br/>
           <%end%>
         <% end %>
       </div>
