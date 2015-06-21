@@ -69,10 +69,10 @@
           <%= label_tag "#{t('answer')}"%>
           <div class="row form-inline">
             <div class="col-md-4">
-              <%= fa.radio_button :answer, 'Yes', checked: true %> Yes
+              <%= fa.radio_button :answer,'Yes', checked: true%>  <%= label_tag "#{t('y')}"%>
             </div>
             <div class="col-md-4">
-              <%= fa.radio_button :answer, 'No'%> No
+              <%= fa.radio_button :answer,'No'%> <%= label_tag "#{t('n')}"%>
             </div>
           </div>
           <% else %>
@@ -108,10 +108,10 @@
   </div>
   <% end %>
   <div class="row">
-    <div class="col-md-1">
-      <%= f.label :attachments,label:"#{t('attachment')}",:class => 'control-label' %>
+    <div class="col-md-2">
+      <%= f.label "#{t('attachment')}",:class => 'control-label' %>
     </div>
-    <div class="col-md-11">
+    <div class="col-md-10">
       <%= link_to "#{t('add_file')}", attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
     </div>
     <div class="col-md-12">
