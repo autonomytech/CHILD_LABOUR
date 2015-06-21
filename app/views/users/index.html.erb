@@ -19,7 +19,7 @@
   <tbody>
     <% @users.each do |user| %>
     <tr>
-      <td>
+      <td class="md">
         <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
@@ -29,13 +29,13 @@
         </div>
       </td>
       <td><%= user.id %></td>
-      <td><%= user.title %></td>
+      <td class="md"><%= user.title %></td>
       <td><%= link_to user.full_name, edit_user_path(user) %></td>
-      <td><%= user.roles %></td>
-      <td><%= user.departments %></td>
+      <td class="md"><%= user.roles %></td>
+      <td class="md"><%= user.departments %></td>
       <td><%= user.designation %></td>
       <td class="en"><%= user.email %></td>
-      <td><%= link_to "#{t('details')}",user_path(user)%></td>
+      <td class="md"><%= link_to "#{t('details')}",user_path(user)%></td>
     </tr>
     <% end %>
   </tbody>

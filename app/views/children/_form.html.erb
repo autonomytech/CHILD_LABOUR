@@ -6,7 +6,7 @@
   <div class="col-md-8"></div>
   <div class="col-md-2">
   <%= label_tag "#{t('date_')}"%>
-  <%= text_field_tag :date, @raid.datetime.strftime("%d, %B %Y"), class: 'form-control', disabled: true%><br/>
+  <%= text_field_tag :date, @raid.datetime.strftime("%d, %B %Y"), class: 'form-control en', disabled: true%><br/>
   </div>
   </div>
   <div class="row">
@@ -114,7 +114,7 @@
     <div class="col-md-11">
       <%= link_to "#{t('add_file')}", attachments_dashboard_index_path, class: 'btn btn-success btn-xs', remote: true %>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 en">
       <div class="attachment">
         <% unless @child.new_record? %>
           <% @child.attachments.each do |attachment|%>

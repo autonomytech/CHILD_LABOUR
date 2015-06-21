@@ -2679,6 +2679,28 @@ border: 1px solid #1D4C4D;
   font-family: 'Open Sans', sans-serif;
 }
 
-.token-input-input-token {
+.token-input-token, .token-input-input-token {
   font-family: marathi;
+  font-size: 17px;
+}
+
+.table>tbody>tr>td {
+  font-size: 18px;
+}
+
+.table>tbody>tr>td.en, .table>tbody>tr>td.md {
+  font-size: 14px;
+}
+
+div.token-input-dropdown>ul {
+  font-family: marathi;
+  font-size: 17px;
+}
+
+input.form-control {
+  font-size: 17px;
+}
+
+input.form-control.en {
+  font-size: 14px;
 }

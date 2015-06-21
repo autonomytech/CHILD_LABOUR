@@ -6,7 +6,7 @@ class Address < ActiveRecord::Base
 
   validates :address_line_1,presence: true,length: { minimum: 1, maximum: 150}
 
-  validates :address_line_2,length: { minimum: 1, maximum: 150 }
+  validates :address_line_2,length: { minimum: 1, maximum: 150 }, allow_blank: true
 
   validates :city, presence: true,length: { minimum: 1, maximum: 30 }
 

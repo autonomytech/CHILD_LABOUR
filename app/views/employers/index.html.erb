@@ -14,7 +14,7 @@
   <tbody>
     <% @employers.each do |employer| %>
       <tr>
-        <td>
+        <td class="md">
           <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
@@ -27,7 +27,7 @@
         <td><%= link_to employer.full_name, edit_employer_path(employer) %></td>
         <td><%= employer.address %></td>
         <td><%= employer.contact_no %></td>
-        <td><%= employer.raid.title %></td>
+        <td class="md"><%= employer.raid.title %></td>
         <td class="en"><%= employer.raid.datetime.strftime('%d, %B %Y') %></td>
       </tr>
     <% end %>

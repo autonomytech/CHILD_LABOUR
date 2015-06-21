@@ -28,6 +28,6 @@ class Child < ActiveRecord::Base
   def address
     add = addresses.last
     return unless add
-    [add.address_line_1, add.address_line_2, add.city, add.state, add.pincode].join(',')
+    [add.address_line_1, add.address_line_2, add.city, add.state, add.pincode].join('] ')
   end
 end

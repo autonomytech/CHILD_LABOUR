@@ -20,7 +20,7 @@
   <tbody>
     <% @child_labours.each do |child_labour| %>
       <tr>
-        <td>
+        <td class="md">
           <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
@@ -34,7 +34,7 @@
         <td><%= child_labour.age %></td>
         <td><%= child_labour.father_name %></td>
         <td><%= child_labour.mother_name %></td>
-        <td><%= child_labour.raid.title %></td>
+        <td class="md"><%= child_labour.raid.title %></td>
         <td class="en"><%= child_labour.raid.datetime.strftime('%d, %B %Y')%></td>
       </tr>
     <% end %>

@@ -19,7 +19,7 @@
   <tbody>
     <% @raids.each do |raid| %>
       <tr>
-        <td>
+        <td class="md">
           <div>
           <%= link_to '#', class: "dropdown-toggle", :'data-toggle'=> "dropdown" do %><i class="fa fa-caret-right fa-2x"></i><%end%>
           <ul class="dropdown-menu dropdown-menu-action">
@@ -44,12 +44,12 @@
           </div>
         </td>
         <td><%= raid.id %></td>
-        <td><%= raid.title %></td>
+        <td class="md"><%= raid.title %></td>
         <td class="en"><%= raid.datetime.strftime('%d, %B %Y') %></td>
         <td class="en"><%= raid.datetime.strftime('%I:%M %p') %></td>
-        <td><%= raid.raid_for %></td>
+        <td class="md"><%= raid.raid_for %></td>
         <td><%= raid.location.name %></td>
-        <td>
+        <td class="md">
           <% if raid.community_farm_blank? %>
             <%= link_to raid.community_farm_status, new_raid_community_farm_path(raid)%>
           <% else %>

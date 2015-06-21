@@ -29,10 +29,10 @@
 </div>
 <div class="row form-inline">
   <div class="col-md-2">
-    <%= f.radio_button :subject, "child_labour", checked: true%> <%= label_tag "#{t('child_labour')}"%>
+    <%= f.radio_button :subject, CHILD_LABOUR, checked: true%> <%= label_tag "#{t('child_labour')}"%>
   </div>
   <div class="col-md-2">
-    <%= f.radio_button :subject, "child_begger"%> <%= label_tag "#{t('child_begger')}"%>
+    <%= f.radio_button :subject, CHILD_BEGGER %> <%= label_tag "#{t('child_begger')}"%>
   </div>
 </div><br/>
 <div class="row">
