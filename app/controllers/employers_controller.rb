@@ -22,6 +22,8 @@ class EmployersController < ApplicationController
   # GET /employers/new
   def new
     @employer = Employer.new
+    @employer.raid_id = params[:raid_id]
+    @employer.addresses.build
     @laws = Law.all
   end
 
@@ -37,7 +39,7 @@ class EmployersController < ApplicationController
     if @employer.save
       create_files(params[:files])
       employer_section(params[:laws], params[:acts], params[:sections])
-      redirect_to @employer, notice: EMPLOYER_CREATE
+      redirect_to edit_raid_path(@employer.raid_id), notice: EMPLOYER_CREATE
     else
       render :new
     end
@@ -93,7 +95,9 @@ class EmployersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def employer_params
     params.require(:employer).permit(:first_name, :middle_name, :last_name\
-      , :contact_no, :is_deleted, addresses_attributes: [:address_line_1\
+      , :contact_no, :is_deleted, :raid_id, :shop_act_lnc, :industry_type\
+      , :is_adhar_card, :adhar_card, :is_voter_card, :voter_card, :is_pan_card\
+      , :pan_card, addresses_attributes: [:address_line_1\
       , :address_line_2, :city, :state, :pincode])
   end
 end

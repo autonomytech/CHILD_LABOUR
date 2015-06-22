@@ -100,3 +100,34 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 });
+
+function show_hidden_field(type) {
+  if(type == 'adhar_card'){
+    if($('#employer_is_adhar_card').hasClass('checked')){
+      $('#employer_is_adhar_card').removeClass('checked');
+      $('#employer_adhar_card').addClass('hidden');
+      $('#employer_adhar_card').val('');
+    }else{
+      $('#employer_is_adhar_card').addClass('checked');
+      $('#employer_adhar_card').removeClass('hidden');
+    }
+  }else if (type == 'voter_card'){
+    if($('#employer_is_voter_card').hasClass('checked')){
+      $('#employer_is_voter_card').removeClass('checked');
+      $('#employer_voter_card').addClass('hidden');
+      $('#employer_voter_card').val('');
+    }else{
+      $('#employer_is_voter_card').addClass('checked');
+      $('#employer_voter_card').removeClass('hidden');
+    }
+  }else{
+    if($('#employer_is_pan_card').hasClass('checked')){
+      $('#employer_is_pan_card').removeClass('checked');
+      $('#employer_pan_card').addClass('hidden');
+      $('#employer_pan_card').val('');
+    }else{
+      $('#employer_is_pan_card').addClass('checked');
+      $('#employer_pan_card').removeClass('hidden');
+    }
+  }
+}

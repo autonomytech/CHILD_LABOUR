@@ -10,7 +10,7 @@
   </div>
   </div>
   <div class="row">
-  <div class="col-md-12"><b>* <%=t('child_labour_details')%></b></div>
+  <div class="col-md-12"><b>* <%=t('child_details')%></b></div>
   </div><br/>
   <div class="row">
   <div class="col-md-4">
@@ -55,18 +55,20 @@
   <div class="row">
   <div class="col-md-12"><b>* <%=t('write_answer_of_questions')%></b></div>
   </div><br/>
+  <div class="col-md-12">
+    <div class="col-md-4"><%= label_tag "#{t('question')}" %></div>
+    <div class="col-md-4"><%= label_tag "#{t('answer')}"%></div>
+  </div>
   <% if @questions.present? %>
     <% @questions.each_with_index do |q|%>
       <%= f.fields_for :answers do |fa|%>
       <div class="row">
         <div class="col-md-4">
-          <%= label_tag "#{t('question')}" %>
-          <%= text_field_tag :q, "#{q.question}", class: 'form-control', disabled: true %>
+          <%= text_field_tag :q, "#{q.question}", class: 'form-control question', disabled: true %>
         </div>
         <div class="col-md-3">
           <%= fa.hidden_field :question_id, value: q.id %>
           <% if q.is_yes_no_answer %>
-          <%= label_tag "#{t('answer')}"%>
           <div class="row form-inline">
             <div class="col-md-4">
               <%= fa.radio_button :answer,'होय', checked: true%>  <%= label_tag "#{t('y')}"%>
@@ -76,7 +78,7 @@
             </div>
           </div>
           <% else %>
-            <%= fa.text_field :answer ,label:"#{t('answer')}",placeholder:"#{t('answer')}"%>
+            <%= fa.text_field :answer ,label:"-",placeholder:"#{t('answer')}"%>
           <%end%>
         </div>
       </div>
@@ -86,11 +88,11 @@
     <%= f.fields_for :answers do |fa|%>
       <div class="row">
         <div class="col-md-4">
-          <%= fa.text_field :question_, disabled: true ,label:"#{t('question')}"%>
+          <%= fa.text_field :question_, disabled: true ,label:"-", class: 'question' %>
         </div>
         <div class="col-md-3">
           <%= fa.hidden_field :id %>
-          <%= fa.text_field :answer,label:"#{t('answer')}",placeholder:"#{t('answer')}" %>
+          <%= fa.text_field :answer,label:"-",placeholder:"#{t('answer')}" %>
         </div>
       </div>
     <%end%>

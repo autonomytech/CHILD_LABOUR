@@ -2712,3 +2712,9 @@ b {
 .md {
   font-size: 14px;
 }
+
+input.form-control.question {
+  border: 0px;
+  font-size: 15px;
+  background-color: white;
+}

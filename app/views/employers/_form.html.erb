@@ -1,5 +1,11 @@
+<div class="row">
+  <div class="col-md-4">
+    <%= label_tag "#{t('employers_details')}"%>
+  </div>
+</div>
 <%= bootstrap_form_for(@employer, :html => {:multipart => true}) do |f| %>
   <div class="col-md-5">
+  <%= f.hidden_field :raid_id, value: @employer.raid_id %>
   <%= f.text_field :first_name ,label:"#{t('first_name')}",placeholder:"#{t('first_name')}"%>
   <%= f.text_field :middle_name ,label:"#{t('middle_name')}",placeholder:"#{t('middle_name')}"%>
   <%= f.text_field :last_name ,label:"#{t('last_name')}",placeholder:"#{t('last_name')}"%>
@@ -7,6 +13,14 @@
   <%= f.fields_for :addresses do |ff|%>
     <%= render 'addresses_form', f: ff %>
   <%end%>
+  <%= f.text_field :shop_act_lnc, label:"#{t('shop_act_lnc')}",placeholder:"#{t('shop_act_lnc')}", class: 'en' %>
+  <%= f.text_field :industry_type, label:"#{t('industry_type')}",placeholder:"#{t('industry_type')}" %><br/>
+  <%= f.check_box :is_adhar_card, label: "#{t('adhar_card')}", class: "#{ @employer.is_adhar_card ? 'checked' : '' }", onchange: "show_hidden_field('adhar_card')" %>
+  <%= text_field :employer, :adhar_card, label: "#{t('adhar_card')}", placeholder:"#{t('adhar_card')}", class: "form-control en #{ @employer.is_adhar_card ? '' : 'hidden' }"%>
+  <%= f.check_box :is_voter_card, label: "#{t('voter_card')}", onchange: "show_hidden_field('voter_card')", class: "#{ @employer.is_voter_card ? 'checked' : '' }"%>
+  <%= text_field :employer, :voter_card, label: "#{t('voter_card')}", placeholder:"#{t('voter_card')}", class: "form-control en #{ @employer.is_voter_card ? '' : 'hidden' }"%>
+  <%= f.check_box :is_pan_card, label: "#{t('pan_card')}", onchange: "show_hidden_field('pan_card')", class: "#{ @employer.is_pan_card ? 'checked' : '' }"%>
+  <%= text_field :employer, :pan_card, label: "#{t('pan_card')}", placeholder:"#{t('pan_card')}", class: "form-control en #{ @employer.is_pan_card ? '' : 'hidden' }" %><br/>
   </div>
   <div class="row">
     <div class="col-md-12">

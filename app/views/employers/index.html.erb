@@ -6,8 +6,9 @@
       <th><%=t('name')%></th>
       <th><%=t('address')%></th>
       <th><%=t('contact_no')%></th>
-     <th><%=t('raid_title')%></th>
+      <th><%=t('raid_title')%></th>
       <th><%=t('raid_date')%></th>
+      <th><%=t('laws')%></th>
     </tr>
   </thead>
 
@@ -29,6 +30,7 @@
         <td><%= employer.contact_no %></td>
         <td class="md"><%= employer.raid.title %></td>
         <td class="en"><%= employer.raid.datetime.strftime('%d/%m/%Y') %></td>
+        <td class="md"><%= employer.employer_laws %></td>
       </tr>
     <% end %>
   </tbody>
