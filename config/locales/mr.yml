@@ -136,6 +136,8 @@ mr:
               not_a_number: 'संपर्क क्रमांक केवळ संख्या परवानगी देताे' 
               too_short: 'संपर्क क्रमांक  खूप लहान आहे' 
               wrong_length: 'संपर्क क्रमांक चुकीचि लांबी'
+            email:
+              taken: 'ई-मेल याआधीच वापरला आहे'  
         employer:
           attributes:
             contact_no:

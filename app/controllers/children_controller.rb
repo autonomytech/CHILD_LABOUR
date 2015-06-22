@@ -14,10 +14,10 @@ class ChildrenController < ApplicationController
     @child = @raid.children.new(child_params)
     @child.employer_id = @raid.employers.first.id if @raid.employers.first
     @child.submited_by = current_user.id
-    if @child.is_already_present(@child)
-      flash[:notice] = CHILD_ALREADY_PRESENT
-      redirect_to new_raid_child_path(@raid)
-    else
+    # if @child.is_already_present(@child)
+    #   flash[:notice] = CHILD_ALREADY_PRESENT
+    #   redirect_to new_raid_child_path(@raid)
+    # else
       if @child.save
         create_files(params[:files])
         flash[:notice] = CHILD_CREATE
@@ -29,7 +29,7 @@ class ChildrenController < ApplicationController
       else
        render 'new'
       end
-    end
+    #end
   end
 
   def update

@@ -4,21 +4,31 @@ class Child < ActiveRecord::Base
   has_many :answers
   has_many :addresses
   has_many :attachments
+  validates :first_name, presence: true
+  validate :is_already_present  
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses
-  validates_presence_of :first_name, :last_name, :age, :father_name\
+  validates_presence_of  :last_name, :age, :father_name\
     , :mother_name
+
+
 
   def submited_by_user
     User.full_name(submited_by)
   end
 
-  def is_already_present(child)
-    val = Child.where("first_name like '#{child.first_name}' and last_name like '#{child.last_name}'
-      and father_name like '#{child.father_name}' and mother_name like '#{child.mother_name}'")
-    flag = val.empty? ? false : true
-    flag
+  def is_already_present
+    if Child.where("first_name like ? ,last_name like ?",first_name,last)
+     errors.add(:first_name,CHILD_ALREADY_PRESENT)
+   
   end
+
+  # def is_already_present(child)
+  #   val = Child.where("first_name like '#{child.first_name}' and last_name like '#{child.last_name}'
+  #     and father_name like '#{child.father_name}' and mother_name like '#{child.mother_name}'")
+  #   flag = val.empty? ? false : true
+  #   flag
+  # end
 
   def self.child_labour
     where(is_deleted: false, is_child_begger: false)
