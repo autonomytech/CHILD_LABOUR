@@ -112,6 +112,8 @@ mr:
   add_child: 'मुलाचा तपशील भरा'
   acts: 'कलम'
   scetions: 'विभाग'
+  person_name: 'व्यक्तीचे नाव'
+  ngo_name: 'बिगर-सरकारी संस्थेच नाव'
 
   date:
     order:

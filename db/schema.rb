@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616165548) do
+ActiveRecord::Schema.define(version: 20150622194132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20150616165548) do
     t.string   "submited_by"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "ngo_name"
+    t.string   "person_name"
   end
 
   add_index "community_farms", ["department_id"], name: "index_community_farms_on_department_id", using: :btree

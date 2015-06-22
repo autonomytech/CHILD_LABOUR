@@ -3,6 +3,8 @@
     <%= text_field_tag :location, @location.name, class: 'form-control', disabled: true%><br/>
     <%= f.select :department_id,@departments,label:"#{t('department')}",required: true %>
     <%= f.text_field :involve_member,label: "#{t('involve_members')}", id: 'involve_member', :"data-pre" => @community_farm.involve_members.to_json%>
+    <%=f.text_field :ngo_name,label:"#{t('ngo_name')}",placeholder:"#{t('ngo_name')}"%>
+    <%=f.text_field :person_name,label:"#{t('person_name')}",placeholder:"#{t('person_name')}"%>
     <% unless @community_farm.id.blank? %>
     <%= f.text_field :submited_by_user,label: "#{t('submited_by_user')}", disabled: true%><br/>
     <% end %>
