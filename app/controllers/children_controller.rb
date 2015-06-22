@@ -14,16 +14,21 @@ class ChildrenController < ApplicationController
     @child = @raid.children.new(child_params)
     @child.employer_id = @raid.employers.first.id if @raid.employers.first
     @child.submited_by = current_user.id
-    if @child.save
-      create_files(params[:files])
-      flash[:notice] = CHILD_CREATE
-      return redirect_to new_raid_child_path(@raid) \
-      if params[:commit].eql? SAVE_NEXT
-      return redirect_to dashboard_index_path \
-      if params[:commit].eql? FINISH
-      redirect_to_child(@child)
+    if @child.is_already_present(@child)
+      flash[:notice] = CHILD_ALREADY_PRESENT
+      redirect_to new_raid_child_path(@raid)
     else
-      render :new
+      if @child.save
+        create_files(params[:files])
+        flash[:notice] = CHILD_CREATE
+        return redirect_to new_raid_child_path(@raid) \
+        if params[:commit].eql? SAVE_NEXT
+        return redirect_to dashboard_index_path \
+        if params[:commit].eql? FINISH
+        redirect_to_child(@child)
+      else
+       render 'new'
+      end
     end
   end
 

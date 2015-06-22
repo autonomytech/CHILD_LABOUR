@@ -9,7 +9,6 @@ class Employer < ActiveRecord::Base
 
   validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }
 
-  validates :middle_name,length: { minimum: 1, maximum: 20 }
 
   validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }
 

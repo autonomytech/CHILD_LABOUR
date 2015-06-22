@@ -5,9 +5,7 @@ class Complaint < ActiveRecord::Base
   
   validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }
     
-   validates :middle_name, length: { minimum: 1, maximum: 20 }
-
-   validates :last_name,presence: true,length: { minimum: 1, maximum: 20}
+  validates :last_name,presence: true,length: { minimum: 1, maximum: 20}
 
   validates :contact_no, presence: true, numericality: { only_integer: true }, length: \
   { is: 10}
