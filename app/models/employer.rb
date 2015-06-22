@@ -8,7 +8,7 @@ class Employer < ActiveRecord::Base
   accepts_nested_attributes_for :addresses
 
   validates :first_name,presence: true,length: { minimum: 1, maximum: 20 }
-  validates :middle_name,length: { minimum: 1, maximum: 20 }
+  validates :middle_name,length: { minimum: 1, maximum: 20 }, allow_blank: true
   validates :last_name,presence: true,length: { minimum: 1, maximum: 20 }
   validates_presence_of :first_name, :last_name, :contact_no
   validates :contact_no, numericality: true, length: { is: 10 }

@@ -13,6 +13,13 @@ class Child < ActiveRecord::Base
     User.full_name(submited_by)
   end
 
+  def is_already_present(child)
+    val = Child.where("first_name like '#{child.first_name}' and last_name like '#{child.last_name}'
+      and father_name like '#{child.father_name}' and mother_name like '#{child.mother_name}'")
+    flag = val.empty? ? false : true
+    flag
+  end
+
   def self.child_labour
     where(is_deleted: false, is_child_begger: false)
   end
