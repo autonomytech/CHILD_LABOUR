@@ -17,8 +17,6 @@ class ComplaintsController < ApplicationController
   # GET /complaints/new
   def new
     @complaint = Complaint.new
-    @complaint.build_employer
-    @complaint.employer.addresses.build
   end
 
   # GET /complaints/1/edit
@@ -33,7 +31,7 @@ class ComplaintsController < ApplicationController
     respond_to do |format|
       if @complaint.save
         raid = create_raid(@complaint)
-        format.html { redirect_to edit_raid_path(raid.id), notice: COMPLAINT_CREATE }
+        format.html { redirect_to new_employer_path(raid_id: raid.id), notice: COMPLAINT_CREATE }
         format.json { render :show, status: :created, location: @complaint }
       else
         format.html { render :new }
@@ -51,7 +49,6 @@ class ComplaintsController < ApplicationController
     raid.complaint_id = complaint.id
     raid.location_id = location_for_raid(complaint.area)
     raid.save
-    complaint.employer.update(raid_id: raid.id)
     raid
   end
 
@@ -98,9 +95,6 @@ class ComplaintsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def complaint_params
     params.require(:complaint).permit(:first_name, :middle_name, :last_name\
-      , :contact_no, :email, :area, :subject, :last_seen_date, :description\
-      , employer_attributes: [:first_name, :middle_name, :last_name\
-      , :contact_no, addresses_attributes: [:address_line_1, :address_line_2\
-      , :city, :state, :pincode]])
+      , :contact_no, :email, :area, :subject, :last_seen_date, :description)
   end
 end

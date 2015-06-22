@@ -51,7 +51,7 @@ mr:
   middle_name: 'मधले नाव'
   last_name: 'आडनाव'
   police_department: 'पोलीस विभाग'
-  child_labour_details: 'बाल कामगार तपशील'
+  child_details: 'मुलाचा तपशील'
   gender: 'लिंग'
   male: 'पुरुष'
   female: 'महिला'
@@ -114,6 +114,12 @@ mr:
   scetions: 'विभाग'
   person_name: 'व्यक्तीचे नाव'
   ngo_name: 'बिगर-सरकारी संस्थेच नाव'
+  shop_act_lnc: 'दुकान कायदा परवाना क्रमांक'
+  adhar_card: 'आधार कार्ड'
+  voter_card: 'मतदार कार्ड'
+  pan_card: 'पॅन कार्ड'
+  industry_type: 'उद्योग प्रकार'
+
 
   date:
     order:
