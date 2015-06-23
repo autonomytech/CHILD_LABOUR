@@ -110,6 +110,7 @@ class CommunityFarmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def community_farm_params
-      params.require(:community_farm).permit(:raid_id, :department_id, :involve_member, :submited_by)
+      params.require(:community_farm).permit(:raid_id, :department_id, :involve_member,
+                                             :submited_by,:ngo_name,:person_name)
     end
 end
