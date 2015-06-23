@@ -42,4 +42,9 @@ class User < ActiveRecord::Base
   def self.email(id)
     find(id).email
   end
+
+  def self.filter_users(q)
+    japu_users.where("concat_ws(' ',first_name,last_name)like '#{q}%'"\
+        "OR concat_ws(' ',last_name,first_name)like '#{q}%'")
+  end
 end

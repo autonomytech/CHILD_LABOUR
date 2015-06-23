@@ -1,11 +1,23 @@
-var datatable;
+var datatable, tokeninput;
 datatable = function(){
   $('#datatable').dataTable({
     "order": [[1, 'desc']]
   });
 }
+
+tokeninput = function(){
+  $("#involve_member").tokenInput("/users.json", 
+    {propertyToSearch: "full_name",
+     preventDuplicates: true,
+     hintText: "शोधण्यासाठी टाइप करा",
+     noResultsText: "कोणतेही रेकॉर्ड आढळले नाही",
+     searchingText: "शोधत आहे..."});
+}
+
 $(document).ready(datatable);
 $(document).on('page:load',datatable);
+$(document).ready(tokeninput);
+$(document).on('page:load',tokeninput);
 
 function flash_msg(msg, type) {
     setTimeout(function() {

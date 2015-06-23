@@ -11,14 +11,5 @@
 		    <% end %>
 		    <%= f.submit "#{t('save')}", class: 'btn btn-primary'%>
 		<% end %>
-		<script type="text/javascript">
-		  $(document).ready(function() {
-		      $("#involve_member").tokenInput("/users.json", 
-		        {propertyToSearch: "full_name",
-		         hintText: "शोधण्यासाठी टाइप करा",
-		         noResultsText: "कोणतेही रेकॉर्ड आढळले नाही",
-		         searchingText: "शोधत आहे..."});
-		  });
-		</script>
 	</div>
 </div>
