@@ -25,11 +25,11 @@ class ChildrenController < ApplicationController
     else
       @child.answers.destroy_all
       @child.answers.build
-      if @child.is_child_begger
-        render 'child_beggers/new'
+      if (params[:commit].eql? SAVE_NEXT) || (params[:commit].eql? FINISH)
+        render :new
       else
-        if (params[:commit].eql? SAVE_NEXT) || (params[:commit].eql? FINISH)
-          render :new
+        if @child.is_child_begger
+          render 'child_beggers/new'
         else
           render 'child_labours/new'
         end
