@@ -14,20 +14,25 @@ class ChildrenController < ApplicationController
     @child = @raid.children.new(child_params)
     @child.employer_id = @raid.employers.first.id if @raid.employers.first
     @child.submited_by = current_user.id
-    if @child.is_already_present(@child)
-      flash[:notice] = CHILD_ALREADY_PRESENT
-      redirect_to new_raid_child_path(@raid)
+    if @child.save
+      create_files(params[:files])
+      flash[:notice] = CHILD_CREATE
+      return redirect_to new_raid_child_path(@raid) \
+      if params[:commit].eql? SAVE_NEXT
+      return redirect_to dashboard_index_path \
+      if params[:commit].eql? FINISH
+      redirect_to_child(@child)
     else
-      if @child.save
-        create_files(params[:files])
-        flash[:notice] = CHILD_CREATE
-        return redirect_to new_raid_child_path(@raid) \
-        if params[:commit].eql? SAVE_NEXT
-        return redirect_to dashboard_index_path \
-        if params[:commit].eql? FINISH
-        redirect_to_child(@child)
+      @child.answers.destroy_all
+      @child.answers.build
+      if @child.is_child_begger
+        render 'child_beggers/new'
       else
-       render 'new'
+        if (params[:commit].eql? SAVE_NEXT) || (params[:commit].eql? FINISH)
+          render :new
+        else
+          render 'child_labours/new'
+        end
       end
     end
   end
@@ -42,7 +47,11 @@ class ChildrenController < ApplicationController
       flash[:notice] = CHILD_UPDATE
       redirect_to_child(@child)
     else
-      render :edit
+      if @child.is_child_begger
+        render 'child_beggers/edit'
+      else
+        render 'child_labours/edit'
+      end
     end
   end
 

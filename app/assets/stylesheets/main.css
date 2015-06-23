@@ -2718,3 +2718,7 @@ input.form-control.question {
   font-size: 15px;
   background-color: white;
 }
+
+textarea.form-control {
+  font-size: 17px;
+}

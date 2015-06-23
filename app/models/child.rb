@@ -8,16 +8,18 @@ class Child < ActiveRecord::Base
   accepts_nested_attributes_for :addresses
   validates_presence_of :first_name, :last_name, :age, :father_name\
     , :mother_name
+  validate :child_already_present
 
   def submited_by_user
     User.full_name(submited_by)
   end
 
-  def is_already_present(child)
-    val = Child.where("first_name like '#{child.first_name}' and last_name like '#{child.last_name}'
-      and father_name like '#{child.father_name}' and mother_name like '#{child.mother_name}'")
-    flag = val.empty? ? false : true
-    flag
+  def child_already_present
+    return unless (child = Child.where(first_name: first_name\
+      , last_name: last_name, father_name: father_name\
+      , mother_name: mother_name).take)
+    return if child.id.eql? id
+    errors.add(:first_name, CHILD_ALREADY_PRESENT)
   end
 
   def self.child_labour
