@@ -24,12 +24,12 @@ class ChildBeggersController < ApplicationController
   def new
     @child = @raid.children.build
     @questions = Question.all
-    @child.answers.build
     @child.addresses.build
   end
 
   # GET /child_beggers/1/edit
   def edit
+    @questions = Question.all
     @child = @raid.children.find(params[:id])
   end
 

@@ -4,6 +4,7 @@ CHILD_BEGGER = 'बाल भिकारी'
 CHILD_LABOUR = 'बाल कामगार'
 SAVE_NEXT = 'जतन करा आणि पुढे'
 FINISH = 'समाप्त'
+YES = 'होय'
 IMAGE_CONTENT_TYPE = %w(image/jpeg)
 USER_CREATE = 'वापरकर्ता यशस्वीरित्या निर्माण झाला आहे-'
 USER_UPDATE = 'वापरकर्त्याची यशस्वीरित्या सुधारणा झाली आहे-'

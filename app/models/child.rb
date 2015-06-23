@@ -4,7 +4,6 @@ class Child < ActiveRecord::Base
   has_many :answers
   has_many :addresses
   has_many :attachments
-  accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses
   validates_presence_of :first_name, :last_name, :age, :father_name\
     , :mother_name
@@ -38,5 +37,16 @@ class Child < ActiveRecord::Base
     add = addresses.last
     return unless add
     [add.address_line_1, add.address_line_2, add.city, add.state, add.pincode].join('] ')
+  end
+
+  def ans(q_id)
+    return '' unless (ans = answers.where(question_id: q_id).take)
+    ans.answer
+  end
+
+  def ans_yes_no(q_id)
+    return unless (ans = answers.where(question_id: q_id).take)
+    return true if ans.answer.eql? YES
+    false
   end
 end

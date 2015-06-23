@@ -5,7 +5,6 @@ class ChildrenController < ApplicationController
   def new
     @child = @raid.children.build
     @questions = Question.all
-    @child.answers.build
     @child.addresses.build
   end
 
@@ -15,6 +14,7 @@ class ChildrenController < ApplicationController
     @child.employer_id = @raid.employers.first.id if @raid.employers.first
     @child.submited_by = current_user.id
     if @child.save
+      create_answer(params[:answers])
       create_files(params[:files])
       flash[:notice] = CHILD_CREATE
       return redirect_to new_raid_child_path(@raid) \
@@ -23,8 +23,6 @@ class ChildrenController < ApplicationController
       if params[:commit].eql? FINISH
       redirect_to_child(@child)
     else
-      @child.answers.destroy_all
-      @child.answers.build
       if (params[:commit].eql? SAVE_NEXT) || (params[:commit].eql? FINISH)
         render :new
       else
@@ -37,12 +35,18 @@ class ChildrenController < ApplicationController
     end
   end
 
+  def create_answer(answers)
+    answers.each_pair do |k, v|
+      @child.answers.create(question_id: k.to_i, answer: v[0].to_s)
+    end
+  end
+
   def update
+    @questions = Question.all
     @child = @raid.children.find(params[:id])
-    answers_attributes = params[:child][:answers_attributes]
     @child.addresses.destroy_all
-    if @child.update(child_update_params)
-      update_answers(answers_attributes)
+    if @child.update(child_params)
+      update_answers(params[:answers])
       create_files(params[:files])
       flash[:notice] = CHILD_UPDATE
       redirect_to_child(@child)
@@ -55,11 +59,10 @@ class ChildrenController < ApplicationController
     end
   end
 
-  def update_answers(answers_attributes)
-    answers_attributes.each_pair do |_k, v|
-      ans = Answer.find(v[:id])
-      next if ans.answer.eql? v[:answer]
-      ans.update(answer: v[:answer])
+  def update_answers(answers)
+    answers.each_pair do |k, v|
+      ans = @child.answers.where(question_id: k.to_i).take
+      ans.update(answer: v[0].to_s)
     end
   end
 
@@ -96,14 +99,6 @@ class ChildrenController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :father_name, :mother_name\
-      , :gender, :age, :pet_name, :mother_tongue, :description, :submited_by, :employer_id, :is_child_begger\
-      , answers_attributes: [:answer, :question_id]\
-      , addresses_attributes: [:address_line_1, :address_line_2\
-      , :city, :state, :pincode])
-  end
-
-  def child_update_params
     params.require(:child).permit(:first_name, :last_name, :father_name, :mother_name\
       , :gender, :age, :pet_name, :mother_tongue, :description, :submited_by, :employer_id, :is_child_begger\
       , addresses_attributes: [:address_line_1, :address_line_2\
