@@ -10,6 +10,7 @@ class Child < ActiveRecord::Base
   accepts_nested_attributes_for :addresses
   validates_presence_of  :last_name, :age, :father_name\
     , :mother_name
+  validate :child_already_present
 
 
 
@@ -18,8 +19,10 @@ class Child < ActiveRecord::Base
   end
 
   def child_already_present
-  if  Child.where(first_name: first_name, last_name: last_name\
-  , father_name: father_name, mother_name: mother_name).take
+    return unless (child = Child.where(first_name: first_name\
+      , last_name: last_name, father_name: father_name\
+      , mother_name: mother_name).take)
+    return if child.id.eql? id
     errors.add(:first_name, CHILD_ALREADY_PRESENT)
   end
  end
@@ -47,5 +50,16 @@ class Child < ActiveRecord::Base
     add = addresses.last
     return unless add
     [add.address_line_1, add.address_line_2, add.city, add.state, add.pincode].join('] ')
+  end
+
+  def ans(q_id)
+    return '' unless (ans = answers.where(question_id: q_id).take)
+    ans.answer
+  end
+
+  def ans_yes_no(q_id)
+    return unless (ans = answers.where(question_id: q_id).take)
+    return true if ans.answer.eql? YES
+    false
   end
 end

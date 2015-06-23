@@ -36,6 +36,7 @@ class EmployersController < ApplicationController
   # POST /employers.json
   def create
     @employer = Employer.new(employer_params)
+    @laws = Law.all
     if @employer.save
       create_files(params[:files])
       employer_section(params[:laws], params[:acts], params[:sections])
@@ -49,6 +50,7 @@ class EmployersController < ApplicationController
   # PATCH/PUT /employers/1.json
   def update
     @employer.addresses.destroy_all
+    @laws = Law.all
     if @employer.update(employer_params)
       create_files(params[:files])
       employer_section(params[:laws], params[:acts], params[:sections])
