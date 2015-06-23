@@ -13,6 +13,7 @@ class ChildrenController < ApplicationController
     @child = @raid.children.new(child_params)
     @child.employer_id = @raid.employers.first.id if @raid.employers.first
     @child.submited_by = current_user.id
+
     if @child.save
       create_answer(params[:answers])
       create_files(params[:files])
@@ -32,7 +33,7 @@ class ChildrenController < ApplicationController
           render 'child_labours/new'
         end
       end
-    end
+    #end
   end
 
   def create_answer(answers)
