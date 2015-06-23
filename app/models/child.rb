@@ -5,14 +5,10 @@ class Child < ActiveRecord::Base
   has_many :addresses
   has_many :attachments
   validates :first_name, presence: true
-  validate :is_already_present  
-  accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses
   validates_presence_of  :last_name, :age, :father_name\
     , :mother_name
   validate :child_already_present
-
-
 
   def submited_by_user
     User.full_name(submited_by)
@@ -24,7 +20,6 @@ class Child < ActiveRecord::Base
       , mother_name: mother_name).take)
     return if child.id.eql? id
     errors.add(:first_name, CHILD_ALREADY_PRESENT)
-    end
   end
 
   def self.child_labour
@@ -56,3 +51,4 @@ class Child < ActiveRecord::Base
     false
   end
 end
+
