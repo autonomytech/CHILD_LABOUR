@@ -17,11 +17,12 @@ class Child < ActiveRecord::Base
     User.full_name(submited_by)
   end
 
-  def is_already_present
-    if Child.where("first_name like ? ,last_name like ?",first_name,last)
-     errors.add(:first_name,CHILD_ALREADY_PRESENT)
-   
+  def child_already_present
+  if  Child.where(first_name: first_name, last_name: last_name\
+  , father_name: father_name, mother_name: mother_name).take
+    errors.add(:first_name, CHILD_ALREADY_PRESENT)
   end
+ end
 
   # def is_already_present(child)
   #   val = Child.where("first_name like '#{child.first_name}' and last_name like '#{child.last_name}'
