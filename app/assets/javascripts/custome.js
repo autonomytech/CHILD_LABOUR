@@ -1,7 +1,23 @@
 var datatable, tokeninput;
 datatable = function(){
   $('#datatable').dataTable({
-    "order": [[1, 'desc']]
+    "order": [[1, 'desc']],
+    oLanguage: {
+      sLengthMenu: '_MENU_ नोंदण्या दाखवा',
+      sInfo: '_TOTAL_ पैकी _START_ ते _END_ नोंदण्या दर्शवित आहे',
+      sInfoFiltered: '',
+      sInfoEmpty: 'कोणतीही नोंदणी नाही',
+      sEmptyTable: 'टेबल मध्ये कोणताही डेटा उपलब्ध नाही',
+      sZeroRecords: 'कोणतेही जुळणारे रेकॉर्ड सापडले नाही',
+      sSearch: 'शोधा',
+      sSearchPlaceholder: "शोधण्यासाठी टाइप करा",
+      oPaginate: {
+        sFirst: 'पहिले पृष्ठ',
+        sPrevious: 'मागील पृष्ठ',
+        sNext: 'पुढील पृष्ठ',
+        sLast: 'अंतिम पृष्ठ'
+      }
+    }
   });
 }
 
