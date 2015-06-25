@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
   def child_beggers
     @raid = Raid.find(params[:id])
     @child_beggers = @raid.childbeggers
-    add_breadcrumb 'बाल भिकारी'
+    add_breadcrumb 'बाल भिक्षुक'
   end
 
   def panchnama

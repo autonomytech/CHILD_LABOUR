@@ -35,7 +35,6 @@ class UsersController < ApplicationController
     @user.community_id = current_user.community_id
     respond_to do |format|
       if @user.save
-        # UserMailer.welcome_email(@user.id, params[:user][:password]).deliver_later
         format.html { redirect_to users_path, notice: USER_CREATE }
         format.json { render :show, status: :created, location: @user }
       else

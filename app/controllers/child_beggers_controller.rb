@@ -1,6 +1,6 @@
 class ChildBeggersController < ApplicationController
   add_breadcrumb 'डॅशबोर्ड', :root_path
-  add_breadcrumb 'बाल भिकारी', :child_beggers_path
+  add_breadcrumb 'बाल भिक्षुक', :child_beggers_path
   before_action :set_raid, only: [:new, :edit]
   before_action :set_child, only: [:show, :edit]
 

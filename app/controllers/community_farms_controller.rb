@@ -42,9 +42,6 @@ class CommunityFarmsController < ApplicationController
     @community_farm.submited_by = current_user.id
     respond_to do |format|
       if @community_farm.save
-        # @community_farm.involve_member.split(',').each do |i|
-        #   UserMailer.raid_alert_email(@raid.id, i).deliver_later
-        # end
         format.html { redirect_to dashboard_index_path, notice: COMMUNITY_ASSIGN }
         format.json { render :show, status: :created, location: @community_farm }
       else
@@ -59,9 +56,6 @@ class CommunityFarmsController < ApplicationController
     @community_farm.submited_by = current_user.id
     respond_to do |format|
       if @community_farm.save
-        # @community_farm.involve_member.split(',').each do |i|
-        #   UserMailer.raid_alert_email(@raid.id, i).deliver_later
-        # end
         format.html { redirect_to new_raid_child_path(@raid), notice: COMMUNITY_ASSIGN }
         format.json { render :show, status: :created, location: @community_farm }
       else

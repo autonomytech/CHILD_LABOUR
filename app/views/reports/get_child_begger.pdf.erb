@@ -13,20 +13,20 @@
   <div class="container inter-body">
   <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-7">
+  <div class="col-md-7">`
   <% @childs.each do |child| %>
       <div class="row reports">
       <div class="col-md-9">
      <p><%=t('police_station')%> % <b class="md"><%= child.raid.department%></b></p>
       </div>
       <div class="col-md-3 en">
-      <p><%=t('date_')%> :  <b class="md"><%= child.raid.datetime.strftime('%d/%m/%Y')%></b></p>
+      <p><%=t('date_')%> %  <b class="md"><%= child.raid.datetime.strftime('%d/%m/%Y')%></b></p>
       </div>
     </div>
    <div class="row reports">
       <div class="col-md-12">
-      <p><%=t('child_labour_name')%> : <b><%=  child.full_name.upcase %><br>  </b><%=t('father_name')%> :  <b>  <%=  child.father_name.upcase %> <br> </b><%=t('mother_name')%> :  <b>  <%=  child.mother_name.upcase %>  , </b> <%=t('age')%> :  <b><%=  child.age %>  ,  </b>  <%=t('gender')%> :  <b>  <%=  child.gender %>  <br> </b><%=t('address')%> : <b><%=  child.address.upcase %> </b></p>  
-      <p><%=t('employer_name')%> :  <b>  <%= child.raid.employer_name.upcase %> <br> </b> <%=t('address')%> : <b>  <%= child.raid.employer_address.upcase %></b></p>
+      <p><%=t('child_labour_name')%> % <b><%=  child.full_name %><br>  </b><%=t('father_name')%> %  <b>  <%=  child.father_name %> <br> </b><%=t('mother_name')%> %  <b>  <%=  child.mother_name %>  , </b> <%=t('age')%> %  <b><%=  child.age %>  ,  </b>  <%=t('gender')%> %  <b>  <%=  child.gender %>  <br> </b><%=t('address')%> % <b><%=  child.address %> </b></p>  
+      <p><%=t('employer_name')%> %  <b>  <%= child.raid.employer_name %> <br> </b> <%=t('address')%> % <b>  <%= child.raid.employer_address %></b></p>
       </div>
     </div>
 
