@@ -1,8 +1,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: icl
-  password: icl
   pool: 5
 
 development:
